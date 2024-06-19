@@ -1,101 +1,62 @@
-﻿<Window x:Class="Remembr.views.login"
+﻿<UserControl x:Class="Remembr.Views.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Remembr.views"
+        xmlns:local="clr-namespace:Remembr.Views"
         mc:Ignorable="d"
-        Title="login" 
-        Height="600" 
-        Width="920"
-        WindowStyle="None"
-        ResizeMode="CanResize"
+        d:DesignHeight="600" 
+        d:DesignWidth="920"
         Background="Transparent"
-        AllowsTransparency="True"
-        WindowStartupLocation="CenterScreen">
-    <Border CornerRadius="20" 
-     BorderBrush="Gray" 
-     BorderThickness="0"
-     MouseDown="Border_MouseDown">
-        <Border.Background>
-            <ImageBrush ImageSource="\Resources\Images\Background.png" Stretch="UniformToFill"/>
-        </Border.Background>
+        >
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+
+
+
+        </Grid>
+
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="10"/>
-                </Grid.ColumnDefinitions>
-
-
-                <!--Botao de fechar-->
-                <Ellipse x:Name="ButtonClose" Grid.Column="3"
-                 Fill="#FF3D3D3D"
-                 Height="20"
-                 Width="20"
-                 HorizontalAlignment="Center"
-                 VerticalAlignment="Center"  
-                 MouseLeftButtonDown="CloseApp_button"
-                 Style="{StaticResource Closebutton}"/>
-
-                <!--Botao de minimizar -->
-                <Ellipse x:Name="BigButton" Grid.Column="2"
-                  Fill="#FF787878"
-                  Height="20"
-                  Width="20"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center" 
-                  MouseLeftButtonDown="BigApp_button"
-                  Style="{StaticResource Hidebutton}"/>
-
-                <!--Botao de minimizar -->
-                <Ellipse x:Name="HideButton" Grid.Column="1"
-                  Fill="#FF787878"
-                  Height="20"
-                  Width="20"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center" 
-                  MouseLeftButtonDown="HideApp_button"
-                  Style="{StaticResource Hidebutton}"/>
-
-            </Grid>
-
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2.5*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="1.5*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!--Logo da app-->
-                <Rectangle Fill="White" 
+            <!--Logo da app-->
+            <Rectangle Fill="White" 
                            RadiusX="20" 
                            RadiusY="20" 
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Height="120"
                            Width="500"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="115"/>
-                        <ColumnDefinition Width="325" />
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="115"/>
+                    <ColumnDefinition Width="325" />
+                    <ColumnDefinition Width="30" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="3"
+                <TextBlock Grid.Column="3"
                                x:Name="Logo"
                            Text="REMEMBR."
                            Foreground="Black"
@@ -105,7 +66,7 @@
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center" Height="50" Width="300" />
 
-                    <Image Grid.Column="2" 
+                <Image Grid.Column="2" 
                            HorizontalAlignment="Center" 
                            Height="90"  
                            VerticalAlignment="Center" 
@@ -113,89 +74,89 @@
                            Source="/Resources/Icons/handicon.ico" />
 
 
-                </Grid>
+            </Grid>
 
-                <Grid Grid.Row="1">
+            <Grid Grid.Row="1">
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="1"
+                    <TextBlock Grid.Column="1"
                                         Text="Bem-vindo,  "
                                FontFamily="Mentone Lig"
                                Style="{StaticResource TextoWelcome}"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"/>
 
-                        <TextBlock Grid.Column="2" 
+                    <TextBlock Grid.Column="2" 
                                        Text="Utilizador"
                                        FontFamily="Mentone Lig"
                                        Style="{StaticResource Nomedoutilizador}"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center" FontWeight="Bold"/>
-                    </Grid>
-
                 </Grid>
 
-                <Grid Grid.Row="2">
-                    <StackPanel VerticalAlignment="Center"
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <StackPanel VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 Grid.Column="1">
-                        <StackPanel.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="Margin" Value="0,15,0,0"/>
-                            </Style>
-                        </StackPanel.Resources>
-                        
-                        <!--password do utilizador-->
-                        <Border BorderThickness="2" 
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="Margin" Value="0,15,0,0"/>
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <!--password do utilizador-->
+                    <Border BorderThickness="2" 
                BorderBrush="#FF3F3F3F" 
                CornerRadius="5">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                                <TextBlock  x:Name="textPassword"
+                            <TextBlock  x:Name="textPassword"
                            Text="Password" Style="{StaticResource TextoLogin}" 
                            Margin="10,14,277,10"
                            FontFamily="Mentone Lig" 
                            Grid.ColumnSpan="2"
                            MouseDown="textPassword_MouseDown"/>
-                                <PasswordBox x:Name="txtPassword"
+                            <PasswordBox x:Name="txtPassword"
                             PasswordChanged="txtPassword_PasswordChanged" 
                             Grid.ColumnSpan="2" 
                             Background="{x:Null}" 
                             SelectionBrush="{x:Null}" 
                             BorderBrush="{x:Null}"
                             Style="{StaticResource TextBox}" Margin="0,0,0,0"/>
-                            </Grid>
-                        </Border>
+                        </Grid>
+                    </Border>
 
-                    </StackPanel>
+                </StackPanel>
 
 
 
-                </Grid>
-                
-                <Grid Grid.Row="3">
+            </Grid>
 
-                    <!-- Botao de login -->
-                    <Button Content="Entrar" 
+            <Grid Grid.Row="3">
+
+                <!-- Botao de login -->
+                <Button Content="Entrar" 
                             HorizontalAlignment="Center" 
                             Height="60" 
                             VerticalAlignment="Top" 
                             Width="172"
                             FontFamily="Mentone Lig"
                             Style="{StaticResource button}" Click="Button_Click"/>
-                </Grid>
-                
             </Grid>
+
         </Grid>
-    </Border>
-</Window>
+    </Grid>
+
+</UserControl>

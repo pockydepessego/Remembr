@@ -10,14 +10,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Remembr.views
+namespace Remembr.Views
 {
     /// <summary>
     /// Interaction logic for Calendario.xaml
     /// </summary>
-    public partial class Calendario : Window
+    public partial class Calendario : UserControl
     {
         public Calendario()
         {
@@ -74,4 +75,5 @@ namespace Remembr.views
 
         }
     }
+
 }

@@ -14,8 +14,18 @@
     <None Remove="Resources\Fonts\NEONLEDLight.ttf" />
     <None Remove="Resources\Icons\handicon.ico" />
     <None Remove="Resources\Images\Background.png" />
+    <None Remove="Resources\Images\calendarioicon.png" />
     <None Remove="Resources\Images\Hand-icon_3_.svg" />
     <None Remove="Resources\Images\NoPhoto.png" />
+    <None Remove="Resources\Images\pastata.png" />
+    <None Remove="Resources\Images\pastatee.png" />
+    <None Remove="Resources\Images\pastatpi.png" />
+    <None Remove="Resources\Images\pastatt.png" />
+    <None Remove="Resources\Images\tarefasicon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,8 +36,14 @@
     <Resource Include="Resources\Fonts\mentone-semibol.ttf" />
     <Resource Include="Resources\Fonts\NEONLEDLight.ttf" />
     <Resource Include="Resources\Images\Background.png" />
+    <Resource Include="Resources\Images\calendarioicon.png" />
     <Resource Include="Resources\Images\Hand-icon_3_.svg" />
     <Resource Include="Resources\Images\NoPhoto.png" />
+    <Resource Include="Resources\Images\pastata.png" />
+    <Resource Include="Resources\Images\pastatee.png" />
+    <Resource Include="Resources\Images\pastatpi.png" />
+    <Resource Include="Resources\Images\pastatt.png" />
+    <Resource Include="Resources\Images\tarefasicon.png" />
   </ItemGroup>
 
 </Project>

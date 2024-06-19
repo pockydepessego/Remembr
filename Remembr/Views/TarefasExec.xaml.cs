@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Remembr.views
+namespace Remembr.Views
 {
     /// <summary>
-    /// Interaction logic for TarefasEmExecucao.xaml
+    /// Interaction logic for TarefasExec.xaml
     /// </summary>
-    public partial class TarefasEmExecucao : Window
+    public partial class TarefasExec : UserControl
     {
-        public TarefasEmExecucao()
+        public TarefasExec()
         {
             InitializeComponent();
         }

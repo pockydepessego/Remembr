@@ -10,49 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Remembr.views
+namespace Remembr.Views
 {
     /// <summary>
-    /// Interaction logic for login.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class login : Window
+    public partial class Login : UserControl
     {
-        public login()
+        public Login()
         {
             InitializeComponent();
-        }
-        private void CloseApp_button(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void HideApp_button(object sender, MouseButtonEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
-        }
-        private void BigApp_button(object sender, MouseButtonEventArgs e)
-        {
-            if (WindowState == WindowState.Normal)
-            {
-                WindowState = WindowState.Maximized;
-                this.BorderThickness = new System.Windows.Thickness(6);
-                MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-                MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
-            }
-            else
-            {
-                WindowState = WindowState.Normal;
-                this.BorderThickness = new System.Windows.Thickness(2);
-            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -77,3 +47,4 @@ namespace Remembr.views
         }
     }
 }
+

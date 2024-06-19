@@ -10,14 +10,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Remembr.views
+namespace Remembr.Views
 {
     /// <summary>
     /// Interaction logic for TarefasTerminadas.xaml
     /// </summary>
-    public partial class TarefasTerminadas : Window
+    public partial class TarefasTerminadas : UserControl
     {
         public TarefasTerminadas()
         {

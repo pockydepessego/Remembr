@@ -1,40 +1,29 @@
-﻿<Window x:Class="Remembr.views.Calendario"
+﻿<UserControl x:Class="Remembr.Views.Calendario"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Remembr.views"
+        xmlns:local="clr-namespace:Remembr.Views"
         mc:Ignorable="d"
-        Title="Calendario"         Height="600" 
-        Width="920"
-        WindowStyle="None"
-        ResizeMode="CanResize"
+        d:DesignHeight="600" 
+        d:DesignWidth="920"
         Background="Transparent"
-        AllowsTransparency="True"
-        WindowStartupLocation="CenterScreen">
-    <Border CornerRadius="20" 
-     BorderBrush="Gray" 
-     BorderThickness="0"
-     MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown">
-        <Border.Background>
-            <ImageBrush ImageSource="\Resources\Images\Background.png" Stretch="UniformToFill"/>
-        </Border.Background>
+        >
 
+    <Grid>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="*"/>
-
-            </Grid.RowDefinitions>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Rectangle Fill="White" 
+            <Rectangle Fill="White" 
                             Width="170" 
                             Height="55" 
                             VerticalAlignment="Center"
@@ -42,7 +31,7 @@
                             RadiusX="15" 
                             RadiusY="15"
                             />
-                <TextBlock x:Name="Logo"
+            <TextBlock x:Name="Logo"
                             Text="REMEMBR."
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
@@ -51,91 +40,60 @@
                             FontFamily="NEON LED Light" />
 
 
-                <Grid Grid.Column="2">
-                    <Grid.ColumnDefinitions >
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="30"/>
-                        <ColumnDefinition Width="10"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-
-                    <!--Botao de fechar-->
-                    <Ellipse x:Name="ButtonClose" Grid.Column="3"
-                        Fill="#FF3D3D3D"
-                        Height="20"
-                        Width="20"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"  
-                        MouseLeftButtonDown="CloseApp_button"
-                        Style="{StaticResource Closebutton}"/>
-
-                    <!--Botao de minimizar -->
-                    <Ellipse x:Name="BigButton" Grid.Column="2"
-                        Fill="#FF787878"
-                        Height="20"
-                        Width="20"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" 
-                        MouseLeftButtonDown="BigApp_button"
-                        Style="{StaticResource Hidebutton}"/>
-
-                    <!--Botao de minimizar -->
-                    <Ellipse x:Name="HideButton" Grid.Column="1"
-                        Fill="#FF787878"
-                        Height="20"
-                        Width="20"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" 
-                        MouseLeftButtonDown="HideApp_button"
-                        Style="{StaticResource Hidebutton}"/>
-
-                </Grid>
-            </Grid>
-
-            <Grid Grid.Row="1">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="220"/>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-                <Rectangle Grid.Column="1"
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Grid.Column="1"
                            Fill="#565656"
                            RadiusX="15"
                            RadiusY="15"
                            Margin="10"
                            Opacity="0.8"/>
 
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1.5*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height=".5*"/>
-                        <RowDefinition Height=".2*"/>
-                        <RowDefinition Height=".5*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height=".5*"/>
+                    <RowDefinition Height=".2*"/>
+                    <RowDefinition Height=".5*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
 
-                    <Ellipse Grid.Row="0"
+                <Ellipse Grid.Row="0"
                              Height="100" 
                              Width="100" 
                              HorizontalAlignment="Center"
                              VerticalAlignment="Bottom"
                              Stroke="#FF3F3F3F" 
                              StrokeThickness="2">
-                        <Ellipse.Fill>
-                            <ImageBrush x:Name="pfp" ImageSource="/Resources/Images/NoPhoto.png"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="pfp" ImageSource="/Resources/Images/NoPhoto.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
 
-                    <Button 
+                <Button 
                             Grid.Row="1"
                             Content="Nova Tarefa" 
                             HorizontalAlignment="Center"
@@ -145,7 +103,7 @@
                             FontFamily="Mentone Lig"
                             Style="{StaticResource button}" Click="Save_Click"/>
 
-                    <Button Grid.Row="3"
+                <Button Grid.Row="3"
                             Content="Tarefas" 
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
@@ -154,15 +112,15 @@
                             FontFamily="Mentone Lig"
                             Style="{StaticResource PageButton}" Click="TarefaPage_Click" MouseEnter="Button_MouseEnter_1">
 
-                    </Button>
+                </Button>
 
-                    <Image Grid.Row="3"
+                <Image Grid.Row="3"
                            Source="/Resources/Images/tarefasicon.png"
                            HorizontalAlignment="Left"
                            Margin="5,5,5,5"
                            Width="25"/>
 
-                    <Button Grid.Row="5"
+                <Button Grid.Row="5"
                             Content="Calendário" 
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
@@ -170,9 +128,9 @@
                             Width="220"
                             FontFamily="Mentone Lig"
                             Style="{StaticResource PageButton}" Click="CalendarPage_Click" MouseEnter="Button_MouseEnter">
-                    </Button>
+                </Button>
 
-                    <Image Grid.Row="5"
+                <Image Grid.Row="5"
                            Source="/Resources/Images/calendarioicon.png"
                            HorizontalAlignment="Left"
                            Margin="6,5,5,5"
@@ -180,9 +138,9 @@
 
 
 
-                </Grid>
             </Grid>
-
         </Grid>
-    </Border>
-</Window>
+
+    </Grid>
+
+</UserControl>

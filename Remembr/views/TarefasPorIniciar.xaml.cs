@@ -10,14 +10,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Remembr.views
+namespace Remembr.Views
 {
     /// <summary>
     /// Interaction logic for TarefasPorIniciar.xaml
     /// </summary>
-    public partial class TarefasPorIniciar : Window
+    public partial class TarefasPorIniciar : UserControl
     {
         public TarefasPorIniciar()
         {
