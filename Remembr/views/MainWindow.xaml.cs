@@ -1,4 +1,5 @@
-﻿using Remembr_.Models;
+﻿using Remembr.views;
+using Remembr_.Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -103,6 +104,9 @@ namespace Remembr
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var a = new TarefasPorIniciar();
+            a.Show();
+
 
         }
 

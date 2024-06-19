@@ -1,11 +1,11 @@
-﻿<Window x:Class="Remembr.views.TarefasPorIniciar"
+﻿<Window x:Class="Remembr.views.TarefasApagadas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Remembr.views"
         mc:Ignorable="d"
-        Title="login" 
+        Title="TarefasApagadas" 
         Height="600" 
         Width="920"
         WindowStyle="None"
@@ -113,15 +113,7 @@
                            Margin="10"
                            Opacity="0.8"/>
 
-                <Image Grid.Column="1"
-                       x:Name="pastata"
-                       Source="/Resources/Images/pastata.png"
-                       Margin="20"/>
 
-                <Image Grid.Column="1"
-                       x:Name="pastatt"
-                       Source="/Resources/Images/pastatt.png"
-                       Margin="20"/>
 
                 <Image Grid.Column="1"
                        x:Name="pastatee"
@@ -131,32 +123,17 @@
                 <Image Grid.Column="1"
                        x:Name="pastatpi"
                        Source="/Resources/Images/pastatpi.png"
+                       Margin="20"/>
+
+                <Image Grid.Column="1"
+                       x:Name="pastatt"
+                       Source="/Resources/Images/pastatt.png"
+                       Margin="20"/>
+
+                <Image Grid.Column="1"
+                       x:Name="pastata"
+                       Source="/Resources/Images/pastata.png"
                        Margin="18.5"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 <Grid Grid.Column="0">
@@ -218,7 +195,7 @@
                             FontFamily="Mentone Lig"
                             Style="{StaticResource PageButton}" Click="CalendarPage_Click">
                     </Button>
-                    
+
                     <Image Grid.Row="5"
                            Source="/Resources/Images/calendarioicon.png"
                            HorizontalAlignment="Left"

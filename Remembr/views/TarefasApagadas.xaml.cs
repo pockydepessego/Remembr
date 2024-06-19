@@ -15,16 +15,26 @@ using System.Windows.Shapes;
 namespace Remembr.views
 {
     /// <summary>
-    /// Interaction logic for TarefasPorIniciar.xaml
+    /// Interaction logic for TarefasApagadas.xaml
     /// </summary>
-    public partial class TarefasPorIniciar : Window
+    public partial class TarefasApagadas : Window
     {
-        public TarefasPorIniciar()
+        public TarefasApagadas()
         {
             InitializeComponent();
         }
 
+        private void BigApp_button(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void CalendarPage_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -34,17 +44,7 @@ namespace Remembr.views
 
         }
 
-        private void BigApp_button(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
         private void HideApp_button(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void CalendarPage_Click(object sender, RoutedEventArgs e)
         {
 
         }

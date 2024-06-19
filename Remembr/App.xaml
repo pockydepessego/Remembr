@@ -59,6 +59,33 @@
             </Style.Triggers>
         </Style>
 
+        <Style x:Key="PageButton" TargetType="Button">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Width" Value="170" />
+            <Setter Property="Background" Value="#565656"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"  CornerRadius="0,25,25,0"  Padding="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#cccccc" />
+                    <Setter Property="Foreground" Value="#FF3F3F3F" />
+                </Trigger>
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#cccccc" />
+                    <Setter Property="Foreground" Value="#FF3F3F3F" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
         <Style x:Key="TextBox"  TargetType="Control">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Grid.Column" Value="1" />
