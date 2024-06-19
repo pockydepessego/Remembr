@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\Icons\handicon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\mentone-semibol.ttf" />
+    <None Remove="Resources\Fonts\NEONLEDLight.ttf" />
+    <None Remove="Resources\Icons\handicon.ico" />
+    <None Remove="Resources\Images\Background.png" />
+    <None Remove="Resources\Images\Hand-icon_3_.svg" />
+    <None Remove="Resources\Images\NoPhoto.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\handicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\mentone-semibol.ttf" />
+    <Resource Include="Resources\Fonts\NEONLEDLight.ttf" />
+    <Resource Include="Resources\Images\Background.png" />
+    <Resource Include="Resources\Images\Hand-icon_3_.svg" />
+    <Resource Include="Resources\Images\NoPhoto.png" />
+  </ItemGroup>
+
+</Project>
