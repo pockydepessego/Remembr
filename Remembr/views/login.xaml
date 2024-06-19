@@ -71,8 +71,9 @@
 
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1.5*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -115,22 +116,41 @@
                 </Grid>
 
                 <Grid Grid.Row="1">
-                    
-                    <TextBlock Text="Bem-vindo, "
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="1"
+                                        Text="Bem-vindo,  "
                                FontFamily="Mentone Lig"
-                               Style="{StaticResource TextoLogin}"
-                               HorizontalAlignment="Center"
+                               Style="{StaticResource TextoWelcome}"
+                               HorizontalAlignment="Right"
                                VerticalAlignment="Center"/>
 
+                        <TextBlock Grid.Column="2" 
+                                       Text="Utilizador"
+                                       FontFamily="Mentone Lig"
+                                       Style="{StaticResource Nomedoutilizador}"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center" FontWeight="Bold"/>
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="2">
                     <StackPanel VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 Grid.Column="1">
                         <StackPanel.Resources>
                             <Style TargetType="{x:Type Border}">
-                                <Setter Property="Margin" Value="0,0,0,0"/>
+                                <Setter Property="Margin" Value="0,15,0,0"/>
                             </Style>
                         </StackPanel.Resources>
-
                         
                         <!--password do utilizador-->
                         <Border BorderThickness="2" 
@@ -160,12 +180,13 @@
                     </StackPanel>
 
 
+
                 </Grid>
                 
-                <Grid Grid.Row="2">
+                <Grid Grid.Row="3">
 
                     <!-- Botao de login -->
-                    <Button Content="Registar" 
+                    <Button Content="Entrar" 
                             HorizontalAlignment="Center" 
                             Height="60" 
                             VerticalAlignment="Top" 

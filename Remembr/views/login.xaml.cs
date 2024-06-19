@@ -54,5 +54,26 @@ namespace Remembr.views
                 this.BorderThickness = new System.Windows.Thickness(2);
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void textPassword_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txtPassword.Focus();
+        }
+        private void txtPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPassword.Password) && txtPassword.Password.Length > 0)
+            {
+                textPassword.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                textPassword.Visibility = Visibility.Visible;
+            }
+        }
     }
 }
