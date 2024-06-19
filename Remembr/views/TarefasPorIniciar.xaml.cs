@@ -23,5 +23,25 @@ namespace Remembr.views
         {
             InitializeComponent();
         }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void CloseApp_button(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void BigApp_button(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void HideApp_button(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
