@@ -214,9 +214,10 @@
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
 
-                    <Rectangle x:Name="Barranovatarefa"
-                               Fill="#FFC6C6C6"
-                               />
+                    <Border 
+                               x:Name="Barranovatarefa"
+                               Background="#FFC6C6C6"
+                               CornerRadius="15 15 0 0"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10*"/>
@@ -226,15 +227,103 @@
 
                         <Button Grid.Column="2"
                                 Name="cancelartarefa"
-                                Background="Transparent">
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                Padding="15">
                             <Image Source="/Resources/Images/close.png"/>
                         </Button>
+
+                        <Label Grid.Column="0"
+                               Content="Nova Tarefa"
+                               Padding="15"
+                               VerticalContentAlignment="Center"
+                               HorizontalContentAlignment="Left" FontFamily="Mentone Lig" FontSize="22"
+                               Foreground="#FF3F3F3F"/>
                     </Grid>
 
-                    <Rectangle x:Name="Backgroundnovatarefa"
-                                Fill="White"
-                               Grid.Row="1"/>
-                    
+                    <Border x:Name="Backgroundnovatarefa"
+                            Background="White"
+                            Grid.Row="1"
+                            CornerRadius="0 0 15 15">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1.2*"/>
+                                <RowDefinition Height="1.2*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1.7*"/>
+                                <RowDefinition Height="1.7*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="Data"
+                                        Content="Data"
+                                        Margin="20 "
+                                        FontFamily="Mentone"
+                                        Style="{StaticResource NTbutton}"
+                                        Grid.Column="1"/>
+
+                                <Button x:Name="Prioridade"
+                                        Content="Prioridade"
+                                        Margin="20"
+                                        FontFamily="Mentone"
+                                        Style="{StaticResource NTbutton}"
+                                        Grid.Column="2"/>
+
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="Periodicidade"
+                                        Content="Periodicidade"
+                                        Margin="20"
+                                        FontFamily="Mentone"
+                                        Style="{StaticResource NTbutton}"
+                                        Grid.Column="1"/>
+
+                                <Button x:Name="Lembretes"
+                                        Content="Lembretes"
+                                        Margin="20"
+                                        FontFamily="Mentone"
+                                        Style="{StaticResource NTbutton}"
+                                        Grid.Column="2"/>
+                                
+                            </Grid>
+                            <TextBox x:Name="NomedaTarefa"
+                                     Text="Nome da Tarefa"
+                                     FontFamily="Mentone"
+                                     FontSize="18"
+                                     Foreground="#FF3F3F3F"
+                                     Padding="20"
+                                     TextChanged="NomedaTarefa_TextChanged"/>
+
+                            <TextBox Grid.Row="1"
+                                     x:Name="DescricaodaTarefa"
+                                     Text="Descrição"
+                                     FontFamily="Mentone"
+                                     FontSize="18"
+                                     Foreground="#FF3F3F3F"
+                                     Padding="20"
+                                     TextChanged="DescricaodaTarefa_TextChanged"/>
+                            <TextBlock Grid.Row="2"
+                                       Text="Definições:"
+                                       FontSize="18"
+                                       FontFamily="Mentone"
+                                       Foreground="#FF3F3F3F"
+                                       Padding="20"/>
+                        </Grid>
+                    </Border>
                 </Grid>
             </Grid>
         </Grid>

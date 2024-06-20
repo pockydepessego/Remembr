@@ -29,55 +29,89 @@
         <Border.Background>
             <ImageBrush ImageSource="\Resources\Images\Background.png" Stretch="UniformToFill"/>
         </Border.Background>
-
+        
+     
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/> 
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+
             </Grid.RowDefinitions>
 
-            <ContentControl Content="{Binding CurrentViewModel}"  />
-
-            <Grid Height="40" VerticalAlignment="Top">
+       <ContentControl Content="{Binding CurrentViewModel}"  />
+            
+            <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="10"/>
                 </Grid.ColumnDefinitions>
 
+                <Rectangle Fill="White" 
+                            Width="170" 
+                            Height="55" 
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            RadiusX="15" 
+                            RadiusY="15"
+                            />
+                <TextBlock x:Name="Logo"
+                            Text="REMEMBR."
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Foreground="Black"
+                            FontSize="30"
+                            FontFamily="NEON LED Light" />
+                <Grid Grid.Column="1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
 
-                <!--Botao de fechar-->
-                <Ellipse x:Name="ButtonClose" Grid.Column="3"
-                        Fill="#FF3D3D3D"
-                        Height="20"
-                        Width="20"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"  
-                        MouseLeftButtonDown="CloseApp_button"
-                        Style="{StaticResource Closebutton}"/>
 
-                <!--Botao de minimizar -->
-                <Ellipse x:Name="BigButton" Grid.Column="2"
-                         Fill="#FF787878"
-                         Height="20"
-                         Width="20"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center" 
-                         MouseLeftButtonDown="BigApp_button"
-                         Style="{StaticResource Hidebutton}"/>
+                    <Grid Height="40" 
+                          VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!--Botao de fechar-->
+                        <Ellipse x:Name="ButtonClose" Grid.Column="3"
+                            Fill="#FF3D3D3D"
+                            Height="20"
+                            Width="20"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"  
+                            MouseLeftButtonDown="CloseApp_button"
+                            Style="{StaticResource Closebutton}"/>
 
-                <!--Botao de minimizar -->
-                <Ellipse x:Name="HideButton" Grid.Column="1"
-                         Fill="#FF787878"
-                         Height="20"
-                         Width="20"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center" 
-                         MouseLeftButtonDown="HideApp_button"
-                         Style="{StaticResource Hidebutton}"/>
+                        <!--Botao de minimizar -->
+                        <Ellipse x:Name="BigButton" Grid.Column="2"
+                             Fill="#FF787878"
+                             Height="20"
+                             Width="20"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center" 
+                             MouseLeftButtonDown="BigApp_button"
+                             Style="{StaticResource Hidebutton}"/>
+
+                        <!--Botao de minimizar -->
+                        <Ellipse x:Name="HideButton" Grid.Column="1"
+                             Fill="#FF787878"
+                             Height="20"
+                             Width="20"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Center" 
+                             MouseLeftButtonDown="HideApp_button"
+                             Style="{StaticResource Hidebutton}"/>
+
+                    </Grid>
+                </Grid>
 
             </Grid>
 

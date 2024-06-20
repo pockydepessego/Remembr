@@ -22,22 +22,6 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Rectangle Fill="White" 
-                            Width="170" 
-                            Height="55" 
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            RadiusX="15" 
-                            RadiusY="15"
-                            />
-            <TextBlock x:Name="Logo"
-                            Text="REMEMBR."
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Foreground="Black"
-                            FontSize="30"
-                            FontFamily="NEON LED Light" />
-
 
             <Grid Grid.Column="2">
                 <Grid.ColumnDefinitions >

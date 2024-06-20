@@ -32,10 +32,6 @@
             <Setter Property="Panel.ZIndex" Value="1"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-        
-<!--MUDAR O SETTER DOS RETANGULOS-->
-        <Style x:Key="rec1" TargetType="Rectangle">
-        </Style>
 
         <Style x:Key="button" TargetType="Button">
             <Setter Property="FontSize" Value="20" />
@@ -47,6 +43,33 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}"  CornerRadius="10" BorderThickness="2" BorderBrush="#FF3F3F3F" Padding="15">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#cccccc" />
+                    <Setter Property="Foreground" Value="#FF3F3F3F" />
+                </Trigger>
+                <Trigger Property="IsMouseCaptured" Value="True">
+                    <Setter Property="Background" Value="#cccccc" />
+                    <Setter Property="Foreground" Value="#FF3F3F3F" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="NTbutton" TargetType="Button">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Width" Value="170" />
+            <Setter Property="Background" Value="#FFEBEBEB"/>
+            <Setter Property="Foreground" Value="#FF3F3F3F"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"  CornerRadius="10" BorderThickness="2" BorderBrush="#FF3F3F3F">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>

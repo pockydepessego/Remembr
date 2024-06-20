@@ -69,5 +69,25 @@ namespace Remembr.Views
         {
 
         }
+
+        private void NomedaTarefa_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DescricaoodaTarefa_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DescricaodaTarefa_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DaraInicio_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
