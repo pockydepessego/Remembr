@@ -37,7 +37,7 @@
                             HorizontalAlignment="Center"
                             Foreground="Black"
                             FontSize="30"
-                            FontFamily="NEON LED Light" />
+                            FontFamily="{StaticResource NEONLEDLight}" />
 
 
             <Grid Grid.Column="2">
@@ -103,7 +103,7 @@
                             VerticalAlignment="Center"
                             Height="54" 
                             Width="172"
-                            FontFamily="Mentone Lig"
+                            FontFamily="{StaticResource MentoneLig}"
                             Style="{StaticResource button}" Click="Save_Click"/>
 
                 <Button Grid.Row="3"
@@ -112,7 +112,7 @@
                             VerticalAlignment="Center"
                             Height="45" 
                             Width="200"
-                            FontFamily="Mentone Lig"
+                            FontFamily="{StaticResource MentoneLig}"
                             Style="{StaticResource PageButton}" Click="TarefaPage_Click" MouseEnter="Button_MouseEnter_1">
 
                 </Button>
@@ -129,7 +129,7 @@
                             VerticalAlignment="Center"
                             Height="45" 
                             Width="220"
-                            FontFamily="Mentone Lig"
+                            FontFamily="{StaticResource MentoneLig}"
                             Style="{StaticResource PageButton}" Click="CalendarPage_Click" MouseEnter="Button_MouseEnter">
                 </Button>
 
