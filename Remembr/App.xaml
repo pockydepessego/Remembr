@@ -33,6 +33,9 @@
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         
+<!--MUDAR O SETTER DOS RETANGULOS-->
+        <Style x:Key="rec1" TargetType="Rectangle">
+        </Style>
 
         <Style x:Key="button" TargetType="Button">
             <Setter Property="FontSize" Value="20" />

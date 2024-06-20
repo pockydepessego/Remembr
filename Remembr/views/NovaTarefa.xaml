@@ -194,6 +194,50 @@
 
         </Grid>
         <Rectangle Fill="#565656" Opacity="0.8" RadiusX="20" RadiusY="20"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.55*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="0.8*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.2*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+
+                    <Rectangle x:Name="Barranovatarefa"
+                               Fill="#FFC6C6C6"
+                               />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="2"
+                                Name="cancelartarefa"
+                                Background="Transparent">
+                            <Image Source="/Resources/Images/close.png"/>
+                        </Button>
+                    </Grid>
+
+                    <Rectangle x:Name="Backgroundnovatarefa"
+                                Fill="White"
+                               Grid.Row="1"/>
+                    
+                </Grid>
+            </Grid>
+        </Grid>
 
     </Grid>
 
