@@ -70,6 +70,9 @@
                            Margin="10"
                            Opacity="0.8"/>
 
+            <Calendar Grid.Column="1"
+                      />
+
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1.5*"/>
