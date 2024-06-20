@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="syncfusion.ui.wpf.net" Version="25.1.35" />
   </ItemGroup>
 
   <ItemGroup>
