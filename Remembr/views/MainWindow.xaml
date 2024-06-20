@@ -63,7 +63,7 @@
                             HorizontalAlignment="Center"
                             Foreground="Black"
                             FontSize="30"
-                            FontFamily="NEON LED Light" />
+                            FontFamily="{StaticResource NEONLEDLight}" />
                 </Grid>
 
                 <Grid Grid.Column="1">

@@ -61,7 +61,7 @@
                            Text="REMEMBR."
                            Foreground="Black"
                            FontSize="60"
-                           FontFamily="NEON LED Light" 
+                           FontFamily="{StaticResource NEONLEDLight}" 
                            
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center" Height="50" Width="300" />
@@ -81,24 +81,28 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="1"
-                                        Text="Bem-vindo,  "
-                               FontFamily="Mentone Lig"
+                    <Grid HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                        Text="Bem-vindo, "
+                               FontFamily="{StaticResource MentoneLig}"
                                Style="{StaticResource TextoWelcome}"
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"/>
 
-                    <TextBlock Grid.Column="2" 
-                                       Text="Utilizador"
-                                       FontFamily="Mentone Lig"
+                    <TextBlock Grid.Column="1" 
+                                       Text="UTILIZADOR"
+                                       FontFamily="{StaticResource MentoneLig}"
                                        Style="{StaticResource Nomedoutilizador}"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center" FontWeight="Bold"/>
+                    </Grid>
                 </Grid>
 
             </Grid>
@@ -125,7 +129,7 @@
                             <TextBlock  x:Name="textPassword"
                            Text="Password" Style="{StaticResource TextoLogin}" 
                            Margin="10,14,277,10"
-                           FontFamily="Mentone Lig" 
+                           FontFamily="{StaticResource MentoneLig}" 
                            Grid.ColumnSpan="2"
                            MouseDown="textPassword_MouseDown"/>
                             <PasswordBox x:Name="txtPassword"
@@ -152,7 +156,7 @@
                             Height="60" 
                             VerticalAlignment="Top" 
                             Width="172"
-                            FontFamily="Mentone Lig"
+                            FontFamily="{StaticResource MentoneLig}"
                             Style="{StaticResource button}" Click="Button_Click"/>
             </Grid>
 

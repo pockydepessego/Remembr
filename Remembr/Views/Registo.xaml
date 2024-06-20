@@ -54,7 +54,7 @@
                                 <TextBlock  x:Name="textNome"
                            Text="Nome" Style="{StaticResource TextoLogin}" 
                            Margin="10,12,16,3"
-                           FontFamily="Mentone Lig" 
+                           FontFamily="{StaticResource MentoneLig}" 
                            Grid.ColumnSpan="2"
                            MouseDown="textNome_MouseDown"/>
                                 <TextBox x:Name="txtNome"
@@ -81,7 +81,7 @@
                                 <TextBlock  x:Name="textEmail"
                            Text="Email" Style="{StaticResource TextoLogin}" 
                            Margin="10,13,307,10"
-                           FontFamily="Mentone Lig" 
+                           FontFamily="{StaticResource MentoneLig}" 
                            Grid.ColumnSpan="2"
                            MouseDown="textEmail_MouseDown"/>
                                 <TextBox x:Name="txtEmail"
@@ -107,7 +107,7 @@
                                 <TextBlock  x:Name="textPassword"
                            Text="Password" Style="{StaticResource TextoLogin}" 
                            Margin="10,14,277,10"
-                           FontFamily="Mentone Lig" 
+                           FontFamily="{StaticResource MentoneLig}" 
                            Grid.ColumnSpan="2"
                            MouseDown="textPassword_MouseDown"/>
                                 <PasswordBox x:Name="txtPassword"
@@ -152,7 +152,7 @@
                                 VerticalAlignment="Top"
                                 Height="54" 
                                 Width="172"
-                                FontFamily="Mentone Lig"
+                                FontFamily="{StaticResource MentoneLig}"
                                 Style="{StaticResource button}" Click="Save_Click"/>
                     </Grid>
                 </Grid>
@@ -180,7 +180,7 @@
                            Text="REMEMBR."
                            Foreground="Black"
                            FontSize="60"
-                           FontFamily="NEON LED Light" 
+                           FontFamily="{StaticResource NEONLEDLight}" 
                            
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center" Height="50" Width="300" />
@@ -203,7 +203,7 @@
                             Height="60" 
                             VerticalAlignment="Top" 
                             Width="172"
-                            FontFamily="Mentone Lig"
+                            FontFamily="{StaticResource MentoneLig}"
                             Style="{StaticResource button}" Click="Button_Click" 
                             
                             />

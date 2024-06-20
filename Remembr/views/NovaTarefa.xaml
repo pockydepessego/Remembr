@@ -39,7 +39,7 @@
                                 HorizontalAlignment="Center"
                                 Foreground="Black"
                                 FontSize="30"
-                                FontFamily="NEON LED Light" />
+                                FontFamily="{StaticResource NEONLEDLight}" />
 
 
                 <Grid Grid.Column="2">
@@ -151,7 +151,7 @@
                                 VerticalAlignment="Center"
                                 Height="54" 
                                 Width="172"
-                                FontFamily="Mentone Lig"
+                                FontFamily="{StaticResource MentoneLig}"
                                 Style="{StaticResource button}" />
 
                     <Button Grid.Row="3"
@@ -160,7 +160,7 @@
                                 VerticalAlignment="Center"
                                 Height="45" 
                                 Width="220"
-                                FontFamily="Mentone Lig"
+                                FontFamily="{StaticResource MentoneLig}"
                                 Style="{StaticResource PageButton}" >
 
                     </Button>
@@ -177,7 +177,7 @@
                                 VerticalAlignment="Center"
                                 Height="45" 
                                 Width="200"
-                                FontFamily="Mentone Lig"
+                                FontFamily="{StaticResource MentoneLig}"
                                 Style="{StaticResource PageButton}" >
                     </Button>
 
@@ -237,7 +237,7 @@
                                Content="Nova Tarefa"
                                Padding="15"
                                VerticalContentAlignment="Center"
-                               HorizontalContentAlignment="Left" FontFamily="Mentone Lig" FontSize="22"
+                               HorizontalContentAlignment="Left" FontFamily="{StaticResource MentoneLig}" FontSize="22"
                                Foreground="#FF3F3F3F"/>
                     </Grid>
 
