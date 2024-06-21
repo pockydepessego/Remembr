@@ -255,14 +255,14 @@
                                             Margin="20 "
                                             FontFamily="Mentone"
                                             Style="{StaticResource NTbutton}"
-                                            Grid.Column="0"/>
+                                            Grid.Column="0" Click="Data_Click"/>
 
                                     <Button x:Name="Prioridade"
                                             Content="Prioridade"
                                             Margin="20"
                                             FontFamily="Mentone"
                                             Style="{StaticResource NTbutton}"
-                                            Grid.Column="1"/>
+                                            Grid.Column="1" Click="Prioridade_Click"/>
 
                                     <Button x:Name="Periodicidade"
                                         Content="Periodicidade"
@@ -270,7 +270,7 @@
                                         FontFamily="Mentone"
                                         Style="{StaticResource NTbutton}"
                                         Grid.Column="0"
-                                        Grid.Row="2"/>
+                                        Grid.Row="2" Click="Periodicidade_Click"/>
 
                                     <Button x:Name="Lembretes"
                                         Content="Lembretes"

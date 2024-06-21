@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Remembr.Views
 {
     /// <summary>
-    /// Interaction logic for Periodicidade.xaml
+    /// Interaction logic for HVPeriodicidade.xaml
     /// </summary>
-    public partial class Periodicidade : Window
+    public partial class HVPeriodicidade : UserControl
     {
-        public Periodicidade()
+        public HVPeriodicidade()
         {
             InitializeComponent();
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
