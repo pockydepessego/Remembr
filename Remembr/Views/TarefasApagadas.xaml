@@ -181,7 +181,8 @@
                             Height="54" 
                             Width="172"
                             FontFamily="{StaticResource MentoneLig}"
-                            Style="{StaticResource button}" Click="Save_Click"/>
+                            Style="{StaticResource button}" Click="Save_Click"
+                                                Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="NovaTarefa"/>
 
                 <Button Grid.Row="3"
                             Content="Tarefas" 
