@@ -44,6 +44,7 @@
 
                         <!--Nome de utilizador-->
                         <Border BorderThickness="2" 
+                                x:Name="nomeBorder"
                                 BorderBrush="#FF3F3F3F" 
                                  CornerRadius="5">
                             <Grid>
@@ -70,7 +71,7 @@
                         <!--email do utilizador-->
                         <Border BorderThickness="2" 
                                    BorderBrush="#FF3F3F3F" 
-                                  
+                                   x:Name="emailBorder"
                                    CornerRadius="5">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -95,9 +96,9 @@
                         </Border>
 
                         <!--password do utilizador-->
-                        <Border BorderThickness="2" 
-               BorderBrush="#FF3F3F3F" 
-               CornerRadius="5">
+                        <Border x:Name="passwordBorder" BorderThickness="2" 
+                           BorderBrush="#FF3F3F3F" 
+                           CornerRadius="5">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -118,6 +119,33 @@
                             Style="{StaticResource TextBox}" Margin="0,0,0,0"/>
                             </Grid>
                         </Border>
+
+                        <!--confirmar password do utilizador-->
+                        <Border x:Name="passwordConfirmarBorder" BorderThickness="2" 
+                           BorderBrush="#FF3F3F3F" 
+                           CornerRadius="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock  x:Name="textPasswordConfirmar"
+                           Text="Confirmar Password" Style="{StaticResource TextoLogin}" 
+                           Margin="10,14,277,10"
+                           FontFamily="{StaticResource MentoneLig}" 
+                           Grid.ColumnSpan="2"
+                           MouseDown="textPasswordConfirmar_MouseDown"/>
+                                
+                                <PasswordBox x:Name="txtPasswordConfirmar"
+                            PasswordChanged="txtPasswordConfirmar_PasswordChanged" 
+                            Grid.ColumnSpan="2" 
+                            Background="{x:Null}" 
+                            SelectionBrush="{x:Null}" 
+                            BorderBrush="{x:Null}"
+                            Style="{StaticResource TextBox}" Margin="0,0,0,0"/>
+                            </Grid>
+                        </Border>
+
 
                     </StackPanel>
 
@@ -140,7 +168,7 @@
                                  Stroke="#FF3F3F3F" 
                                  StrokeThickness="2">
                             <Ellipse.Fill>
-                                <ImageBrush x:Name="pfp" ImageSource="/Resources/Images/NoPhoto.png"/>
+                                <ImageBrush x:Name="pfp"/>
                             </Ellipse.Fill>
                         </Ellipse>
 

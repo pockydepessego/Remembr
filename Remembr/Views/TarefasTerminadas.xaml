@@ -206,7 +206,8 @@
                              HorizontalAlignment="Center"
                              VerticalAlignment="Bottom"
                              Stroke="#FF3F3F3F" 
-                             StrokeThickness="2">
+                             StrokeThickness="2"
+                         MouseDown="Ellipse_MouseDown">
                     <Ellipse.Fill>
                         <ImageBrush x:Name="pfp" ImageSource="/Resources/Images/NoPhoto.png"/>
                     </Ellipse.Fill>
@@ -220,7 +221,8 @@
                             Height="54" 
                             Width="172"
                             FontFamily="{StaticResource MentoneLig}"
-                            Style="{StaticResource button}" Click="Save_Click"/>
+                            Style="{StaticResource button}" Click="Save_Click"
+                            Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="NovaTarefa"/>
 
                 <Button Grid.Row="3"
                             Content="Tarefas" 
@@ -246,7 +248,8 @@
                             Height="45" 
                             Width="200"
                             FontFamily="{StaticResource MentoneLig}"
-                            Style="{StaticResource PageButton}" Click="CalendarPage_Click">
+                            Style="{StaticResource PageButton}" Click="CalendarPage_Click"
+                                             Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="Calendario">
                 </Button>
 
                 <Image Grid.Row="5"

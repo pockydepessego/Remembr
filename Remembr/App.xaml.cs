@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Windows;
+using Remembr.ViewModels;
 
 namespace Remembr
 {
@@ -9,6 +10,7 @@ namespace Remembr
     /// </summary>
     public partial class App : Application
     {
+
     }
 
 }

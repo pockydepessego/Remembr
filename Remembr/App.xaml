@@ -397,6 +397,10 @@
             <v:NovaTarefa/>
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type vm:DefinicoesUtilizadorVM}">
+            <v:DefinicoesUtilizador/>
+        </DataTemplate>
+
         <DataTemplate DataType="{x:Type vm:EditarTarefaVM}">
             <v:EditarTarefa/>
         </DataTemplate>

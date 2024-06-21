@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
+using Remembr.Models.Share;
 
-namespace Remembr_.Models
+namespace Remembr.Models
 {
-    internal class Perfil
+    public class Perfil : BaseModel
     {
         public required string Nome { get; set; }
         public required string Email { get; set; }
+        public string? Password { get; set; } = null;
+        public required BitmapImage Fotografia { get; set; }
 
-        public required string Password { get; set; }
-        public required Fotografia Fotografia { get; set; }
     }
 }
