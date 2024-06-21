@@ -25,6 +25,7 @@ namespace Remembr.ViewModels
             }
         }
 
+
         public RelayCommand<string> ChangeViewCommand { get; }
 
         public void ChangeView(string viewName)
@@ -64,7 +65,6 @@ namespace Remembr.ViewModels
             }
         }
 
-
         public MainVM()
         {
 
@@ -72,9 +72,7 @@ namespace Remembr.ViewModels
             ChangeViewCommand = new RelayCommand<string>(ChangeView);
 #pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
 
-
             ChangeView("NovaTarefa");
-
 
         }
 
