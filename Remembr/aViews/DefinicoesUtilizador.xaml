@@ -1,0 +1,391 @@
+﻿<UserControl x:Class="Remembr.Views.DefinicoesUtilizador"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Remembr.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="600" 
+             d:DesignWidth="920"
+             Background="Transparent"
+             >
+    <Grid>
+
+        <Grid>
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Rectangle Fill="White" 
+                                Width="170" 
+                                Height="55" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                RadiusX="15" 
+                                RadiusY="15"
+                                />
+                <TextBlock x:Name="Logo"
+                                Text="REMEMBR."
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Foreground="Black"
+                                FontSize="30"
+                                FontFamily="{StaticResource NEONLEDLight}" />
+
+
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+
+
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Rectangle Grid.Column="1"
+                               Fill="#565656"
+                               RadiusX="15"
+                               RadiusY="15"
+                               Margin="10"
+                               Opacity="0.8"/>
+
+                <Image Grid.Column="1"
+                           x:Name="pastata"
+                           Source="/Resources/Images/pastata.png"
+                           Margin="20"/>
+
+                <Image Grid.Column="1"
+                           x:Name="pastatt"
+                           Source="/Resources/Images/pastatt.png"
+                           Margin="20"/>
+
+                <Image Grid.Column="1"
+                           x:Name="pastatee"
+                           Source="/Resources/Images/pastatee.png"
+                           Margin="20"/>
+
+                <Image Grid.Column="1"
+                           x:Name="pastatpi"
+                           Source="/Resources/Images/pastatpi.png"
+                           Margin="18.5"/>
+
+                <Grid Grid.Column="0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".5*"/>
+                        <RowDefinition Height=".2*"/>
+                        <RowDefinition Height=".5*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Ellipse Grid.Row="0"
+                                 Height="100" 
+                                 Width="100" 
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Bottom"
+                                 Stroke="#FF3F3F3F" 
+                                 StrokeThickness="2">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="pfp" ImageSource="/Resources/Images/NoPhoto.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <Button 
+                                Grid.Row="1"
+                                Content="Nova Tarefa" 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Height="54" 
+                                Width="172"
+                                FontFamily="{StaticResource MentoneLig}"
+                                Style="{StaticResource button}" />
+
+                    <Button Grid.Row="3"
+                                Content="Tarefas" 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Height="45" 
+                                Width="220"
+                                FontFamily="{StaticResource MentoneLig}"
+                                Style="{StaticResource PageButton}" >
+
+                    </Button>
+
+                    <Image Grid.Row="3"
+                               Source="/Resources/Images/tarefasicon.png"
+                               HorizontalAlignment="Left"
+                               Margin="5,5,5,5"
+                               Width="25"/>
+
+                    <Button Grid.Row="5"
+                                Content="Calendário" 
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Height="45" 
+                                Width="200"
+                                FontFamily="{StaticResource MentoneLig}"
+                                Style="{StaticResource PageButton}" >
+                    </Button>
+
+                    <Image Grid.Row="5"
+                               Source="/Resources/Images/calendarioicon.png"
+                               HorizontalAlignment="Left"
+                               Margin="6,5,5,5"
+                               Width="25"/>
+
+
+
+                </Grid>
+            </Grid>
+
+        </Grid>
+        <Rectangle Fill="#565656" Opacity="0.8" RadiusX="20" RadiusY="20"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.55*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="0.8*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.2*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border 
+                               x:Name="Barranovatarefa"
+                               Background="#FFEBEBEB"
+                               CornerRadius="15 15 0 0"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="2"
+                                Name="cancelartarefa"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                Padding="15">
+                            <Image Source="/Resources/Images/close.png"/>
+                        </Button>
+
+                        <Label Grid.Column="0"
+                               Content="Definições de Utilizador"
+                               Padding="15"
+                               VerticalContentAlignment="Center"
+                               HorizontalContentAlignment="Left" FontFamily="{StaticResource MentoneLig}" FontSize="22"
+                               Foreground="#FF3F3F3F"/>
+                    </Grid>
+
+                    <Border x:Name="Backgroundnovatarefa"
+                            Background="White"
+                            Grid.Row="1"
+                            CornerRadius="0 0 15 15">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="6*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="3.8*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="Nome"
+                                       FontFamily="Mentone"
+                                       FontSize="18"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" 
+                                       Foreground="#FF3F3F3F"/>
+
+                                <Rectangle Grid.Column="1"
+                                            Fill="#FFEBEBEB"
+                                               RadiusX="15"
+                                               RadiusY="15"
+                                               Margin="10"/>
+
+                                <TextBox Grid.Column="1"
+                                         x:Name="Nomeutilizadorchanged"
+                                         Text="Alterar Nome de Utilizador"
+                                         FontFamily="Mentone"
+                                         FontSize="18"
+                                         Foreground="#FF3F3F3F"
+                                         Padding="20"
+                                         TextChanged="NomedaTarefa_TextChanged" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}"/>
+                                
+                            </Grid>
+
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="3.8*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="Email"
+                                       FontFamily="Mentone"
+                                       FontSize="18"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" 
+                                       Foreground="#FF3F3F3F"/>
+                                
+                                <Rectangle Grid.Column="1"
+                                            Fill="#FFEBEBEB"
+                                               RadiusX="15"
+                                               RadiusY="15"
+                                               Margin="10"/>
+
+                                <TextBox Grid.Column="1"
+                                         x:Name="EmailChanged"
+                                         Text="Alterar Email"
+                                         FontFamily="Mentone"
+                                         FontSize="18"
+                                         Foreground="#FF3F3F3F"
+                                         Padding="20"
+                                         TextChanged="NomedaTarefa_TextChanged" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}"/>
+
+                            </Grid>
+
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2.5*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="3.8*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="Palavra-Passe"
+                                       FontFamily="Mentone"
+                                       FontSize="18"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" 
+                                       Foreground="#FF3F3F3F"/>
+
+                                <Rectangle Grid.Column="1"
+                                            Fill="#FFEBEBEB"
+                                               RadiusX="15"
+                                               RadiusY="15"
+                                               Margin="10"/>
+
+                                <TextBox Grid.Column="1"
+                                         x:Name="PasswordChanged"
+                                         Text="Alterar Palavra-Passe"
+                                         FontFamily="Mentone"
+                                         FontSize="18"
+                                         Foreground="#FF3F3F3F"
+                                         Padding="20"
+                                         TextChanged="NomedaTarefa_TextChanged" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}"/>
+                            </Grid>
+                            
+                            <Grid Grid.Row="4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.7*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Content="Fotografia"
+                                       FontFamily="Mentone"
+                                       FontSize="18"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" 
+                                       Foreground="#FF3F3F3F"/>
+
+
+                                <Grid Grid.Column="1">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="1.9*"/>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Rectangle Fill="#FFEBEBEB"
+                                               RadiusX="15"
+                                               RadiusY="15"
+                                               Margin="10"/>
+                                    
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Ellipse Height="100" 
+                                                 Width="100" 
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 Stroke="#FF3F3F3F" 
+                                                 StrokeThickness="2">
+                                                <Ellipse.Fill>
+                                                    <ImageBrush x:Name="pfp2" ImageSource="/Resources/Images/NoPhoto.png"/>
+                                                </Ellipse.Fill>
+                                        </Ellipse>
+
+                                        <Button 
+                                                Grid.Column="1"
+                                                Content="Nova Tarefa" 
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Height="54" 
+                                                Width="172"
+                                                FontFamily="{StaticResource MentoneLig}"
+                                                Style="{StaticResource button}" Click="Save_Click"/>
+                                    </Grid>
+                                    
+                                </Grid>
+
+                            </Grid>
+                            
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </Grid>
+
+</UserControl>

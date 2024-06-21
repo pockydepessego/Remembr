@@ -8,9 +8,6 @@ namespace Remembr.ViewModels
 {
     internal class HVLembretesVM : BaseVM
     {
-        private bool _antecipacao;
-        private bool _execucao;
-
         public HVLembretesVM()
         {
         }
