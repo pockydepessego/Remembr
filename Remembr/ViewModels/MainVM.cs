@@ -57,6 +57,7 @@ namespace Remembr.ViewModels
                     break;
 
 
+
                 default:
                     MessageBox.Show("Erro: View não encontrada.");
                     return;
