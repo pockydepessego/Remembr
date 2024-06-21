@@ -24,17 +24,17 @@ namespace Remembr.Views
     public partial class NovaTarefa : UserControl
     {
 
-        private App _app;
 
         HVLembretes? hvLembV;
         HVData? hVDataV;
         HVPeriodicidade? hvPerV;
         HVPrioridade? hvPriV;
+        MainVM MVM;
 
         public NovaTarefa()
         {
             InitializeComponent();
-            _app = (App)App.Current;
+            MVM = (MainVM)Application.Current.MainWindow.DataContext;
 
             if (hVDataV == null)
             {
@@ -173,6 +173,7 @@ namespace Remembr.Views
         }
         private void cancelartarefa_Click(object sender, RoutedEventArgs e)
         {
+            MVM.ChangeView("BACK");
             // MessageBox.Show(hvlView.LembreteAntecipacao.IsChecked.Value.ToString());
 
         }

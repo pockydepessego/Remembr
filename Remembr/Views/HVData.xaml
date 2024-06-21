@@ -8,9 +8,9 @@
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="Remembr.Views.HVData"
              mc:Ignorable="d" 
              d:DesignHeight="235" d:DesignWidth="643"
-             Background="#FFEBEBEB">
+             Background="Transparent">
 
-    <Border BorderBrush="#FF3F3F3F" BorderThickness="2" CornerRadius="15" Background="#FFEBEBEB">
+    <Border BorderBrush="#3F3F3F" BorderThickness="2" CornerRadius="15" Background="#EBEBEB">
 
         <Grid>
             <Grid.RowDefinitions>

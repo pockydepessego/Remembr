@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Remembr.Views"
              mc:Ignorable="d" 
              d:DesignHeight="235" d:DesignWidth="642" 
-             Background="#FFEBEBEB">
+             Background="Transparent">
 
     <Border BorderBrush="#FF3F3F3F" BorderThickness="2" CornerRadius="15" Background="#FFEBEBEB">
 
