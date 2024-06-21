@@ -95,7 +95,7 @@
                            Source="/Resources/Images/pastatpi.png"
                            Margin="18.5"/>
 
-                <Grid Grid.Column="0" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                <Grid Grid.Column="0" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1.5*"/>
                         <RowDefinition Height="1*"/>

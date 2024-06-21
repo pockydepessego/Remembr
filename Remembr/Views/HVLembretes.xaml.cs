@@ -21,7 +21,6 @@ namespace Remembr.Views
     /// </summary>
     public partial class HVLembretes : UserControl
     {
-        HVLembretesVM? hvlvm;
 
         public HVLembretes()
         {
