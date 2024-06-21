@@ -393,16 +393,16 @@
             <v:TarefasTerminadas/>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type vm:NovaTarefaVM}">
-            <v:NovaTarefa/>
+        <DataTemplate DataType="{x:Type vm:EditarTarefaVM}">
+            <v:EditarTarefa/>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type vm:DefinicoesUtilizadorVM}">
             <v:DefinicoesUtilizador/>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type vm:EditarTarefaVM}">
-            <v:EditarTarefa/>
+        <DataTemplate DataType="{x:Type vm:NovaTarefaVM}">
+            <v:NovaTarefa/>
         </DataTemplate>
 
     </Application.Resources>
