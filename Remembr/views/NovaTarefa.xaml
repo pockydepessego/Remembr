@@ -4,11 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Remembr.Views"
+        xmlns:vm="clr-namespace:Remembr.ViewModels"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         d:DesignHeight="600" 
         d:DesignWidth="920"
         Background="Transparent"
         >
+
+    <UserControl.DataContext>
+        <vm:NovaTarefaVM/>
+    </UserControl.DataContext>
     <Grid>
 
         <Grid>
@@ -186,9 +192,6 @@
                                HorizontalAlignment="Left"
                                Margin="6,5,5,5"
                                Width="25"/>
-
-
-
                 </Grid>
             </Grid>
 
@@ -229,7 +232,7 @@
                                 Name="cancelartarefa"
                                 Background="Transparent"
                                 BorderBrush="Transparent"
-                                Padding="15">
+                                Padding="15" Click="cancelartarefa_Click">
                             <Image Source="/Resources/Images/close.png"/>
                         </Button>
 
@@ -250,56 +253,68 @@
                                 <RowDefinition Height="1.2*"/>
                                 <RowDefinition Height="1.2*"/>
                                 <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1.7*"/>
-                                <RowDefinition Height="1.7*"/>
+                                <RowDefinition Height="3.4*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
+
                             <Grid Grid.Row="3">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1.5*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="2.2*"/>
+
                                 </Grid.ColumnDefinitions>
 
-                                <Button x:Name="Data"
-                                        Content="Data"
-                                        Margin="20 "
-                                        FontFamily="Mentone"
-                                        Style="{StaticResource NTbutton}"
-                                        Grid.Column="1"/>
+                                <ContentControl x:Name="cc" Content="{Binding EditarVM}" />
 
-                                <Button x:Name="Prioridade"
-                                        Content="Prioridade"
-                                        Margin="20"
-                                        FontFamily="Mentone"
-                                        Style="{StaticResource NTbutton}"
-                                        Grid.Column="2"/>
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="0.2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
 
-                            </Grid>
-                            <Grid Grid.Row="4">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1.5*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="0.2*"/>
-                                </Grid.ColumnDefinitions>
+                                    <Button x:Name="Data"
+                                            Content="Data"
+                                            Margin="20 "
+                                            FontFamily="Mentone"
+                                            Style="{StaticResource NTbutton}"
+                                            Grid.Column="0"/>
 
-                                <Button x:Name="Periodicidade"
+                                    <Button x:Name="Prioridade"
+                                            Content="Prioridade"
+                                            Margin="20"
+                                            FontFamily="Mentone"
+                                            Style="{StaticResource NTbutton}"
+                                            Grid.Column="1"/>
+
+                                    <Button x:Name="Periodicidade"
                                         Content="Periodicidade"
                                         Margin="20"
                                         FontFamily="Mentone"
                                         Style="{StaticResource NTbutton}"
-                                        Grid.Column="1"/>
+                                        Grid.Column="0"
+                                        Grid.Row="2"/>
 
-                                <Button x:Name="Lembretes"
+                                    <Button x:Name="Lembretes"
                                         Content="Lembretes"
                                         Margin="20"
                                         FontFamily="Mentone"
                                         Style="{StaticResource NTbutton}"
-                                        Grid.Column="2"/>
-                                
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        Click="Lembretes_Click"/>
+
+
+
+                                </Grid>
                             </Grid>
+
+                            
+
                             <TextBox x:Name="NomedaTarefa"
                                      Text="Nome da Tarefa"
                                      FontFamily="Mentone"
@@ -307,7 +322,6 @@
                                      Foreground="#FF3F3F3F"
                                      Padding="20"
                                      TextChanged="NomedaTarefa_TextChanged"/>
-
                             <TextBox Grid.Row="1"
                                      x:Name="DescricaodaTarefa"
                                      Text="Descrição"
@@ -322,6 +336,8 @@
                                        FontFamily="Mentone"
                                        Foreground="#FF3F3F3F"
                                        Padding="20"/>
+
+                            
                         </Grid>
                     </Border>
                 </Grid>

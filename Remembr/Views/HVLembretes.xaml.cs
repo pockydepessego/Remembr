@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Remembr.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,18 +11,30 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Remembr.Views
 {
     /// <summary>
-    /// Interaction logic for LembreteConfig.xaml
+    /// Interaction logic for HVLembretes.xaml
     /// </summary>
-    public partial class LembreteConfig : Window
+    public partial class HVLembretes : UserControl
     {
-        public LembreteConfig()
+        HVLembretesVM? hvlvm;
+
+        public HVLembretes()
         {
             InitializeComponent();
+
+        }
+
+        private void LembreteAntecipacao_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void LembreteExecucao_Checked(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
