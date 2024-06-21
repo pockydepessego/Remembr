@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.Input;
+using Remembr.Models;
+using System.Xml.Linq;
+using System.Windows.Media.Imaging;
 
 
 namespace Remembr.ViewModels
 {
     public class MainVM : BaseVM
     {
-
 
         private BaseVM? _currentViewModel;
         public BaseVM? CurrentViewModel
@@ -24,10 +27,7 @@ namespace Remembr.ViewModels
                 OnPropertyChanged();
             }
         }
-
-
         public RelayCommand<string> ChangeViewCommand { get; }
-
         public void ChangeView(string viewName)
         {
             switch (viewName)
@@ -56,7 +56,9 @@ namespace Remembr.ViewModels
                 case "NovaTarefa":
                     CurrentViewModel = new NovaTarefaVM();
                     break;
-
+                case "DefinicoesUtilizador":
+                    CurrentViewModel = new DefinicoesUtilizadorVM();
+                    break;
 
 
                 default:
@@ -65,6 +67,12 @@ namespace Remembr.ViewModels
             }
         }
 
+
+
+        public string AppData;
+        public string basePath;
+        public Perfil? gPerfil { get; set; }
+
         public MainVM()
         {
 
@@ -72,8 +80,175 @@ namespace Remembr.ViewModels
             ChangeViewCommand = new RelayCommand<string>(ChangeView);
 #pragma warning restore CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
 
-            ChangeView("NovaTarefa");
 
+            AppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            basePath = Path.Combine(AppData, "Remembr");
+
+
+            if (!Directory.Exists(basePath))
+            {
+                ChangeView("Registo");
+            }
+            else
+            {
+                if (LoadPerfil())
+                {
+                    if (gPerfil == null)
+                    {
+                        MessageBox.Show("Erro de perfil.");
+                        App.Current.Shutdown();
+                        return;
+                    } 
+
+                    if (gPerfil.Password != null)
+                    {
+                        ChangeView("Login");
+
+                    } else
+                    {
+                        ChangeView("TarefasPorIniciar");
+                    }
+                
+                
+                }
+                else
+                {
+                    App.Current.Shutdown();
+                }
+
+            }
+
+
+
+
+
+
+
+        }
+
+
+        public bool SavePerfil()
+        {
+
+            if (gPerfil == null)
+            {
+                MessageBox.Show("Erro: Perfil não encontrado.");
+                return false;
+            }
+
+            try
+            {
+                Directory.CreateDirectory(basePath);
+
+
+                XDocument doc = new XDocument(
+                        new XElement("perfil",
+                        new XAttribute("nome", gPerfil.Nome),
+                        new XAttribute("email", gPerfil.Email)
+                        )
+                    );
+
+                XElement? docPerf = doc.Element("perfil");
+
+                if ((gPerfil.Password != null) && (docPerf != null))
+                {
+                    docPerf.Add(new XAttribute("password", gPerfil.Password));
+                }
+                else
+                {
+                    throw new Exception("Erro ao guardar perfil.");
+                }
+
+                doc.Save(System.IO.Path.Combine(basePath, "perfil.xml"));
+
+                string photoPath = System.IO.Path.Combine(basePath, "pfp.png");
+
+                BitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(gPerfil.Fotografia));
+                using (var fileStream = new System.IO.FileStream(photoPath, System.IO.FileMode.Create))
+                {
+                    encoder.Save(fileStream);
+                }
+
+                return true;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao guardar perfil:\n\n" + ex.Message + "\n" + ex.StackTrace);
+                return false;
+            }
+
+
+        }
+
+        public bool LoadPerfil()
+        {
+
+            string photoPath = System.IO.Path.Combine(basePath, "pfp.png");
+            string perfilPath = System.IO.Path.Combine(basePath, "perfil.xml");
+            try
+            {
+                if (Path.Exists(perfilPath))
+                {
+
+                    XDocument doc = XDocument.Load(perfilPath);
+                    XElement? docPerf = doc.Element("perfil");
+
+                    if (docPerf == null)
+                    {
+                        MessageBox.Show("Ficheiro de perfil inválido.");
+                        return false;
+                    }
+
+                    XAttribute? docNome = docPerf.Attribute("nome");
+                    XAttribute? docEmail = docPerf.Attribute("email");
+                    XAttribute? docPassword = docPerf.Attribute("password");
+
+                    if (docNome == null || docEmail == null)
+                    {
+                        MessageBox.Show("Ficheiro de perfil inválido.");
+                        return false;
+                    }
+
+                    string? docPasswordV = null;
+                    if (docPassword != null)
+                    {
+                        docPasswordV = docPassword.Value;
+                    } 
+
+                    if (!File.Exists(photoPath))
+                    {
+                        MessageBox.Show("Fotografia inválida.");
+                        return false;
+                    }
+
+                    BitmapImage foto = new BitmapImage(new Uri(Path.Combine(basePath, "pfp.png")));
+
+                    Perfil perf = new Perfil()
+                    {
+                        Nome = docNome.Value,
+                        Email = docEmail.Value,
+                        Password = docPasswordV,
+                        Fotografia = foto
+                    };
+
+                    gPerfil = perf;
+                    return true;
+
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao carregar perfil: o ficheiro não existe");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar perfil:\n\n" + ex.Message + "\n" + ex.StackTrace);
+                return false;
+            }
         }
 
     }

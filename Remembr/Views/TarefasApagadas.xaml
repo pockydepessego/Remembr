@@ -165,7 +165,8 @@
                              HorizontalAlignment="Center"
                              VerticalAlignment="Bottom"
                              Stroke="#FF3F3F3F" 
-                             StrokeThickness="2">
+                             StrokeThickness="2"
+                         >
                     <Ellipse.Fill>
                         <ImageBrush x:Name="pfp" ImageSource="/Resources/Images/NoPhoto.png"/>
                     </Ellipse.Fill>

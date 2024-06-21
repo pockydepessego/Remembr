@@ -1,5 +1,5 @@
 ﻿using Remembr.Views;
-using Remembr_.Models;
+using Remembr.Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;

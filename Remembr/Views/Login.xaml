@@ -96,7 +96,8 @@
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"/>
 
-                    <TextBlock Grid.Column="1" 
+                    <TextBlock Grid.Column="1"
+                                       x:Name="username"
                                        Text="UTILIZADOR"
                                        FontFamily="{StaticResource MentoneLig}"
                                        Style="{StaticResource Nomedoutilizador}"

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Remembr.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,18 @@ namespace Remembr.Views
     /// </summary>
     public partial class TarefasTerminadas : UserControl
     {
+        MainVM MVM;
         public TarefasTerminadas()
         {
             InitializeComponent();
+            MVM = (MainVM)Application.Current.MainWindow.DataContext;
+            if (MVM.gPerfil == null)
+            {
+                MessageBox.Show("Erro de perfil");
+                App.Current.Shutdown();
+                return;
+            }
+            pfp.ImageSource = MVM.gPerfil.Fotografia;
         }
 
         private void BigApp_button(object sender, MouseButtonEventArgs e)

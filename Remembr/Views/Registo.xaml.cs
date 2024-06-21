@@ -1,8 +1,11 @@
-﻿using Remembr.Views;
+﻿using Microsoft.Win32;
+using Remembr.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +15,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Remembr.ViewModels;
+using System.IO;
+using Remembr.Models;
+using System.Security.Cryptography;
+using System.Windows.Media.Animation;
 
 namespace Remembr.Views
 {
@@ -20,32 +28,59 @@ namespace Remembr.Views
     /// </summary>
     public partial class Registo : UserControl
     {
+        private BitmapImage foto;
+        private MainVM MVM;
+
         public Registo()
         {
             InitializeComponent();
+            MVM = (MainVM)Application.Current.MainWindow.DataContext;
+
+
+            foto = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/NoPhoto.png"));
+            pfp.ImageSource = foto;
+
         }
 
 
+        // CORES
+        SolidColorBrush blackOutline = new BrushConverter().ConvertFromString("#FF3F3F3F") as SolidColorBrush;
+        SolidColorBrush redOutline = Brushes.Red;
 
 
-
+        // NOME
         private void textNome_MouseDown(object sender, MouseButtonEventArgs e)
         {
             txtNome.Focus();
         }
-
         private void txtNome_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtNome.Text) && txtNome.Text.Length > 0)
             {
                 textNome.Visibility = Visibility.Hidden;
+
             }
             else
             {
                 textNome.Visibility = Visibility.Visible;
             }
+
+
+            if (txtNome.Text.Length > 35)
+            {
+                nomeBorder.BorderBrush = redOutline;
+            }
+            else
+            {
+                nomeBorder.BorderBrush = blackOutline;
+            }
+
         }
 
+
+
+
+        // EMAIL
         private void textEmail_MouseDown(object sender, MouseButtonEventArgs e)
         {
             txtEmail.Focus();
@@ -55,40 +90,192 @@ namespace Remembr.Views
             if (!string.IsNullOrEmpty(txtEmail.Text) && txtEmail.Text.Length > 0)
             {
                 textEmail.Visibility = Visibility.Hidden;
+
             }
             else
             {
                 textEmail.Visibility = Visibility.Visible;
             }
+
+            if (!(Regex.IsMatch(txtEmail.Text, "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,5}$")) && txtEmail.Text.Length > 0)
+            {
+                emailBorder.BorderBrush = redOutline;
+            }
+            else
+            {
+                emailBorder.BorderBrush = blackOutline;
+            }
+
         }
+
+
+
+
+        // PASSWORD
         private void textPassword_MouseDown(object sender, MouseButtonEventArgs e)
         {
             txtPassword.Focus();
         }
-
-
-
-
         private void txtPassword_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtPassword.Password) && txtPassword.Password.Length > 0)
             {
                 textPassword.Visibility = Visibility.Hidden;
+
             }
             else
             {
                 textPassword.Visibility = Visibility.Visible;
             }
+
+
+            if (txtPassword.Password != txtPasswordConfirmar.Password && !string.IsNullOrEmpty(txtPasswordConfirmar.Password))
+            {
+                passwordBorder.BorderBrush = redOutline;
+                passwordConfirmarBorder.BorderBrush = redOutline;
+            }
+            else
+            {
+                passwordBorder.BorderBrush = blackOutline;
+                passwordConfirmarBorder.BorderBrush = blackOutline;
+            }
+
+
         }
 
+
+
+        // PASSWORD CONFIRMAR
+        private void textPasswordConfirmar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            txtPasswordConfirmar.Focus();
+        }
+        private void txtPasswordConfirmar_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPasswordConfirmar.Password) && txtPasswordConfirmar.Password.Length > 0)
+            {
+                textPasswordConfirmar.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                textPasswordConfirmar.Visibility = Visibility.Visible;
+            }
+
+
+            if (txtPassword.Password != txtPasswordConfirmar.Password && !string.IsNullOrEmpty(txtPassword.Password))
+            {
+                passwordBorder.BorderBrush = redOutline;
+                passwordConfirmarBorder.BorderBrush = redOutline;
+            }
+            else
+            {
+                passwordBorder.BorderBrush = blackOutline;
+                passwordConfirmarBorder.BorderBrush = blackOutline;
+            }
+
+        }
+
+        // BOTÃO REGISTAR
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(txtNome.Text))
+            {
+                MessageBox.Show("O nome não pode estar vazio.");
+                nomeBorder.BorderBrush = redOutline;
+                return;
+            }
 
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                MessageBox.Show("O email não pode estar vazio.");
+                emailBorder.BorderBrush = redOutline;
+                return;
+            }
+
+            if (txtNome.Text.Length > 35)
+            {
+                MessageBox.Show("O nome não pode ter mais de 35 caracteres.");
+                nomeBorder.BorderBrush = redOutline;
+                return;
+            }
+
+            if (!(Regex.IsMatch(txtEmail.Text, "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,5}$")))
+            {
+                MessageBox.Show("O email não é válido.");
+                emailBorder.BorderBrush = redOutline;
+                return;
+            }
+
+            if (txtPassword.Password != txtPasswordConfirmar.Password)
+            {
+                MessageBox.Show("As passwords não coincidem.");
+                passwordBorder.BorderBrush = redOutline;
+                passwordConfirmarBorder.BorderBrush = redOutline;
+                return;
+            }
+
+
+            var basePath = MVM.basePath;
+
+
+            Perfil perf = new Perfil()
+            {
+                Nome = txtNome.Text,
+                Email = txtEmail.Text,
+                Password = HashPassword(txtPassword.Password, out var salt),
+                Fotografia = foto
+            };
+
+            MVM.gPerfil = perf;
+
+
+            using var writer = new BinaryWriter(File.OpenWrite(System.IO.Path.Combine(MVM.AppData, "rmbrs")));
+            writer.Write(salt);
+
+            if (MVM.SavePerfil())
+            {
+                MVM.ChangeView("TarefasPorIniciar");
+            }
+            else
+            {
+                return;
+            }
 
         }
 
+        const int keySize = 64;
+        const int iterations = 350000;
+        HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
+
+        string HashPassword(string password, out byte[] salt)
+        {
+            salt = RandomNumberGenerator.GetBytes(keySize);
+
+            var hash = Rfc2898DeriveBytes.Pbkdf2(
+                Encoding.UTF8.GetBytes(password),
+                salt,
+                iterations,
+                hashAlgorithm,
+                keySize);
+
+            return Convert.ToHexString(hash);
+        }
+
+
+        // MUDAR FOTO
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Imagens|*.jpg;*.jpeg;*.png;*.bmp|Todos os ficheiros|*.*";
+
+            if (dlg.ShowDialog() == true)
+            {
+                foto = new BitmapImage(new Uri(dlg.FileName));
+                pfp.ImageSource = foto;
+
+            }
+
 
         }
     }

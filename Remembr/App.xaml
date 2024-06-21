@@ -230,6 +230,10 @@
             <v:NovaTarefa/>
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type vm:DefinicoesUtilizadorVM}">
+            <v:DefinicoesUtilizador/>
+        </DataTemplate>
+
 
     </Application.Resources>
 </Application>
