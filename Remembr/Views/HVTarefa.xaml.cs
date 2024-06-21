@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace Remembr.Views
 {
     /// <summary>
-    /// Interaction logic for HVData.xaml
+    /// Interaction logic for HVTarefa.xaml
     /// </summary>
-    public partial class HVData : UserControl
+    public partial class HVTarefa : UserControl
     {
-        public HVData()
+        public HVTarefa()
         {
             InitializeComponent();
-        }
-
-        private void LembreteAntecipacao_Checked(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

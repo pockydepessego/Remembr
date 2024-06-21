@@ -5,70 +5,171 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Remembr.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="235" d:DesignWidth="643" 
-             Background="White">
-    <Grid>
+             d:DesignHeight="235" d:DesignWidth="642" 
+             Background="#FFEBEBEB">
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        
-        <StackPanel VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-
-            <Button x:Name="Prioridade1"
-                        Style="{StaticResource NTbutton}"
-                        Height="40"
-                        Width="300"
-                        Margin="0 5 0 2">
-                <Button.Content>
-                    <Ellipse Fill="Aqua"/>
-                </Button.Content>
-            </Button>
-
-            <Button x:Name="Prioridade2"
-                        Content="Prioridade 2"
-                        FontFamily="Mentone"
-                        Style="{StaticResource NTbutton}"
-                        Height="40"
-                        Width="300"
-                        Margin="0 2 0 2"/>
-
-            <Button x:Name="Prioridade3"
-                        Content="Prioridade 3"
-                        FontFamily="Mentone"
-                        Style="{StaticResource NTbutton}"
-                        Height="40"
-                        Width="300"
-                        Margin="0 2 0 2"/>
-
-            <Button x:Name="Prioridade4"
-                        Content="Prioridade 4"
-                        FontFamily="Mentone"
-                        Style="{StaticResource NTbutton}"
-                        Height="40"
-                        Width="300"
-                        Margin="0 2 0 2"/>
-
-            <Button x:Name="Prioridadex"
-                        Content="Adicionar Nova Prioridade"
-                        FontFamily="Mentone"
-                        Style="{StaticResource NTbutton}"
-                        Height="40"
-                        Width="300"
-                        Margin="0 5 0 5"/>
-        </StackPanel>
+    <Border BorderBrush="#FF3F3F3F" BorderThickness="2" CornerRadius="15" Background="#FFEBEBEB">
 
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-        </Grid>
 
-    </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+
+
+            </StackPanel>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="SELECIONAR PRIORIDADE"
+                       Grid.Row="0"
+                       FontFamily="Mentone"
+                       FontSize="22"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                      Foreground="#FF3F3F3F"/>
+                
+                <Button x:Name="Prioridade400" 
+                    Style="{StaticResource NTbutton}"
+                    Height="35"
+                    Width="250"
+                    Margin="0 0 0 0"
+                    Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse Fill="#FFFF3F3F"
+                         Grid.Column="0"
+                         Height="25"
+                         Width="25"
+                         Stroke="#FF3F3F3F"
+                         StrokeThickness="1"/>
+                        <Label Content="Prioritária (400)"
+                       Grid.Column="2"
+                       FontSize="16"
+                       FontFamily="Mentone"
+                       Foreground="#FF3F3F3F"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center" Background="{x:Null}"/>
+
+                    </Grid>
+                </Button>
+
+                <Button x:Name="Prioridade300"     
+                    Style="{StaticResource NTbutton}"
+                    Height="35"
+                    Width="250"
+                    Margin="0 0 0 0"
+                    Grid.Row="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.8*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse Fill="#FFFFB121"
+                         Grid.Column="0"
+                         Height="25"
+                         Width="25"
+                         Stroke="#FF3F3F3F"
+                         StrokeThickness="1"/>
+                        <Label Content="Importante (300)"
+                       Grid.Column="1"
+                       FontSize="16"
+                       FontFamily="Mentone"
+                       Foreground="#FF3F3F3F"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"/>
+
+                    </Grid>
+                </Button>
+
+                <Button x:Name="Prioridade200" 
+                    Style="{StaticResource NTbutton}"
+                    Height="35"
+                    Width="250"
+                    Margin="0 0 0 0"
+                    Grid.Row="3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.8*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse Fill="Yellow"
+                         Grid.Column="0"
+                         Height="25"
+                         Width="25"
+                         Stroke="#FF3F3F3F"
+                         StrokeThickness="1"/>
+                        <Label Content="Pouco Importante (200)"
+                       Grid.Column="1"
+                       FontSize="16"
+                       FontFamily="Mentone"
+                       Foreground="#FF3F3F3F"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"/>
+                    </Grid>
+                </Button>
+
+                <Button x:Name="Prioridade100"
+                    Style="{StaticResource NTbutton}"
+                    Height="35"
+                    Width="250"
+                    Margin="0 0 0 0"
+                    Grid.Row="4">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.8*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse Fill="#FF74CF74"
+                             Grid.Column="0"
+                             Height="25"
+                             Width="25"
+                             Stroke="#FF3F3F3F"
+                             StrokeThickness="1"/>
+                        <Label Content="Sem Importância (100)"
+                           Grid.Column="1"
+                           FontSize="16"
+                           FontFamily="Mentone"
+                           Foreground="#FF3F3F3F"
+                           VerticalContentAlignment="Center"
+                           HorizontalContentAlignment="Center"/>
+                    </Grid>
+
+                </Button>
+
+
+                <Button x:Name="Prioridadex"
+                    FontFamily="Mentone"
+                    FontSize="16"
+                    Content="Adicionar Prioridade"
+                    Style="{StaticResource NTbutton}"
+                    Height="35"
+                    Width="250"
+                    Margin="0 0 0 0"
+                    Grid.Row="5"/>
+
+            </Grid>
+        </Grid>
+    </Border>
 </UserControl>

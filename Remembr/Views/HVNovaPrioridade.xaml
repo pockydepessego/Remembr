@@ -8,23 +8,26 @@
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="Remembr.Views.HVNovaPrioridade"
              mc:Ignorable="d"
              d:DesignHeight="235" 
-             d:DesignWidth="257" 
+             d:DesignWidth="321" 
              Background="White">
-    <Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.8*"/>
-            <RowDefinition Height="3*"/>
+    <Border Background="#FFEBEBEB">
 
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="0.8*"/>
-        </Grid.RowDefinitions>
+        <Grid>
 
-        <ComboBox Background="{x:Null}"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="3*"/>
+
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.8*"/>
+            </Grid.RowDefinitions>
+
+            <ComboBox Background="{x:Null}"
                   FontFamily="Mentone"
-                  FontSize="12"
+                  FontSize="16"
                   Foreground="#FF3F3F3F"
                   VerticalContentAlignment="Center"
                   HorizontalContentAlignment="Center"
@@ -36,24 +39,24 @@
                   Style="{DynamicResource theComboBox}"
                   ItemContainerStyle="{DynamicResource theComboBoxItem}"/>
 
-        <Label Grid.Row="2"
-               Content="ADICIONAR PRIORIDADE"
+            <Label Grid.Row="2"
+               Content="CRIAR PRIORIDADE"
                FontFamily="Mentone"
                Foreground="#FF3F3F3F"
-               FontSize="16"
+               FontSize="18"
                VerticalAlignment="Center"
                HorizontalAlignment="Center"/>
 
-        <Grid Grid.Row="3">
+            <Grid Grid.Row="3">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.5*"/>
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Prioridade nº "
+                <TextBlock Text="Prioridade nº "
                        TextWrapping="Wrap"
                        TextAlignment="Center"
                    FontFamily="Mentone"
@@ -62,37 +65,37 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Grid.Column="1"/>
-            <Rectangle Grid.Column="2"
+                <Rectangle Grid.Column="2"
                        Stroke="#FF3F3F3F"
                        StrokeThickness="2"
-                       RadiusX="10"
-                       RadiusY="10"
+                       RadiusX="6"
+                       RadiusY="6"
                        Width="60"
                        Height="40"/>
-            <TextBox Grid.Column="2"
+                <TextBox Grid.Column="2"
                      Background="Transparent"
                      BorderBrush="Transparent"
                      Width="60"
                      Height="40"
                      Foreground="#FF3F3F3F"
                      TextAlignment="Center"/>
-            <xctk:IntegerUpDown Name="pila"
+                <xctk:IntegerUpDown Name="pila"
                                 Grid.Column="2"
                                 Width="50"
                                 Height="30" Background="{x:Null}" BorderBrush="{x:Null}"
                                 Foreground="#FF3F3F3F"/>
-        </Grid>
+            </Grid>
 
-        <Grid Grid.Row="4">
+            <Grid Grid.Row="4">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.5*"/>
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
 
-            <TextBlock TextWrapping="WrapWithOverflow"
+                <TextBlock TextWrapping="WrapWithOverflow"
                        Text="Escolher Cor da Prioridade: "
                        FontFamily="Mentone"
                        Foreground="#FF3F3F3F"
@@ -101,22 +104,23 @@
                        HorizontalAlignment="Center"
                        TextAlignment="Center"
                        Grid.Column="1"/>
-            <Rectangle Grid.Column="2"
+                <Rectangle Grid.Column="2"
                        Stroke="#FF3F3F3F"
                        StrokeThickness="2"
                        Width="60"
                        Height="40"
-                       RadiusX="10"
-                       RadiusY="10"/>
+                       RadiusX="6"
+                       RadiusY="6"/>
 
-            <xctk:ColorPicker Grid.Column="2" 
+                <xctk:ColorPicker Grid.Column="2" 
                               HorizontalAlignment="Center" 
                               VerticalAlignment="Center" 
                               Width="50" 
-                              Height="30"
+                              Height="25"
                               Foreground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}"/>
 
-        </Grid>
+            </Grid>
 
-    </Grid>
+        </Grid>
+    </Border>
 </UserControl>

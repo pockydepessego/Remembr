@@ -93,19 +93,39 @@ namespace Remembr.Views
 
         }
 
-        private void NomedaTarefa_TextChanged(object sender, TextChangedEventArgs e)
+        private void textNomedaTarefa_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            NomedaTarefa.Focus();
 
         }
-
-        private void DescricaoodaTarefa_TextChanged(object sender, TextChangedEventArgs e)
+        private void NomedaTarefa_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (!string.IsNullOrEmpty(NomedaTarefa.Text) && NomedaTarefa.Text.Length > 0)
+            {
+                textNomedaTarefa.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                textNomedaTarefa.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void textDescricaodaTarefa_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DescricaodaTarefa.Focus();
 
         }
 
         private void DescricaodaTarefa_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (!string.IsNullOrEmpty(DescricaodaTarefa.Text) && DescricaodaTarefa.Text.Length > 0)
+            {
+                textDescricaodaTarefa.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                textDescricaodaTarefa.Visibility = Visibility.Visible;
+            }
         }
 
         private void DaraInicio_Click(object sender, RoutedEventArgs e)

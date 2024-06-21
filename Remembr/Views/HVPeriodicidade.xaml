@@ -6,56 +6,53 @@
              xmlns:local="clr-namespace:Remembr.Views"
              mc:Ignorable="d" 
              d:DesignHeight="235" d:DesignWidth="643"
-             Background="White"
+             Background="#FFEBEBEB"
             >
-    <Grid>
+    <Border BorderBrush="#FF3F3F3F" BorderThickness="2" CornerRadius="15" Background="#FFEBEBEB">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="6*"/>
-        </Grid.RowDefinitions>
+        <Grid>
 
-        <Label Content="PERIODICIDADE"
-                   Grid.Row="1"
-                   FontFamily="Mentone"
-                   FontSize="20"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"/>
-
-        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="6*"/>
             </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.6*"/>
-                    <ColumnDefinition Width="0.8*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="0.6*"/>
-                </Grid.ColumnDefinitions>
+            <Label Content="SELECIONAR PERIODICIDADE"
+                Grid.Row="0"
+                FontFamily="Mentone"
+                FontSize="22"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+               Foreground="#FF3F3F3F"/>
 
-                <Rectangle Stroke="#FF3F3F3F"
-                           Grid.Column="1"
-                           StrokeThickness="2"
-                           RadiusX="10"
-                           RadiusY="10"
-                           Margin="5" 
-                           Fill="#FFEBEBEB"/>
-                <Label Content="DIA"
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.2*"/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Content="Em que dias da semana?"
                        Grid.Column="1"
-                           FontFamily="Mentone"
-                           FontSize="20"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"/>
+                       FontFamily="Mentone"
+                       FontSize="20"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="#FF3F3F3F"/>
 
-                <ComboBox Height="30"
-                          Width="300"
+                    <ComboBox Height="30"
+                          Width="270"
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center"
                           Text="Alterar frequência diária"
@@ -63,7 +60,7 @@
                           Background="{x:Null}"
                           BorderBrush="{x:Null}"
                           FontFamily="Mentone"
-                          FontSize="18"
+                          FontSize="16"
                           Foreground="#FF3F3F3F"
                           VerticalContentAlignment="Center"
                           HorizontalContentAlignment="Center"
@@ -71,44 +68,37 @@
                           IsReadOnly="true"
                           Style="{DynamicResource theComboBox}"
                           ItemContainerStyle="{DynamicResource theComboBoxItem}">
-                    <ComboBoxItem Content="Todos os dias"/>
-                    <ComboBoxItem Content="Segunda-feira"/>
-                    <ComboBoxItem Content="Terça-feira"/>
-                    <ComboBoxItem Content="Quarta-feira"/>
-                    <ComboBoxItem Content="Quinta-feira"/>
-                    <ComboBoxItem Content="Sexta-feira"/>
-                    <ComboBoxItem Content="Sábado"/>
-                    <ComboBoxItem Content="Domingo"/>
-                </ComboBox>
+                        <ComboBoxItem Content="Todos os dias"/>
+                        <ComboBoxItem Content="Segunda-feira"/>
+                        <ComboBoxItem Content="Terça-feira"/>
+                        <ComboBoxItem Content="Quarta-feira"/>
+                        <ComboBoxItem Content="Quinta-feira"/>
+                        <ComboBoxItem Content="Sexta-feira"/>
+                        <ComboBoxItem Content="Sábado"/>
+                        <ComboBoxItem Content="Domingo"/>
+                    </ComboBox>
 
-            </Grid>
+                </Grid>
 
 
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.6*"/>
-                    <ColumnDefinition Width="0.8*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="0.6*"/>
-                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                    </Grid.ColumnDefinitions>
 
-                <Rectangle Stroke="#FF3F3F3F"
-                           Grid.Column="1"
-                           StrokeThickness="2"
-                           RadiusX="10"
-                           RadiusY="10"
-                           Margin="5"
-                           Fill="#FFEBEBEB"/>
-
-                <Label Content="SEMANA"
+                    <Label Content="Em que semanas do mês?"
                        Grid.Column="1"
                            FontFamily="Mentone"
                            FontSize="20"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"/>
+                           HorizontalAlignment="Center"
+                       Foreground="#FF3F3F3F"/>
 
-                <ComboBox Height="30"
-                              Width="300"
+                    <ComboBox Height="30"
+                              Width="270"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Grid.Column="2"
@@ -116,7 +106,7 @@
                               Background="{x:Null}"
                               BorderBrush="{x:Null}"
                               FontFamily="Mentone"
-                              FontSize="18"
+                              FontSize="16"
                               Foreground="#FF3F3F3F"
                               VerticalContentAlignment="Center"
                               HorizontalContentAlignment="Center"
@@ -124,41 +114,34 @@
                               IsReadOnly="true"
                               Style="{DynamicResource theComboBox}"
                               ItemContainerStyle="{DynamicResource theComboBoxItem}">
-                    <ComboBoxItem Content="Todas as semanas"/>
-                    <ComboBoxItem Content="1ª Semana"/>
-                    <ComboBoxItem Content="2ª Semana"/>
-                    <ComboBoxItem Content="3ª Semana"/>
-                    <ComboBoxItem Content="4ª Semana"/>
-                </ComboBox>
+                        <ComboBoxItem Content="Todas as semanas"/>
+                        <ComboBoxItem Content="1ª Semana"/>
+                        <ComboBoxItem Content="2ª Semana"/>
+                        <ComboBoxItem Content="3ª Semana"/>
+                        <ComboBoxItem Content="4ª Semana"/>
+                    </ComboBox>
 
-            </Grid>
+                </Grid>
 
 
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.6*"/>
-                    <ColumnDefinition Width="0.8*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="0.6*"/>
-                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                    </Grid.ColumnDefinitions>
 
-                <Rectangle Stroke="#FF3F3F3F"
-                           Grid.Column="1"
-                           StrokeThickness="2"
-                           RadiusX="10"
-                           RadiusY="10"
-                           Margin="5"
-                           Fill="#FFEBEBEB"/>
-
-                <Label Content="MÊS"
+                    <Label Content="Em que mêses do ano?"
                        Grid.Column="1"
                            FontFamily="Mentone"
                            FontSize="20"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center"/>
+                           HorizontalAlignment="Center"
+                       Foreground="#FF3F3F3F"/>
 
-                <ComboBox Height="30"
-                              Width="300"
+                    <ComboBox Height="30"
+                              Width="270"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Grid.Column="2"
@@ -166,7 +149,7 @@
                               Background="{x:Null}"
                               BorderBrush="{x:Null}"
                               FontFamily="Mentone"
-                              FontSize="18"
+                              FontSize="16"
                               Foreground="#FF3F3F3F"
                               VerticalContentAlignment="Center"
                               HorizontalContentAlignment="Center"
@@ -174,49 +157,42 @@
                               IsReadOnly="true"
                               Style="{DynamicResource theComboBox}"
                               ItemContainerStyle="{DynamicResource theComboBoxItem}">
-                    <ComboBoxItem Content="Todos os meses"/>
-                    <ComboBoxItem Content="Janeiro"/>
-                    <ComboBoxItem Content="Fevereiro"/>
-                    <ComboBoxItem Content="Março"/>
-                    <ComboBoxItem Content="Abril"/>
-                    <ComboBoxItem Content="Maio"/>
-                    <ComboBoxItem Content="Junho"/>
-                    <ComboBoxItem Content="Julho"/>
-                    <ComboBoxItem Content="Agosto"/>
-                    <ComboBoxItem Content="Setembro"/>
-                    <ComboBoxItem Content="Outubro"/>
-                    <ComboBoxItem Content="Novembro"/>
-                    <ComboBoxItem Content="Dezembro"/>
-                </ComboBox>
+                        <ComboBoxItem Content="Todos os meses"/>
+                        <ComboBoxItem Content="Janeiro"/>
+                        <ComboBoxItem Content="Fevereiro"/>
+                        <ComboBoxItem Content="Março"/>
+                        <ComboBoxItem Content="Abril"/>
+                        <ComboBoxItem Content="Maio"/>
+                        <ComboBoxItem Content="Junho"/>
+                        <ComboBoxItem Content="Julho"/>
+                        <ComboBoxItem Content="Agosto"/>
+                        <ComboBoxItem Content="Setembro"/>
+                        <ComboBoxItem Content="Outubro"/>
+                        <ComboBoxItem Content="Novembro"/>
+                        <ComboBoxItem Content="Dezembro"/>
+                    </ComboBox>
 
-            </Grid>
+                </Grid>
 
 
-            <Grid Grid.Row="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.6*"/>
-                    <ColumnDefinition Width="0.8*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="0.6*"/>
-                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                    </Grid.ColumnDefinitions>
 
-                <Rectangle Stroke="#FF3F3F3F"
-                           Grid.Column="1"
-                           StrokeThickness="2"
-                           RadiusX="10"
-                           RadiusY="10"
-                           Margin="5"
-                           Fill="#FFEBEBEB"/>
-                
-                <Label Content="ANO"
+                    <Label Content="Em quantos anos?"
                        Grid.Column="1"
                        FontFamily="Mentone"
                        FontSize="20"
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Center"/>
+                       HorizontalAlignment="Center"
+                       Foreground="#FF3F3F3F"/>
 
-                <ComboBox Height="30"
-                          Width="300"
+                    <ComboBox Height="30"
+                          Width="270"
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center"
                           Grid.Column="2"
@@ -224,7 +200,7 @@
                           Background="{x:Null}"
                           BorderBrush="{x:Null}"
                           FontFamily="Mentone"
-                          FontSize="18"
+                          FontSize="16"
                           Foreground="#FF3F3F3F"
                           VerticalContentAlignment="Center"
                           HorizontalContentAlignment="Center"
@@ -232,17 +208,18 @@
                           IsReadOnly="true"
                           Style="{DynamicResource theComboBox}"
                           ItemContainerStyle="{DynamicResource theComboBoxItem}">
-                    <ComboBoxItem Content="Este Ano"/>
-                    <ComboBoxItem Content="Todos os anos"/>
-                    <ComboBoxItem Content="Ano Sim Ano Não"/>
-                    <ComboBoxItem Content="A Cada 2 Anos"/>
-                    <ComboBoxItem Content="A Cada 3 Anos"/>
-                </ComboBox>
+                        <ComboBoxItem Content="Este Ano"/>
+                        <ComboBoxItem Content="Todos os anos"/>
+                        <ComboBoxItem Content="Ano Sim Ano Não"/>
+                        <ComboBoxItem Content="A Cada 2 Anos"/>
+                        <ComboBoxItem Content="A Cada 3 Anos"/>
+                    </ComboBox>
+
+                </Grid>
+
+
 
             </Grid>
-
-
-
         </Grid>
-    </Grid>
+    </Border>
 </UserControl>

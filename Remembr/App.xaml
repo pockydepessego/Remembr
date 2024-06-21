@@ -20,6 +20,14 @@
             <Setter Property="Panel.ZIndex" Value="1"/>
         </Style>
 
+        <Style x:Key="TextoNT" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="#FF3F3F3F"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Panel.ZIndex" Value="1"/>
+        </Style>
+        
         <Style x:Key="Nomedoutilizador" TargetType="TextBlock">
             <Setter Property="FontSize" Value="35"/>
             <Setter Property="TextAlignment" Value="Left"/>
@@ -387,6 +395,10 @@
 
         <DataTemplate DataType="{x:Type vm:NovaTarefaVM}">
             <v:NovaTarefa/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:EditarTarefaVM}">
+            <v:EditarTarefa/>
         </DataTemplate>
 
     </Application.Resources>

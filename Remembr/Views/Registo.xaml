@@ -38,7 +38,7 @@
                                 Grid.Column="1">
                         <StackPanel.Resources>
                             <Style TargetType="{x:Type Border}">
-                                <Setter Property="Margin" Value="0,15,0,0"/>
+                                <Setter Property="Margin" Value="0,5,0,5"/>
                             </Style>
                         </StackPanel.Resources>
 
@@ -46,20 +46,19 @@
                         <Border BorderThickness="2" 
                                 BorderBrush="#FF3F3F3F" 
                                  CornerRadius="5">
-                            <Grid Margin="2,0,-2,0">
+                            <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock  x:Name="textNome"
                            Text="Nome" Style="{StaticResource TextoLogin}" 
-                           Margin="10,12,16,3"
+                           Margin="10,10,16,10"
                            FontFamily="{StaticResource MentoneLig}" 
                            Grid.ColumnSpan="2"
                            MouseDown="textNome_MouseDown"/>
                                 <TextBox x:Name="txtNome"
                         TextChanged="txtNome_TextChanged" 
-                        Grid.ColumnSpan="3" 
                         Margin="0,0,2,0" 
                         Background="{x:Null}" 
                         SelectionBrush="{x:Null}"
@@ -80,7 +79,7 @@
 
                                 <TextBlock  x:Name="textEmail"
                            Text="Email" Style="{StaticResource TextoLogin}" 
-                           Margin="10,13,307,10"
+                           Margin="10,10,307,10"
                            FontFamily="{StaticResource MentoneLig}" 
                            Grid.ColumnSpan="2"
                            MouseDown="textEmail_MouseDown"/>
@@ -106,7 +105,7 @@
 
                                 <TextBlock  x:Name="textPassword"
                            Text="Password" Style="{StaticResource TextoLogin}" 
-                           Margin="10,14,277,10"
+                           Margin="10,10,277,10"
                            FontFamily="{StaticResource MentoneLig}" 
                            Grid.ColumnSpan="2"
                            MouseDown="textPassword_MouseDown"/>
