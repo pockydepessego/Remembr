@@ -123,16 +123,26 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <xctk:TimeSpanUpDown Margin="20 2 20 2"
+                                <xctk:DateTimeUpDown Margin="20 2 20 2"
                                                  Background="#FFF3F3F3"
                                                  BorderBrush="#FF3F3F3F"
                                                  BorderThickness="2"
+                                                 Format="Custom"
+                                                 FormatString="HH:mm"
+                                                 Value="00:00"
+                                                 Maximum="23:59"
+                                                 ClipValueToMinMax="True"
                                                  />
-                                <xctk:TimeSpanUpDown Grid.Row="2"
+                                <xctk:DateTimeUpDown Grid.Row="2"
                                                  Margin="20 2 20 2"
                                                  Background="#FFF3F3F3"
                                                  BorderBrush="#FF3F3F3F"
                                                  BorderThickness="2"
+                                                 Format="Custom"
+                                                 FormatString="HH:mm"
+                                                 Value="00:00"
+                                                 Maximum="23:59"
+                                                 ClipValueToMinMax="True"
                                                  />
 
                             </Grid>

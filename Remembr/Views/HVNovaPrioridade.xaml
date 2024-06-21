@@ -56,7 +56,7 @@
                     <ColumnDefinition Width="0.5*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Prioridade nº "
+                <TextBlock Text="Valor Prioridade"
                        TextWrapping="Wrap"
                        TextAlignment="Center"
                    FontFamily="Mentone"

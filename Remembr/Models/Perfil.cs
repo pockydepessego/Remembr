@@ -16,5 +16,6 @@ namespace Remembr.Models
         public string? Password { get; set; } = null;
         public required BitmapImage Fotografia { get; set; }
 
+
     }
 }
