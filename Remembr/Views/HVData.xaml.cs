@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Remembr.Views
 {
     /// <summary>
-    /// Interaction logic for PrioridadeConfig.xaml
+    /// Interaction logic for HVData.xaml
     /// </summary>
-    public partial class PrioridadeConfig : Window
+    public partial class HVData : UserControl
     {
-        public PrioridadeConfig()
+        public HVData()
         {
             InitializeComponent();
         }

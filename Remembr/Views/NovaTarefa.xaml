@@ -257,7 +257,7 @@
                                             Width="150"
                                             FontFamily="Mentone"
                                             Style="{StaticResource NTbutton}"
-                                            Grid.Column="0"/>
+                                            Grid.Column="0" Click="Data_Click"/>
 
                                     <Button x:Name="Prioridade"
                                             Content="Prioridade"
@@ -265,7 +265,7 @@
                                             Width="150"                                            
                                             FontFamily="Mentone"
                                             Style="{StaticResource NTbutton}"
-                                            Grid.Column="1"/>
+                                            Grid.Column="1" Click="Prioridade_Click"/>
 
                                     <Button x:Name="Periodicidade"
                                             Content="Periodicidade"

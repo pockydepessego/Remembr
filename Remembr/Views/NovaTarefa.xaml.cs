@@ -26,12 +26,23 @@ namespace Remembr.Views
 
         private App _app;
 
-        HVLembretes? hvlView;
+        HVLembretes? hvLembV;
+        HVData? hVDataV;
+        HVPeriodicidade? hvPerV;
+        HVPrioridade? hvPriV;
 
         public NovaTarefa()
         {
             InitializeComponent();
             _app = (App)App.Current;
+
+            if (hVDataV == null)
+            {
+                hVDataV = new HVData();
+                hVDataV.DataContext = new HVDataVM();
+
+                cc.Content = hVDataV;
+            }
 
 
         }
@@ -104,14 +115,42 @@ namespace Remembr.Views
 
         private void Lembretes_Click(object sender, RoutedEventArgs e)
         {
-            if (hvlView == null) {
-                hvlView = new HVLembretes();
-                hvlView.DataContext = new HVLembretesVM();
-
-                cc.Content = hvlView;
+            if (hvLembV == null) {
+                hvLembV = new HVLembretes();
+                hvLembV.DataContext = new HVLembretesVM();
             }
+            cc.Content = hvLembV;
         }
 
+        private void Data_Click(object sender, RoutedEventArgs e)
+        {
+            if (hVDataV == null)
+            {
+                hVDataV = new HVData();
+                hVDataV.DataContext = new HVDataVM();
+            }
+            cc.Content = hVDataV;
+        }
+
+        private void Prioridade_Click(object sender, RoutedEventArgs e)
+        {
+            if (hvPriV == null)
+            {
+                hvPriV = new HVPrioridade();
+                hvPriV.DataContext = new HVPrioridadeVM();
+            }
+            cc.Content = hvPriV;
+        }
+
+        private void Periodicidade_Click(object sender, RoutedEventArgs e)
+        {
+            if (hvPerV == null)
+            {
+                hvPerV = new HVPeriodicidade();
+                hvPerV.DataContext = new HVPeriodicidadeVM();
+            }
+            cc.Content = hvPerV;
+        }
         private void cancelartarefa_Click(object sender, RoutedEventArgs e)
         {
             // MessageBox.Show(hvlView.LembreteAntecipacao.IsChecked.Value.ToString());
