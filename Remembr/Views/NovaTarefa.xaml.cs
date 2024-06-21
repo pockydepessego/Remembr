@@ -156,5 +156,7 @@ namespace Remembr.Views
             // MessageBox.Show(hvlView.LembreteAntecipacao.IsChecked.Value.ToString());
 
         }
+
+
     }
 }

@@ -5,20 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Remembr.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="320" d:DesignWidth="345" 
-             Background="#FFD1D1D1">
+             d:DesignHeight="235" d:DesignWidth="643" 
+             Background="White">
     <Grid>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
         <StackPanel VerticalAlignment="Center"
                         HorizontalAlignment="Center">
 
             <Button x:Name="Prioridade1"
-                        Content="Prioridade 1"
-                        FontFamily="Mentone"
                         Style="{StaticResource NTbutton}"
                         Height="40"
                         Width="300"
-                        Margin="0 5 0 5" Background="#FFAFF46E"/>
+                        Margin="0 5 0 2">
+                <Button.Content>
+                    <Ellipse Fill="Aqua"/>
+                </Button.Content>
+            </Button>
 
             <Button x:Name="Prioridade2"
                         Content="Prioridade 2"
@@ -26,7 +33,7 @@
                         Style="{StaticResource NTbutton}"
                         Height="40"
                         Width="300"
-                        Margin="0 5 0 5" Background="#FFF7FF5E"/>
+                        Margin="0 2 0 2"/>
 
             <Button x:Name="Prioridade3"
                         Content="Prioridade 3"
@@ -34,7 +41,7 @@
                         Style="{StaticResource NTbutton}"
                         Height="40"
                         Width="300"
-                        Margin="0 5 0 5" Background="#FFFFBB3D"/>
+                        Margin="0 2 0 2"/>
 
             <Button x:Name="Prioridade4"
                         Content="Prioridade 4"
@@ -42,7 +49,7 @@
                         Style="{StaticResource NTbutton}"
                         Height="40"
                         Width="300"
-                        Margin="0 5 0 5" Background="#FFFF6060"/>
+                        Margin="0 2 0 2"/>
 
             <Button x:Name="Prioridadex"
                         Content="Adicionar Nova Prioridade"
@@ -51,8 +58,17 @@
                         Height="40"
                         Width="300"
                         Margin="0 5 0 5"/>
-
-
         </StackPanel>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+
     </Grid>
 </UserControl>
