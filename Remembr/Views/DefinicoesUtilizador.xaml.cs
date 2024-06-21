@@ -55,6 +55,13 @@ namespace Remembr.Views
 
         private void cancelartarefa_Click(object sender, RoutedEventArgs e)
         {
+
+            /* não vamos usar este aqui mas o código fica para referência futura
+            Alerta av = new Alerta();
+            av.mensagem.Text = "Ao voltar para trás, as modificações serão descartadas.";
+            av.Show();
+            */
+
             MVM.ChangeView("BACK");
         }
 
