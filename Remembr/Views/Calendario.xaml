@@ -87,7 +87,8 @@
                              HorizontalAlignment="Center"
                              VerticalAlignment="Bottom"
                              Stroke="#FF3F3F3F" 
-                             StrokeThickness="2">
+                             StrokeThickness="2"
+                             MouseDown="Ellipse_MouseDown">
                     <Ellipse.Fill>
                         <ImageBrush x:Name="pfp" ImageSource="/Resources/Images/NoPhoto.png"/>
                     </Ellipse.Fill>
@@ -110,9 +111,11 @@
                             Height="45" 
                             Width="200"
                             FontFamily="{StaticResource MentoneLig}"
-                            Style="{StaticResource PageButton}" Click="TarefaPage_Click" MouseEnter="Button_MouseEnter_1">
+                            Style="{StaticResource PageButton}" Click="TarefaPage_Click" MouseEnter="Button_MouseEnter_1"
+                            Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="TarefasPorIniciar"/>
 
-                </Button>
+
+
 
                 <Image Grid.Row="3"
                            Source="/Resources/Images/tarefasicon.png"
@@ -127,7 +130,8 @@
                             Height="45" 
                             Width="220"
                             FontFamily="{StaticResource MentoneLig}"
-                            Style="{StaticResource PageButton}" Click="CalendarPage_Click" MouseEnter="Button_MouseEnter">
+                            Style="{StaticResource PageButton}" Click="CalendarPage_Click" MouseEnter="Button_MouseEnter"
+                            >
                 </Button>
 
                 <Image Grid.Row="5"

@@ -3,6 +3,7 @@ using Remembr.Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Remembr.ViewModels;
 
 
 namespace Remembr
@@ -12,20 +13,23 @@ namespace Remembr
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainVM MVM;
         public MainWindow()
         {
             InitializeComponent();
+            MVM = (MainVM)Application.Current.MainWindow.DataContext;
         }
 
 
         private void CloseApp_button(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            MVM.SavePerfil();
+            Close();
         }
 
         private void HideApp_button(object sender, MouseButtonEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            WindowState = WindowState.Minimized;
         }
 
 
@@ -33,7 +37,7 @@ namespace Remembr
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                this.DragMove();
+                DragMove();
             }
         }
 
@@ -42,14 +46,14 @@ namespace Remembr
             if (WindowState == WindowState.Normal)
             {
                 WindowState = WindowState.Maximized;
-                this.BorderThickness = new System.Windows.Thickness(6);
+                BorderThickness = new Thickness(6);
                 MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
                 MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             }
             else
             {
                 WindowState = WindowState.Normal;
-                this.BorderThickness = new System.Windows.Thickness(2);
+                BorderThickness = new Thickness(2);
             }
         }
 

@@ -40,15 +40,6 @@ namespace Remembr.Views
 
         }
 
-        const int keySize = 64;
-        const int iterations = 350000;
-        HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
-        bool VerifyPassword(string password, string hash, byte[] salt)
-        {
-            var hashToCompare = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, hashAlgorithm, keySize);
-
-            return CryptographicOperations.FixedTimeEquals(hashToCompare, Convert.FromHexString(hash));
-        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var salt = File.ReadAllBytes(Path.Combine(MVM.AppData, "rmbrs"));
@@ -58,7 +49,7 @@ namespace Remembr.Views
                 return;
             }
 
-            if (VerifyPassword(txtPassword.Password, MVM.gPerfil.Password, salt))
+            if (MVM.VerifyPassword(txtPassword.Password, MVM.gPerfil.Password, salt))
             {
                 MVM.ChangeView("TarefasPorIniciar");
             }

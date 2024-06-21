@@ -1,25 +1,14 @@
 ﻿using Microsoft.Win32;
-using Remembr.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Remembr.ViewModels;
 using System.IO;
 using Remembr.Models;
-using System.Security.Cryptography;
-using System.Windows.Media.Animation;
+
 
 namespace Remembr.Views
 {
@@ -44,7 +33,7 @@ namespace Remembr.Views
 
 
         // CORES
-        SolidColorBrush blackOutline = new BrushConverter().ConvertFromString("#FF3F3F3F") as SolidColorBrush;
+        SolidColorBrush? blackOutline = new BrushConverter().ConvertFromString("#3F3F3F") as SolidColorBrush;
         SolidColorBrush redOutline = Brushes.Red;
 
 
@@ -216,21 +205,26 @@ namespace Remembr.Views
 
 
             var basePath = MVM.basePath;
+            string? passwd = null;
+
+            if (txtPassword.Password != "")
+            {
+                passwd = MVM.HashPassword(txtPassword.Password, out var salt);
+                using var writer = new BinaryWriter(File.OpenWrite(System.IO.Path.Combine(MVM.AppData, "rmbrs")));
+                writer.Write(salt);
+            }
 
 
             Perfil perf = new Perfil()
             {
                 Nome = txtNome.Text,
                 Email = txtEmail.Text,
-                Password = HashPassword(txtPassword.Password, out var salt),
+                Password = passwd,
                 Fotografia = foto
             };
 
             MVM.gPerfil = perf;
 
-
-            using var writer = new BinaryWriter(File.OpenWrite(System.IO.Path.Combine(MVM.AppData, "rmbrs")));
-            writer.Write(salt);
 
             if (MVM.SavePerfil())
             {
@@ -243,23 +237,6 @@ namespace Remembr.Views
 
         }
 
-        const int keySize = 64;
-        const int iterations = 350000;
-        HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
-
-        string HashPassword(string password, out byte[] salt)
-        {
-            salt = RandomNumberGenerator.GetBytes(keySize);
-
-            var hash = Rfc2898DeriveBytes.Pbkdf2(
-                Encoding.UTF8.GetBytes(password),
-                salt,
-                iterations,
-                hashAlgorithm,
-                keySize);
-
-            return Convert.ToHexString(hash);
-        }
 
 
         // MUDAR FOTO

@@ -10,6 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 using Remembr.Models;
 using System.Xml.Linq;
 using System.Windows.Media.Imaging;
+using System.Security.Cryptography;
 
 
 namespace Remembr.ViewModels
@@ -28,8 +29,23 @@ namespace Remembr.ViewModels
             }
         }
         public RelayCommand<string> ChangeViewCommand { get; }
+
+        private BaseVM? lastVM;
         public void ChangeView(string viewName)
         {
+            if (viewName == "BACK")
+            {
+                if (lastVM == null)
+                {
+                    MessageBox.Show("Erro: Não é possível voltar atrás.");
+                    return;
+                }
+                CurrentViewModel = lastVM;
+                return;
+            }
+            if (CurrentViewModel != null)
+                lastVM = CurrentViewModel;
+            
             switch (viewName)
             {
                 case "Registo":
@@ -68,6 +84,30 @@ namespace Remembr.ViewModels
         }
 
 
+        const int keySize = 64;
+        const int iterations = 350000;
+        HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
+        public string HashPassword(string password, out byte[] salt)
+        {
+            salt = RandomNumberGenerator.GetBytes(keySize);
+
+            var hash = Rfc2898DeriveBytes.Pbkdf2(
+                Encoding.UTF8.GetBytes(password),
+                salt,
+                iterations,
+                hashAlgorithm,
+                keySize);
+
+            return Convert.ToHexString(hash);
+        }
+
+
+        public bool VerifyPassword(string password, string hash, byte[] salt)
+        {
+            var hashToCompare = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, hashAlgorithm, keySize);
+
+            return CryptographicOperations.FixedTimeEquals(hashToCompare, Convert.FromHexString(hash));
+        }
 
         public string AppData;
         public string basePath;
@@ -154,10 +194,6 @@ namespace Remembr.ViewModels
                 {
                     docPerf.Add(new XAttribute("password", gPerfil.Password));
                 }
-                else
-                {
-                    throw new Exception("Erro ao guardar perfil.");
-                }
 
                 doc.Save(System.IO.Path.Combine(basePath, "perfil.xml"));
 
@@ -224,7 +260,15 @@ namespace Remembr.ViewModels
                         return false;
                     }
 
-                    BitmapImage foto = new BitmapImage(new Uri(Path.Combine(basePath, "pfp.png")));
+                    MemoryStream ms = new MemoryStream();
+                    BitmapImage bi = new BitmapImage();
+                    byte[] bytArray = File.ReadAllBytes(Path.Combine(basePath, "pfp.png"));
+                    ms.Write(bytArray, 0, bytArray.Length); ms.Position = 0;
+                    bi.BeginInit();
+                    bi.StreamSource = ms;
+                    bi.EndInit();
+
+                    BitmapImage foto = bi;
 
                     Perfil perf = new Perfil()
                     {

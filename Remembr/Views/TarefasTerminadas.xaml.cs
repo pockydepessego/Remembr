@@ -69,5 +69,10 @@ namespace Remembr.Views
         {
 
         }
+
+        private void Ellipse_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MVM.ChangeView("DefinicoesUtilizador");
+        }
     }
 }
