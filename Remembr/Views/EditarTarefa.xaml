@@ -211,7 +211,7 @@
                         </Button>
 
                         <Label Grid.Column="0"
-                               Content="Nova Tarefa"
+                               Content="Editar Tarefa"
                                Padding="15"
                                VerticalContentAlignment="Center"
                                HorizontalContentAlignment="Left" FontFamily="{StaticResource MentoneLig}" FontSize="22"
@@ -367,8 +367,8 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Button Grid.Column="1"
-                                            x:Name="CriarTarefa"
-                                            Content="Criar Tarefa"
+                                            x:Name="ModificarTarefa"
+                                            Content="Modificar Tarefa"
                                             Height="40"
                                             FontFamily="Mentone"
                                             Style="{StaticResource NTbutton}"
