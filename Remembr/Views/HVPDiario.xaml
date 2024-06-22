@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="Remembr.Views.HVPDiario"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:local="clr-namespace:Remembr.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="235" 
+             d:DesignWidth="321">
+
+    <Border Background="#FFEBEBEB">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Repetir a cada"
+                           Grid.Column="1"
+                           FontFamily="Mentone"
+                           FontSize="20"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Foreground="#FF3F3F3F"/>
+
+                <xctk:IntegerUpDown Grid.Column="2"
+                                    Minimum="1"
+                                    Value="1"
+                                    Margin="10" Background="{x:Null}"
+                                    BorderBrush="#FF3F3F3F"
+                                    BorderThickness="1"
+                                    Foreground="#FF3F3F3F"
+                                    FontFamily="Mentone"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"/>
+
+                <TextBlock Text="Dia"
+                           Grid.Column="3"
+                           FontFamily="Mentone"
+                           FontSize="20"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Foreground="#FF3F3F3F"/>
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <RadioButton Content="S"
+                             Grid.Column="0"
+                              FontFamily="Mentone"
+                              FontSize="20"
+                              Margin="5 10"
+                              Style="{StaticResource {x:Type ToggleButton}}"
+                             Foreground="#FF3F3F3F"
+                             />
+                <RadioButton Content="T"
+                             Grid.Column="1"
+                              FontFamily="Mentone"
+                              FontSize="20"
+                              Margin="5 10"
+                              Style="{StaticResource {x:Type ToggleButton}}"
+                             Foreground="#FF3F3F3F"/>
+                <RadioButton Content="Q"
+                             Grid.Column="2"
+                              FontFamily="Mentone"
+                              FontSize="20"
+                              Margin="5 10"
+                              Style="{StaticResource {x:Type ToggleButton}}"
+                             Foreground="#FF3F3F3F"/>
+                <RadioButton Content="Q"
+                             Grid.Column="3"
+                              FontFamily="Mentone"
+                              FontSize="20"
+                              Margin="5 10"
+                              Style="{StaticResource {x:Type ToggleButton}}"
+                             Foreground="#FF3F3F3F"/>
+                <RadioButton Content="S"
+                             Grid.Column="4"
+                              FontFamily="Mentone"
+                              FontSize="20"
+                              Margin="5 10"
+                              Style="{StaticResource {x:Type ToggleButton}}"
+                             Foreground="#FF3F3F3F"/>
+                <RadioButton Content="S"
+                             Grid.Column="5"
+                              FontFamily="Mentone"
+                              FontSize="20"
+                              Margin="5 10"
+                              Style="{StaticResource {x:Type ToggleButton}}"
+                             Foreground="#FF3F3F3F"/>
+                <RadioButton Content="D"
+                             Grid.Column="6"
+                              FontFamily="Mentone"
+                              FontSize="20"
+                              Margin="5 10"
+                              Style="{StaticResource {x:Type ToggleButton}}"
+                             Foreground="#FF3F3F3F"/>
+            </Grid>
+
+            <TextBlock Text="Ocorre todos os dias até"
+                           Grid.Row="3"
+                           FontFamily="Mentone"
+                           FontSize="20"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Foreground="#FF3F3F3F"/>
+
+            <DatePicker Grid.Row="4"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Margin="20 10"
+                        Background="White"
+                        VerticalContentAlignment="Center"
+                        BorderBrush="#FF3F3F3F"
+                        BorderThickness="1"/>
+
+        </Grid>
+    </Border>
+</UserControl>
