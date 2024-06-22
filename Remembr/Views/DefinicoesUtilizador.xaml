@@ -253,11 +253,16 @@
                                 <TextBox Grid.Column="1"
                                          x:Name="Nomeutilizadorchanged"
                                          Text="USERNAME"
+                                         Template="{DynamicResource TextBox1}"
                                          FontFamily="{StaticResource MentoneLig}"
                                          FontSize="18"
                                          Foreground="#FF3F3F3F"
                                          Padding="20"
-                                         TextChanged="NomedaTarefa_TextChanged" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}"/>
+                                        SelectionBrush="Purple"
+                                        SelectionOpacity="0.2"                                         
+                                         TextChanged="NomedaTarefa_TextChanged" 
+                                         BorderBrush="{x:Null}" 
+                                         Background="{x:Null}"/>
 
                             </Grid>
 
@@ -282,21 +287,28 @@
                                                Margin="10"/>
 
                                 <TextBox Grid.Column="1"
+                                         Template="{DynamicResource TextBox1}"
                                          x:Name="EmailChanged"
                                          Text="EMAIL"
                                          FontFamily="{StaticResource MentoneLig}"
+                                         SelectionBrush="Purple"
+                                         SelectionOpacity="0.2"                                         
                                          FontSize="18"
                                          Foreground="#FF3F3F3F"
                                          Padding="20"
-                                         TextChanged="NomedaTarefa_TextChanged" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}"/>
+                                         TextChanged="NomedaTarefa_TextChanged" 
+                                         BorderBrush="{x:Null}" 
+                                         Background="{x:Null}"/>
 
                             </Grid>
 
                             <Grid Grid.Row="3">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="2.5*"/>
-                                    <ColumnDefinition Width="8*"/>
-                                    <ColumnDefinition Width="3.8*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="3.6*"/>
+                                    <ColumnDefinition Width="0.2*"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Label Content="Palavra-Passe"
@@ -308,8 +320,13 @@
 
                                 <Rectangle Grid.Column="1"
                                             Fill="#FFEBEBEB"
-                                               RadiusX="15"
-                                               RadiusY="15"
+                                               RadiusX="12"
+                                               RadiusY="12"
+                                               Margin="10"/>
+                                <Rectangle Grid.Column="2"
+                                            Fill="#FFEBEBEB"
+                                               RadiusX="12"
+                                               RadiusY="12"
                                                Margin="10"/>
 
                                 <TextBlock Grid.Column="1"
@@ -323,14 +340,44 @@
                                          Background="{x:Null}"/>
 
                                 <PasswordBox Grid.Column="1" x:Name="txtPassword"
-                                         PasswordChanged="txtPassword_PasswordChanged" 
-                                         Grid.ColumnSpan="2" 
-                                         Background="{x:Null}" 
-                                         SelectionBrush="{x:Null}" 
-                                         BorderBrush="{x:Null}"
-                                         Style="{StaticResource TextBox}" Margin="0,0,0,0"/>
+                                             PasswordChanged="txtPassword_PasswordChanged" 
+                                             Grid.ColumnSpan="2" 
+                                             Background="{x:Null}"  
+                                             BorderBrush="{x:Null}"
+                                             Style="{DynamicResource PasswordBoxStyle1}"
+                                             Margin="0,0,0,0"
+                                             SelectionBrush="Purple"
+                                             SelectionOpacity="0.2"/>
 
+                                <TextBlock Grid.Column="2"
+                                           x:Name="PasswordConfirmChanged"
+                                           Text="Alterar Palavra-Passe"
+                                           MouseDown="PasswordChanged_MouseDown"
+                                           FontFamily="{StaticResource MentoneLig}"
+                                           FontSize="18"
+                                           Foreground="#FF3F3F3F"
+                                           Padding="20"
+                                           Background="{x:Null}"/>
 
+                                <PasswordBox Grid.Column="2" x:Name="txtPasswordconfirm"
+                                             PasswordChanged="txtPassword_PasswordChanged" 
+                                             Grid.ColumnSpan="2" 
+                                             Background="{x:Null}"                                          
+                                             BorderBrush="{x:Null}"
+                                             Margin="0,0,0,0"
+                                             SelectionBrush="Purple"
+                                             SelectionOpacity="0.2"
+                                             Style="{DynamicResource PasswordBoxStyle1}"/>
+                                
+                                <Button Grid.Column="3"
+                                        x:Name="RemoverPassword"
+                                        Content="Remover"
+                                        Height="40"
+                                        FontFamily="{StaticResource MentoneLig}"
+                                        Style="{StaticResource NTbutton}"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Click="RemoverPassword_Click"/>
 
                             </Grid>
 
