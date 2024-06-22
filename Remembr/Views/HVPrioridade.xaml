@@ -4,63 +4,66 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Remembr.Views"
+             xmlns:vm="clr-namespace:Remembr.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="235" d:DesignWidth="642" 
              Background="Transparent">
-
+    
+    <UserControl.DataContext>
+        <vm:HVPrioridadeVM/>
+    </UserControl.DataContext>
+        
     <Border BorderBrush="#FF3F3F3F" BorderThickness="2" CornerRadius="15" Background="#FFEBEBEB">
 
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-
-
-            </StackPanel>
+            <Label Content="Nota: tarefas prioritárias (nível de prioridade 400 ou maior) devem ter notificações ativadas." HorizontalContentAlignment="Center" Grid.Row="1"/>
 
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                <Label Content="SELECIONAR PRIORIDADE"
-                       Grid.Row="0"
-                       FontFamily="Mentone"
-                       FontSize="22"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                      Foreground="#FF3F3F3F"/>
-                
-                <Button x:Name="Prioridade400" 
-                    Style="{StaticResource NTbutton}"
+                <ContentControl Margin="0 0 7 0"
+                Grid.Column="1"
+                x:Name="pcc" Content="{Binding EditarVM}" />
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <RadioButton x:Name="Prioridade400"
+                    Style="{StaticResource {x:Type ToggleButton}}"
+                    GroupName="SEL-PRIORIDADES"
                     Height="35"
                     Width="250"
                     Margin="0 0 0 0"
-                    Grid.Row="1">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="4*"/>
-                        </Grid.ColumnDefinitions>
+                    Grid.Row="0" Click="Prioridade400_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Ellipse Fill="#FFFF3F3F"
+                            <Ellipse Fill="#FFFF3F3F"
                          Grid.Column="0"
                          Height="25"
                          Width="25"
                          Stroke="#FF3F3F3F"
                          StrokeThickness="1"/>
-                        <Label Content="Prioritária (400)"
+                            <Label Content="Prioritária (400)"
                        Grid.Column="2"
                        FontSize="16"
                        FontFamily="Mentone"
@@ -68,28 +71,29 @@
                        VerticalContentAlignment="Center"
                        HorizontalContentAlignment="Center" Background="{x:Null}"/>
 
-                    </Grid>
-                </Button>
+                        </Grid>
+                    </RadioButton>
 
-                <Button x:Name="Prioridade300"     
-                    Style="{StaticResource NTbutton}"
+                    <RadioButton x:Name="Prioridade300"
+                    Style="{StaticResource {x:Type ToggleButton}}"
+                    GroupName="SEL-PRIORIDADES"
                     Height="35"
                     Width="250"
                     Margin="0 0 0 0"
-                    Grid.Row="2">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.8*"/>
-                            <ColumnDefinition Width="4*"/>
-                        </Grid.ColumnDefinitions>
+                    Grid.Row="1" Click="Prioridade300_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Ellipse Fill="#FFFFB121"
+                            <Ellipse Fill="#FFFFB121"
                          Grid.Column="0"
                          Height="25"
                          Width="25"
                          Stroke="#FF3F3F3F"
                          StrokeThickness="1"/>
-                        <Label Content="Importante (300)"
+                            <Label Content="Importante (300)"
                        Grid.Column="1"
                        FontSize="16"
                        FontFamily="Mentone"
@@ -97,78 +101,82 @@
                        VerticalContentAlignment="Center"
                        HorizontalContentAlignment="Center"/>
 
-                    </Grid>
-                </Button>
+                        </Grid>
+                    </RadioButton>
 
-                <Button x:Name="Prioridade200" 
-                    Style="{StaticResource NTbutton}"
+                    <RadioButton x:Name="Prioridade200"
+                    Style="{StaticResource {x:Type ToggleButton}}"
+                    GroupName="SEL-PRIORIDADES"
                     Height="35"
                     Width="250"
                     Margin="0 0 0 0"
-                    Grid.Row="3">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.8*"/>
-                            <ColumnDefinition Width="4*"/>
-                        </Grid.ColumnDefinitions>
+                    Grid.Row="2" Click="Prioridade200_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Ellipse Fill="Yellow"
+                            <Ellipse Fill="Yellow"
                          Grid.Column="0"
                          Height="25"
                          Width="25"
                          Stroke="#FF3F3F3F"
                          StrokeThickness="1"/>
-                        <Label Content="Pouco Importante (200)"
+                            <Label Content="Pouco Importante (200)"
                        Grid.Column="1"
                        FontSize="16"
                        FontFamily="Mentone"
                        Foreground="#FF3F3F3F"
                        VerticalContentAlignment="Center"
                        HorizontalContentAlignment="Center"/>
-                    </Grid>
-                </Button>
+                        </Grid>
+                    </RadioButton>
 
-                <Button x:Name="Prioridade100"
-                    Style="{StaticResource NTbutton}"
+                    <RadioButton x:Name="Prioridade100"
+                    Style="{StaticResource {x:Type ToggleButton}}"
+                    GroupName="SEL-PRIORIDADES"
                     Height="35"
                     Width="250"
                     Margin="0 0 0 0"
-                    Grid.Row="4">
+                    Grid.Row="3" Click="Prioridade100_Click">
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.8*"/>
-                            <ColumnDefinition Width="4*"/>
-                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <Ellipse Fill="#FF74CF74"
+                            <Ellipse Fill="#FF74CF74"
                              Grid.Column="0"
                              Height="25"
                              Width="25"
                              Stroke="#FF3F3F3F"
                              StrokeThickness="1"/>
-                        <Label Content="Sem Importância (100)"
+                            <Label Content="Sem Importância (100)"
                            Grid.Column="1"
                            FontSize="16"
                            FontFamily="Mentone"
                            Foreground="#FF3F3F3F"
                            VerticalContentAlignment="Center"
                            HorizontalContentAlignment="Center"/>
-                    </Grid>
+                        </Grid>
 
-                </Button>
+                    </RadioButton>
 
 
-                <Button x:Name="Prioridadex"
+                    <RadioButton x:Name="Prioridadex"
+                    GroupName="SEL-PRIORIDADES"
+                    Style="{StaticResource {x:Type ToggleButton}}"  
                     FontFamily="Mentone"
                     FontSize="16"
-                    Content="Adicionar Prioridade"
-                    Style="{StaticResource NTbutton}"
+                    Content="Prioridade Customizada"
                     Height="35"
                     Width="250"
                     Margin="0 0 0 0"
-                    Grid.Row="5"/>
+                    Grid.Row="4" Click="Prioridadex_Click"/>
 
+                </Grid>
             </Grid>
         </Grid>
     </Border>
