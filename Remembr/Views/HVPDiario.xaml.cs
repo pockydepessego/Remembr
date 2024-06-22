@@ -24,5 +24,23 @@ namespace Remembr.Views
         {
             InitializeComponent();
         }
+
+        private void nDias_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (nDias.Value == null || plural == null || ate == null)
+            {
+                return;
+            }
+            if (nDias.Value == 1)
+            {
+                plural.Text = "Dia";
+                ate.Text = "Ocorre todos os dias até";
+            }
+            else
+            {
+                plural.Text = "Dias";
+                ate.Text = "Ocorre de " + nDias.Value + " em " + nDias.Value  + " dias até";
+            }
+        }
     }
 }

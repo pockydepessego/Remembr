@@ -66,7 +66,7 @@
                             <Label Content="Prioritária (400)"
                        Grid.Column="2"
                        FontSize="16"
-                       FontFamily="Mentone"
+                       FontFamily="{StaticResource MentoneLig}"
                        Foreground="#FF3F3F3F"
                        VerticalContentAlignment="Center"
                        HorizontalContentAlignment="Center" Background="{x:Null}"/>
@@ -96,7 +96,7 @@
                             <Label Content="Importante (300)"
                        Grid.Column="1"
                        FontSize="16"
-                       FontFamily="Mentone"
+                       FontFamily="{StaticResource MentoneLig}"
                        Foreground="#FF3F3F3F"
                        VerticalContentAlignment="Center"
                        HorizontalContentAlignment="Center"/>
@@ -126,7 +126,7 @@
                             <Label Content="Pouco Importante (200)"
                        Grid.Column="1"
                        FontSize="16"
-                       FontFamily="Mentone"
+                       FontFamily="{StaticResource MentoneLig}"
                        Foreground="#FF3F3F3F"
                        VerticalContentAlignment="Center"
                        HorizontalContentAlignment="Center"/>
@@ -156,7 +156,7 @@
                             <Label Content="Sem Importância (100)"
                            Grid.Column="1"
                            FontSize="16"
-                           FontFamily="Mentone"
+                           FontFamily="{StaticResource MentoneLig}"
                            Foreground="#FF3F3F3F"
                            VerticalContentAlignment="Center"
                            HorizontalContentAlignment="Center"/>
@@ -168,7 +168,7 @@
                     <RadioButton x:Name="Prioridadex"
                     GroupName="SEL-PRIORIDADES"
                     Style="{StaticResource {x:Type ToggleButton}}"  
-                    FontFamily="Mentone"
+                    FontFamily="{StaticResource MentoneLig}"
                     FontSize="16"
                     Content="Prioridade Customizada"
                     Height="35"

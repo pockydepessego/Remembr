@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Remembr.ViewModels;
 
 namespace Remembr.Views
 {
@@ -20,9 +21,75 @@ namespace Remembr.Views
     /// </summary>
     public partial class HVPeriodicidade : UserControl
     {
+
+        HVPDiario? hvPDiarioV;
+        HVPSemanal? hvPSemanalV;
+        HVPMensal? hvPMensalV;
+        HVPAnual? hvPAnualV;
+        HVPDesativado? hvPDesativadoV;
         public HVPeriodicidade()
         {
             InitializeComponent();
+            if (hvPDesativadoV == null)
+            {
+                hvPDesativadoV = new HVPDesativado();
+                hvPDesativadoV.DataContext = new HVPDesativadoVM();
+            }
+            cc.Content = hvPDesativadoV;
+        }
+
+        private void BotaoDiario_Checked(object sender, RoutedEventArgs e)
+        {
+            if (hvPDiarioV == null)
+            {
+                hvPDiarioV = new HVPDiario();
+                hvPDiarioV.DataContext = new HPVDiarioVM();
+            }
+
+
+            cc.Content = hvPDiarioV;
+        }
+
+        private void BotaoSemanal_Checked(object sender, RoutedEventArgs e)
+        {
+            if (hvPSemanalV == null)
+            {
+                hvPSemanalV = new HVPSemanal();
+                hvPSemanalV.DataContext = new HVPSemanalVM();
+            }
+
+            cc.Content = hvPSemanalV;
+        }
+
+        private void BotaoMensal_Checked(object sender, RoutedEventArgs e)
+        {
+            if (hvPMensalV == null)
+            {
+                hvPMensalV = new HVPMensal();
+                hvPMensalV.DataContext = new HVPMensalVM();
+            }
+            cc.Content = hvPMensalV;
+        }
+
+        private void BotaoAnual_Checked(object sender, RoutedEventArgs e)
+        {
+            if (hvPAnualV == null)
+            {
+                hvPAnualV = new HVPAnual();
+                hvPAnualV.DataContext = new HVPAnualVM();
+            }
+            cc.Content = hvPAnualV;
+        }
+
+        private void BotaoDesativado_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cc == null) return;
+            if (hvPDesativadoV == null)
+            {
+                hvPDesativadoV = new HVPDesativado();
+                hvPDesativadoV.DataContext = new HVPDesativadoVM();
+            }
+            cc.Content = hvPDesativadoV;
         }
     }
 }

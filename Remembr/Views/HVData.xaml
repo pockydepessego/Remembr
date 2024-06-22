@@ -20,7 +20,7 @@
             </Grid.RowDefinitions>
 
             <Label Content="SELECIONAR DATA E HORAS DA TAREFA"               
-               FontFamily="Mentone"
+               FontFamily="{StaticResource MentoneLig}"
                FontSize="22"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
@@ -41,7 +41,7 @@
                     </Grid.RowDefinitions>
 
                     <Label Content="Selecione as Datas:"
-                   FontFamily="Mentone"
+                   FontFamily="{StaticResource MentoneLig}"
                    FontSize="18"
                    Grid.Column="3"
                    HorizontalAlignment="Center"
@@ -55,7 +55,7 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Selecione as Horas:"
-                           FontFamily="Mentone"
+                           FontFamily="{StaticResource MentoneLig}"
                            FontSize="18"
                            Grid.Row="0"
                            HorizontalAlignment="Center"
@@ -89,7 +89,7 @@
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap"
-                                   FontFamily="Mentone"
+                                   FontFamily="{StaticResource MentoneLig}"
                                    FontSize="14"
                                    Foreground="#FF3F3F3F"/>
                             <Grid Grid.Column="2">
@@ -99,7 +99,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Label Content="Início da Tarefa:"
-                                   FontFamily="Mentone"
+                                   FontFamily="{StaticResource MentoneLig}"
                                    FontSize="14"
                                    Grid.Column="3"
                                    HorizontalAlignment="Center"
@@ -108,7 +108,7 @@
 
                                 <Label Content="Fim da Tarefa:"
                                    Grid.Row="1"
-                                   FontFamily="Mentone"
+                                   FontFamily="{StaticResource MentoneLig}"
                                    FontSize="14"
                                    Grid.Column="3"
                                    HorizontalAlignment="Center"
