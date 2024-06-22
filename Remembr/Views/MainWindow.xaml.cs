@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Remembr.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace Remembr
@@ -24,6 +25,45 @@ namespace Remembr
         private void CloseApp_button(object sender, MouseButtonEventArgs e)
         {
             MVM.SavePerfil();
+            MVM.SavePrioridades();
+
+
+            Models.Alerta aa = new Models.Alerta() { 
+                Email = true,
+                Windows = true,
+                Tempo = TimeSpan.FromSeconds(60)
+            };
+
+            Models.Alerta ba = new Models.Alerta()
+            {
+                Email = true,
+                Windows = true,
+                Tempo = TimeSpan.FromSeconds(120)
+            };
+
+
+            MVM.gTarefas.Add(new Tarefa()
+            {
+
+                Titulo = "Teste",
+                Descricao = "Teste",
+                CreationTime = System.DateTime.Now,
+                DataInicio = System.DateTime.Now.AddDays(2),
+                DataFim = System.DateTime.Now.AddDays(3),
+                valorPrio = 460,
+                FullDia = false,
+                Estado = 0,
+                IsTarefaOriginal = true,
+                AlertaAntecipacao = aa,
+                AlertaAtraso = ba,
+                idPeriodicidade = "testeper"
+            }); ;
+
+            var pila = MVM.gTarefas;
+            var pilinha = MVM.gPrioridades;
+            MVM.SaveTarefas();
+
+
             Close();
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Remembr.Models
 {
-    internal class Alerta
+    public class Alerta
     {
         public required bool Email { get; set; }
         public required bool Windows { get; set; }

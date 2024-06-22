@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Remembr.Models
 {
-    internal class Prioridade
+    public class Prioridade
     {
         public required int Valor { get; set; }
         public required string Cor { get; set; }

@@ -20,9 +20,9 @@ namespace Remembr.Views
     /// </summary>
     /// 
 
-    public partial class Alerta : Window
+    public partial class WAlerta : Window
     {
-        public Alerta()
+        public WAlerta()
         {
             InitializeComponent();
         }
