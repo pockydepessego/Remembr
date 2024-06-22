@@ -11,6 +11,8 @@ using Remembr.Models;
 using System.Xml.Linq;
 using System.Windows.Media.Imaging;
 using System.Security.Cryptography;
+using System.Windows.Documents.DocumentStructures;
+using Syncfusion.UI.Xaml.Gauges;
 
 
 namespace Remembr.ViewModels
@@ -100,8 +102,14 @@ namespace Remembr.ViewModels
 
         public string AppData;
         public string basePath;
-        public Perfil? gPerfil { get; set; }
+        public Perfil? GPerfil { get; set; }
+        public List<Tarefa>? GTarefas { get; set; } = [];
 
+        public List<Prioridade>? GPrioridades { get; set; } = [];
+
+        public List<Periodicidade>? GPeriodicidades { get; set; } = [];
+
+        public List<Notificacao>? GNotificacoes { get; set; } = [];
         public MainVM()
         {
 
@@ -122,14 +130,45 @@ namespace Remembr.ViewModels
             {
                 if (LoadPerfil())
                 {
-                    if (gPerfil == null)
+                    if (GPerfil == null)
                     {
                         MessageBox.Show("Erro de perfil.");
                         App.Current.Shutdown();
                         return;
-                    } 
+                    }
 
-                    if (gPerfil.Password != null)
+
+                    if (!LoadPrioridades())
+                    {
+                        MessageBox.Show("Erro de prioridades.");
+                        App.Current.Shutdown();
+                        return;
+                    }
+
+                    if (!LoadPeroidicidades())
+                    {
+                        MessageBox.Show("Erro de periodicidades.");
+                        App.Current.Shutdown();
+                        return;
+                    }
+
+
+                    if (!LoadTarefas())
+                    {
+                        MessageBox.Show("Erro de tarefas.");
+                        App.Current.Shutdown();
+                        return;
+                    }
+
+                    if (!LoadNotifs())
+                    {
+                        MessageBox.Show("Erro de notificações.");
+                        App.Current.Shutdown();
+                        return;
+                    }
+
+
+                    if (GPerfil.Password != null)
                     {
                         ChangeView("Login");
 
@@ -159,7 +198,7 @@ namespace Remembr.ViewModels
         public bool SavePerfil()
         {
 
-            if (gPerfil == null)
+            if (GPerfil == null)
             {
                 MessageBox.Show("Erro: Perfil não encontrado.");
                 return false;
@@ -172,16 +211,16 @@ namespace Remembr.ViewModels
 
                 XDocument doc = new XDocument(
                         new XElement("perfil",
-                        new XAttribute("nome", gPerfil.Nome),
-                        new XAttribute("email", gPerfil.Email)
+                        new XAttribute("nome", GPerfil.Nome),
+                        new XAttribute("email", GPerfil.Email)
                         )
                     );
 
                 XElement? docPerf = doc.Element("perfil");
 
-                if ((gPerfil.Password != null) && (docPerf != null))
+                if ((GPerfil.Password != null) && (docPerf != null))
                 {
-                    docPerf.Add(new XAttribute("password", gPerfil.Password));
+                    docPerf.Add(new XAttribute("password", GPerfil.Password));
                 }
 
                 doc.Save(System.IO.Path.Combine(basePath, "perfil.xml"));
@@ -189,7 +228,7 @@ namespace Remembr.ViewModels
                 string photoPath = System.IO.Path.Combine(basePath, "pfp.png");
 
                 BitmapEncoder encoder = new PngBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(gPerfil.Fotografia));
+                encoder.Frames.Add(BitmapFrame.Create(GPerfil.Fotografia));
                 using (var fileStream = new System.IO.FileStream(photoPath, System.IO.FileMode.Create))
                 {
                     encoder.Save(fileStream);
@@ -267,7 +306,7 @@ namespace Remembr.ViewModels
                         Fotografia = foto
                     };
 
-                    gPerfil = perf;
+                    GPerfil = perf;
                     return true;
 
                 }
@@ -283,6 +322,691 @@ namespace Remembr.ViewModels
                 return false;
             }
         }
+
+        public bool SaveTarefas()
+        {
+            if (GTarefas == null)
+            {
+                MessageBox.Show("Erro: Tarefas não encontradas.");
+                return false;
+            }
+
+            if (GTarefas.Count == 0)
+            {
+                return true;
+            }
+
+            try
+            {
+                Directory.CreateDirectory(basePath);
+
+                XDocument doc = new XDocument(
+                    new XElement("tarefas")
+                    );
+
+                XElement? docTarefas = doc.Element("tarefas");
+
+                foreach (Tarefa t in GTarefas)
+                {
+                    if (t == null || docTarefas == null)
+                    {
+                        throw new Exception("Erro: tarefa não inicializada ao guardar tarefas");
+                    }
+
+                    docTarefas.Add(
+                        new XElement("tarefa",
+                            new XAttribute("ID", t.ID),
+                            new XAttribute("Titulo", t.Titulo),
+                            new XAttribute("CreationTime", t.CreationTime),
+                            new XAttribute("DataInicio", t.DataInicio),
+                            new XAttribute("FullDia", t.FullDia),
+                            new XAttribute("Estado", t.Estado),
+                            new XAttribute("Prio", t.valorPrio),
+                            new XAttribute("IsTarefaOriginal", t.IsTarefaOriginal)
+                        )
+                    );
+
+
+                    XElement? docTarefa = docTarefas.Elements().Last() ?? throw new Exception("Erro ao guardar tarefa.");
+
+                    if (t.Descricao != null)
+                    {
+                        docTarefa.Add(
+                            new XAttribute("Descricao", t.Descricao)
+                        );
+                    }
+
+                    if (t.DataFim != null)
+                    {
+                        docTarefa.Add(
+                            new XAttribute("DataFim", t.DataFim)
+                        );
+                    }
+
+                    if (t.idPeriodicidade != null)
+                    {
+                        docTarefa.Add(
+                            new XAttribute("Periodicidade", t.idPeriodicidade)
+                        );
+                    }
+
+                    
+                    if (t.AlertaAtraso != null)
+                    {
+                        docTarefa.Add(
+                            new XElement("AlertaAtraso",
+                                new XAttribute("Email", t.AlertaAtraso.Email),
+                                new XAttribute("Windows", t.AlertaAtraso.Windows),
+                                new XAttribute("Tempo", t.AlertaAtraso.Tempo.TotalSeconds)
+                            )
+                        );
+                    }
+
+
+                    if (t.AlertaAntecipacao != null)
+                    {
+                        docTarefa.Add(
+                            new XElement("AlertaAntecipacao",
+                                new XAttribute("Email", t.AlertaAntecipacao.Email),
+                                new XAttribute("Windows", t.AlertaAntecipacao.Windows),
+                                new XAttribute("Tempo", t.AlertaAntecipacao.Tempo.TotalSeconds)
+                            )
+                        );
+                    }
+
+                }
+
+                doc.Save(System.IO.Path.Combine(basePath, "tarefas.xml"));
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao guardar tarefas:\n\n" + ex.Message + "\n" + ex.StackTrace);
+                return false;
+            }
+        }
+
+        public bool LoadTarefas()
+        {
+            string tarefasPath = System.IO.Path.Combine(basePath, "tarefas.xml");
+            try
+            {
+
+                if (GPrioridades == null)
+                {
+                    MessageBox.Show("Erro: Prioridades não encontradas.");
+                    return false;
+                }
+
+
+                if (Path.Exists(tarefasPath))
+                {
+
+                    XDocument doc = XDocument.Load(tarefasPath);
+                    XElement? docTarefas = doc.Element("tarefas");
+
+                    if (docTarefas == null)
+                    {
+                        MessageBox.Show("Ficheiro de tarefas inválido.");
+                        return false;
+                    }
+
+                    if (GTarefas == null)
+                    {
+                        MessageBox.Show("Lista de tarefas inválida.");
+                        return false;
+                    } 
+
+                    foreach (XElement t in docTarefas.Elements("tarefa"))
+                    {
+                        if (t == null)
+                        {
+                            MessageBox.Show("Erro: tarefa não inicializada ao carregar tarefas");
+                            return false;
+                        }
+
+                        XAttribute? docID = t.Attribute("ID");
+                        XAttribute? docTitulo = t.Attribute("Titulo");
+                        XAttribute? docCreationTime = t.Attribute("CreationTime");
+                        XAttribute? docDataInicio = t.Attribute("DataInicio");
+                        XAttribute? docFullDia = t.Attribute("FullDia");
+                        XAttribute? docEstado = t.Attribute("Estado");
+                        XAttribute? docPrio = t.Attribute("Prio");
+                        XAttribute? docIsTarefaOriginal = t.Attribute("IsTarefaOriginal");
+
+                        if (docID == null || docTitulo == null || docCreationTime == null || docDataInicio == null || docFullDia == null || docEstado == null || docPrio == null || docIsTarefaOriginal == null)
+                        {
+                            MessageBox.Show("Ficheiro de tarefas inválido.");
+                            return false;
+                        }
+
+
+                        Prioridade? tPrio = GPrioridades.FirstOrDefault(p => p.Valor == int.Parse(docPrio.Value));
+
+                        if (tPrio == null)
+                        {
+                            tPrio = new Prioridade()
+                            {
+                                Valor = int.Parse(docPrio.Value),
+                                Cor = "#000000"
+                            };
+                            GPrioridades.Add(tPrio);
+                        }
+
+
+
+                        var tempTarefa = new Tarefa()
+                        {
+                            ID = docID.Value,
+                            Titulo = docTitulo.Value,
+                            CreationTime = DateTime.Parse(docCreationTime.Value),
+                            DataInicio = DateTime.Parse(docDataInicio.Value),
+                            FullDia = bool.Parse(docFullDia.Value),
+                            Estado = int.Parse(docEstado.Value),
+                            IsTarefaOriginal = bool.Parse(docIsTarefaOriginal.Value),
+                            valorPrio = int.Parse(docPrio.Value)
+                        };
+
+                        XAttribute? docDescricao = t.Attribute("Descricao");
+                        XAttribute? docDataFim = t.Attribute("DataFim");
+                        XAttribute? docIDPeriodicidade = t.Attribute("Periodicidade");
+                        XElement? docAlertaAtraso = t.Element("AlertaAtraso");
+                        XElement? docAlertaAntecipacao = t.Element("AlertaAntecipacao");
+
+                        if (docDescricao != null)
+                        {
+                            tempTarefa.Descricao = docDescricao.Value;
+                        }
+
+                        if (docDataFim != null)
+                        {
+                            tempTarefa.DataFim = DateTime.Parse(docDataFim.Value);
+                        }
+
+                        if (docIDPeriodicidade != null)
+                        {
+                            tempTarefa.idPeriodicidade = docIDPeriodicidade.Value;
+                        }
+
+                        if (docAlertaAtraso != null)
+                        {
+                            XAttribute? docEmail = docAlertaAtraso.Attribute("Email");
+                            XAttribute? docWindows = docAlertaAtraso.Attribute("Windows");
+                            XAttribute? docTempo = docAlertaAtraso.Attribute("Tempo");
+
+                            if (docEmail == null || docWindows == null || docTempo == null)
+                            {
+                                MessageBox.Show("Ficheiro de tarefas inválido.");
+                                return false;
+                            }
+
+                            tempTarefa.AlertaAtraso = new Alerta()
+                            {
+                                Email = bool.Parse(docEmail.Value),
+                                Windows = bool.Parse(docWindows.Value),
+                                Tempo = TimeSpan.FromSeconds(int.Parse(docTempo.Value))
+                            };
+
+                        }
+
+                        if (docAlertaAntecipacao != null)
+                        {
+                            XAttribute? docEmail = docAlertaAntecipacao.Attribute("Email");
+                            XAttribute? docWindows = docAlertaAntecipacao.Attribute("Windows");
+                            XAttribute? docTempo = docAlertaAntecipacao.Attribute("Tempo");
+
+                            if (docEmail == null || docWindows == null || docTempo == null)
+                            {
+                                MessageBox.Show("Ficheiro de tarefas inválido.");
+                                return false;
+                            }
+
+                            tempTarefa.AlertaAntecipacao = new Alerta()
+                            {
+                                Email = bool.Parse(docEmail.Value),
+                                Windows = bool.Parse(docWindows.Value),
+                                Tempo = TimeSpan.FromSeconds(int.Parse(docTempo.Value))
+                            };
+
+                        }
+
+                        GTarefas.Add(tempTarefa);
+
+                    }
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar tarefas:\n\n" + ex.Message + "\n" + ex.StackTrace);
+                return false;
+            }
+        }
+
+        
+        public bool SavePrioridades()
+        {
+            try
+            {
+                if (GPrioridades == null)
+                {
+                    MessageBox.Show("Erro: Prioridades não encontradas.");
+                    return false;
+                }
+
+                if (GPrioridades.Count == 4)
+                {
+                    return true;
+                }
+
+                Directory.CreateDirectory(basePath);
+
+                XDocument doc = new XDocument(
+                    new XElement("prioridades")
+                    );
+
+                XElement? docPrioridades = doc.Element("prioridades");
+
+                foreach (Prioridade p in GPrioridades)
+                {
+                    if (new List<int> { 100, 200, 300, 400 }.Contains(p.Valor ))
+                    {
+                        continue;
+                    }
+
+                    if (p == null || docPrioridades == null)
+                    {
+                        throw new Exception("Erro: prioridade não inicializada ao guardar prioridades");
+                    }
+
+                    docPrioridades?.Add(
+                        new XElement("prioridade",
+                        new XAttribute("Valor", p.Valor),
+                        new XAttribute("Cor", p.Cor)
+                        )
+                    );
+                }
+
+
+                doc.Save(System.IO.Path.Combine(basePath, "prioridades.xml"));
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao guardar prioridades:\n\n" + ex.Message + "\n" + ex.StackTrace);
+                return false;
+            }
+        }
+        
+        public bool LoadPrioridades()
+        {
+            string prioridadesPath = System.IO.Path.Combine(basePath, "prioridades.xml");
+            List<Prioridade> tempPrioridades =
+            [
+                new Prioridade() { Valor = 100, Cor = "#76d074" },
+                new Prioridade() { Valor = 200, Cor = "#feff00" },
+                new Prioridade() { Valor = 300, Cor = "#feb022" },
+                new Prioridade() { Valor = 400, Cor = "#fe3f3f" },
+            ];
+
+            try
+            {
+                if (Path.Exists(prioridadesPath))
+                {
+
+                    XDocument doc = XDocument.Load(prioridadesPath);
+                    XElement? docPrioridades = doc.Element("prioridades");
+
+                    if (docPrioridades == null)
+                    {
+                        MessageBox.Show("Ficheiro de prioridades inválido.");
+                        return false;
+                    }
+
+                    foreach (XElement p in docPrioridades.Elements("prioridade"))
+                    {
+                        if (p == null)
+                        {
+                            MessageBox.Show("Erro: prioridade não inicializada ao carregar prioridades");
+                            return false;
+                        }
+
+                        XAttribute? docValor = p.Attribute("Valor");
+                        XAttribute? docCor = p.Attribute("Cor");
+
+
+                        if (docValor == null || docCor == null)
+                        {
+                            MessageBox.Show("Ficheiro de prioridades inválido.");
+                            return false;
+                        }
+
+                        if (tempPrioridades.Any(p => p.Valor == int.Parse(docValor.Value)))
+                        {
+                            continue;
+                        }
+
+                        tempPrioridades.Add(new Prioridade()
+                        {
+                            Valor = int.Parse(docValor.Value),
+                            Cor = docCor.Value
+                        });
+
+                    }
+                }
+
+                GPrioridades = tempPrioridades;
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar prioridades:\n\n" + ex.Message + "\n" + ex.StackTrace);
+                return false;
+            }
+        }
+
+
+        public bool SavePeriodicidades()
+        {
+            try
+            {
+                if (GPeriodicidades == null)
+                {
+                    return false;
+                }
+
+                if (GPeriodicidades.Count == 0)
+                {
+                    return true;
+                }
+
+                Directory.CreateDirectory(basePath);
+
+                XDocument doc = new XDocument(
+                    new XElement("periodicidades")
+                    );
+
+                XElement? docPeriodicidades = doc.Element("periodicidades");
+
+                foreach (Periodicidade pe in GPeriodicidades)
+                {
+                    if (pe == null || docPeriodicidades == null)
+                    {
+                        throw new Exception("Erro: periodicidade não inicializada ao guardar periodicidades");
+                    }
+
+                    docPeriodicidades.Add(
+                        new XElement("periodicidade",
+                            new XAttribute("ID", pe.ID),
+                            new XAttribute("IDTarefaOriginal", pe.IDTarefaOriginal),
+                            new XAttribute("DataOriginal", pe.DataOriginal),
+                            new XAttribute("DataLimite", pe.DataLimite),
+                            new XAttribute("Tipo", pe.Tipo),
+                            new XAttribute("IntervaloRepeticao", pe.intervaloRepeticao)
+                        )
+                    );
+
+                    XElement? docPeriodicidade = docPeriodicidades.Elements().Last() ?? throw new Exception("Erro ao guardar tarefa.");
+
+                    if (pe.DiasSemana != null)
+                    {
+                        docPeriodicidade.Add(
+                                new XAttribute("DiasSemana", string.Join(",", pe.DiasSemana))
+                        );
+                    }
+
+                    if (pe.tipoMensal != null)
+                    {
+                        docPeriodicidade.Add(
+                            new XAttribute("TipoMensal", pe.tipoMensal)
+                        );
+                    }
+
+                    if (pe.tipoAnual != null)
+                    {
+                        docPeriodicidade.Add(
+                            new XAttribute("TipoAnual", pe.tipoAnual)
+                        );
+                    }
+
+                    if(pe.IDChildTarefas != null)
+                    {
+                        docPeriodicidade.Add(
+                            new XAttribute("IDChildTarefas", string.Join(",", pe.IDChildTarefas))
+                        );
+                    }
+
+
+
+                }
+
+                doc.Save(System.IO.Path.Combine(basePath, "periodicidades.xml"));
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao guardar periodicidades:\n\n" + ex.Message + "\n" + ex.StackTrace);
+                return false;
+            }
+        }
+
+
+        public bool LoadPeroidicidades()
+        {
+            string periodicidadesPath = System.IO.Path.Combine(basePath, "periodicidades.xml");
+            try
+            {
+
+                if (GPeriodicidades == null)
+                {
+                    return false;
+                }
+
+                if (Path.Exists(periodicidadesPath))
+                {
+
+                    XDocument doc = XDocument.Load(periodicidadesPath);
+                    XElement? docPeriodicidades = doc.Element("periodicidades");
+
+                    if (docPeriodicidades == null)
+                    {
+                        MessageBox.Show("Ficheiro de periodicidades inválido.");
+                        return false;
+                    }
+
+                    foreach (XElement pe in docPeriodicidades.Elements("periodicidade"))
+                    {
+                        if (pe == null)
+                        {
+                            MessageBox.Show("Erro: periodicidade não inicializada ao carregar periodicidades");
+                            return false;
+                        }
+
+                        XAttribute? docID = pe.Attribute("ID");
+                        XAttribute? docIDTarefaOriginal = pe.Attribute("IDTarefaOriginal");
+                        XAttribute? docDataOriginal = pe.Attribute("DataOriginal");
+                        XAttribute? docDataLimite = pe.Attribute("DataLimite");
+                        XAttribute? docTipo = pe.Attribute("Tipo");
+                        XAttribute? docIntervaloRepeticao = pe.Attribute("IntervaloRepeticao");
+
+                        if (docID == null || docIDTarefaOriginal == null || docDataOriginal == null || docDataLimite == null || docTipo == null || docIntervaloRepeticao == null)
+                        {
+                            MessageBox.Show("Ficheiro de periodicidades inválido.");
+                            return false;
+                        }
+
+                        Periodicidade tempPeriodicidade = new Periodicidade()
+                        {
+                            ID = docID.Value,
+                            IDTarefaOriginal = docIDTarefaOriginal.Value,
+                            DataOriginal = DateTime.Parse(docDataOriginal.Value),
+                            DataLimite = DateTime.Parse(docDataLimite.Value),
+                            Tipo = int.Parse(docTipo.Value),
+                            intervaloRepeticao = int.Parse(docIntervaloRepeticao.Value)
+                        };
+
+                        XAttribute? docDiasSemana = pe.Attribute("DiasSemana");
+                        XAttribute? docTipoMensal = pe.Attribute("TipoMensal");
+                        XAttribute? docTipoAnual = pe.Attribute("TipoAnual");
+
+                        if (docDiasSemana != null)
+                        {
+                            tempPeriodicidade.DiasSemana = docDiasSemana.Value.Split(",").Select(s => bool.Parse(s)).ToArray();
+                        }
+
+                        if (docTipoMensal != null)
+                        {
+                            tempPeriodicidade.tipoMensal = int.Parse(docTipoMensal.Value);
+                        }
+
+                        if (docTipoAnual != null)
+                        {
+                            tempPeriodicidade.tipoAnual = int.Parse(docTipoAnual.Value);
+                        }
+
+                        XAttribute? docIDChildTarefas = pe.Attribute("IDChildTarefas");
+
+                        if (docIDChildTarefas != null)
+                        {
+                            tempPeriodicidade.IDChildTarefas = docIDChildTarefas.Value.Split(",");
+                        }
+
+                        GPeriodicidades.Add(tempPeriodicidade);
+
+                    }
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar periodicidades:\n\n" + ex.Message + "\n" + ex.StackTrace);
+                return false;
+            }
+        }
+
+        public bool SaveNotifs()
+        {
+
+            if (GNotificacoes == null)
+            {
+                MessageBox.Show("GNotificacoes não inicializado");
+                return false;
+            }
+
+
+            if (GNotificacoes.Count == 0)
+            {
+                // nenhuma notificação para guardar
+                return true;
+            }
+
+            XDocument doc = new();
+            doc.Add(new XElement("notifs"));
+            XElement? docNotifs = doc.Element("notifs");
+
+            foreach (Notificacao Notif in GNotificacoes)
+            {
+                if (Notif == null || docNotifs == null)
+                {
+                    throw new Exception("Erro: Notificação não inicializada.");
+                }
+
+                docNotifs.Add(new XElement("notif",
+                        new XAttribute("mensagem", Notif.Mensagem),
+                        new XAttribute("data", Notif.Data),
+                        new XAttribute("lida", Notif.Lida),
+                        new XAttribute("IDOriginal", Notif.IDOriginal),
+                        new XAttribute("Tipo", Notif.Tipo)
+                        ));
+            }
+
+            doc.Save(System.IO.Path.Combine(basePath, "notifs.xml"));
+            return true;
+        }
+
+
+
+        public bool LoadNotifs()
+        {
+            string notifsPath = System.IO.Path.Combine(basePath, "notifs.xml");
+            try
+            {
+                if (GNotificacoes == null)
+                {
+                    MessageBox.Show("GNotificacoes não inicializado");
+                    return false;
+                }
+
+                if (Path.Exists(notifsPath))
+                {
+                    XDocument doc = XDocument.Load(notifsPath);
+                    XElement? docNotifs = doc.Element("notifs");
+
+                    if (docNotifs == null)
+                    {
+                        MessageBox.Show("Ficheiro de notificações inválido.");
+                        return false;
+                    }
+
+                    foreach (XElement n in docNotifs.Elements("notif"))
+                    {
+                        if (n == null)
+                        {
+                            MessageBox.Show("Erro: notificação não inicializada ao carregar notificações");
+                            return false;
+                        }
+
+                        XAttribute? docMensagem = n.Attribute("mensagem");
+                        XAttribute? docData = n.Attribute("data");
+                        XAttribute? docLida = n.Attribute("lida");
+                        XAttribute? docIDOriginal = n.Attribute("IDOriginal");
+                        XAttribute? docTipo = n.Attribute("Tipo");
+
+                        if (docMensagem == null || docData == null || docLida == null || docIDOriginal == null || docTipo == null)
+                        {
+                            MessageBox.Show("Ficheiro de notificações inválido.");
+                            return false;
+                        }
+
+                        Notificacao tempNotif = new Notificacao()
+                        {
+                            Mensagem = docMensagem.Value,
+                            Data = DateTime.Parse(docData.Value),
+                            Lida = bool.Parse(docLida.Value),
+                            IDOriginal = docIDOriginal.Value,
+                            Tipo = int.Parse(docTipo.Value)
+                        };
+
+                        GNotificacoes.Add(tempNotif);
+                    }
+                    return true;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar notificações:\n\n" + ex.Message + "\n" + ex.StackTrace);
+                return false;
+            }
+        }
+
 
     }
 }

@@ -223,7 +223,7 @@ namespace Remembr.Views
                 Fotografia = foto
             };
 
-            MVM.gPerfil = perf;
+            MVM.GPerfil = perf;
 
 
             if (MVM.SavePerfil())

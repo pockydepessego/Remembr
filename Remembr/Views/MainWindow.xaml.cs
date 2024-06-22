@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Remembr.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace Remembr
@@ -24,6 +25,12 @@ namespace Remembr
         private void CloseApp_button(object sender, MouseButtonEventArgs e)
         {
             MVM.SavePerfil();
+            MVM.SavePrioridades();
+            MVM.SavePeriodicidades();
+            MVM.SaveTarefas();
+            MVM.SaveNotifs();
+
+
             Close();
         }
 
