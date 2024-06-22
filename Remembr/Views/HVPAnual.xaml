@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="Remembr.Views.HVPAnual"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                          xmlns:local="clr-namespace:Remembr.Views"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="235" 
+             d:DesignWidth="321">
+
+    <Border Background="#FFEBEBEB">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Repetir a cada"
+                           Grid.Column="1"
+                           FontFamily="Mentone"
+                           FontSize="20"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Foreground="#FF3F3F3F"/>
+
+                <xctk:IntegerUpDown Grid.Column="2"
+                                    Minimum="1"
+                                    Value="1"
+                                    Margin="10" Background="{x:Null}"
+                                    BorderBrush="#FF3F3F3F"
+                                    BorderThickness="1"
+                                    Foreground="#FF3F3F3F"
+                                    FontFamily="Mentone"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"/>
+
+                <TextBlock Text="Ano"
+                           Grid.Column="3"
+                           FontFamily="Mentone"
+                           FontSize="20"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Foreground="#FF3F3F3F"/>
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+                <RadioButton Content="No dia X de Y"
+                             Grid.Row="0"
+                             Margin="10"
+                             FontFamily="Mentone"
+                             FontSize="20"
+                             Foreground="#FF3F3F3F"
+                             GroupName="SEL"
+                             VerticalContentAlignment="Center"
+                             BorderBrush="#FF3F3F3F"
+                             BorderThickness="2"/>
+                <RadioButton Content="Na segunda X do Y"
+                             Grid.Row="1"
+                             Margin="10"
+                             FontFamily="Mentone"
+                             FontSize="20"
+                             GroupName="SEL"
+                             Foreground="#FF3F3F3F"
+                             VerticalContentAlignment="Center"
+                             BorderBrush="#FF3F3F3F"
+                             BorderThickness="2"/>
+            </Grid>
+
+            <TextBlock Text="Ocorre até ao X"
+                           Grid.Row="3"
+                           FontFamily="Mentone"
+                           FontSize="20"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Foreground="#FF3F3F3F"/>
+
+            <DatePicker Grid.Row="4"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Margin="20 10"
+                        Background="White"
+                        VerticalContentAlignment="Center"
+                        BorderBrush="#FF3F3F3F"
+                        BorderThickness="1"/>
+
+        </Grid>
+    </Border>
+</UserControl>

@@ -131,11 +131,10 @@
 
                                 <TextBlock  x:Name="textPasswordConfirmar"
                            Text="Confirmar Password" Style="{StaticResource TextoLogin}" 
-                           Margin="10,14,277,10"
-                           FontFamily="{StaticResource MentoneLig}" 
-                           Grid.ColumnSpan="2"
+                           Margin="10,14,194,10"
+                           FontFamily="{StaticResource MentoneLig}"
                            MouseDown="textPasswordConfirmar_MouseDown"/>
-                                
+
                                 <PasswordBox x:Name="txtPasswordConfirmar"
                             PasswordChanged="txtPasswordConfirmar_PasswordChanged" 
                             Grid.ColumnSpan="2" 
