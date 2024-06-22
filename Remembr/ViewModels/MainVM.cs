@@ -57,17 +57,8 @@ namespace Remembr.ViewModels
                 case "Calendario":
                     CurrentViewModel = new CalendarioVM();
                     break;
-                case "TarefasApagadas":
-                    CurrentViewModel = new TarefasApagadasVM();
-                    break;
-                case "TarefasExec":
-                    CurrentViewModel = new TarefasExecVM();
-                    break;
-                case "TarefasPorIniciar":
-                    CurrentViewModel = new TarefasPorIniciarVM();
-                    break;
-                case "TarefasTerminadas":
-                    CurrentViewModel = new TarefasTerminadasVM();
+                case "HomeTarefas":
+                    CurrentViewModel = new HomeTarefasVM();
                     break;
                 case "NovaTarefa":
                     CurrentViewModel = new NovaTarefaVM();
@@ -75,8 +66,6 @@ namespace Remembr.ViewModels
                 case "DefinicoesUtilizador":
                     CurrentViewModel = new DefinicoesUtilizadorVM();
                     break;
-
-
                 default:
                     MessageBox.Show("Erro: View não encontrada.");
                     return;
@@ -146,7 +135,7 @@ namespace Remembr.ViewModels
 
                     } else
                     {
-                        ChangeView("TarefasPorIniciar");
+                        ChangeView("HomeTarefas");
                     }
                 
                 

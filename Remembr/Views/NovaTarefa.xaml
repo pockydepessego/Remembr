@@ -261,7 +261,7 @@
 
                                 <ContentControl Margin="0 0 7 0"
                                                 Grid.Column="1"
-                                                x:Name="cc" Content="{Binding EditarVM}" />
+                                                x:Name="cc" />
                                 <Grid >
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>

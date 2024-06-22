@@ -376,20 +376,8 @@
             <v:Calendario/>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type vm:TarefasApagadasVM}">
-            <v:TarefasApagadas/>
-        </DataTemplate>
-
-        <DataTemplate DataType="{x:Type vm:TarefasExecVM}">
-            <v:TarefasExec/>
-        </DataTemplate>
-
-        <DataTemplate DataType="{x:Type vm:TarefasPorIniciarVM}">
-            <v:TarefasPorIniciar/>
-        </DataTemplate>
-
-        <DataTemplate DataType="{x:Type vm:TarefasTerminadasVM}">
-            <v:TarefasTerminadas/>
+        <DataTemplate DataType="{x:Type vm:HomeTarefasVM}">
+            <v:HomeTarefas/>
         </DataTemplate>
 
         <DataTemplate DataType="{x:Type vm:EditarTarefaVM}">

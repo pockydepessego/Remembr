@@ -228,7 +228,7 @@ namespace Remembr.Views
 
             if (MVM.SavePerfil())
             {
-                MVM.ChangeView("TarefasPorIniciar");
+                MVM.ChangeView("HomeTarefas");
             }
             else
             {

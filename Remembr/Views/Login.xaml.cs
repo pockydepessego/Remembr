@@ -51,7 +51,7 @@ namespace Remembr.Views
 
             if (MVM.VerifyPassword(txtPassword.Password, MVM.gPerfil.Password, salt))
             {
-                MVM.ChangeView("TarefasPorIniciar");
+                MVM.ChangeView("HomeTarefas");
             }
             else
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Remembr.ViewModels
 {
-    class TarefasTerminadasVM : BaseVM
+    internal class HVHTApagadasVM : BaseVM
     {
     }
 }
