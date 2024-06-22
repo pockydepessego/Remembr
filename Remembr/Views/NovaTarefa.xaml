@@ -270,38 +270,42 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
-                                    <Button x:Name="Data"
+                                    <RadioButton x:Name="Data"
+                                            Style="{StaticResource {x:Type ToggleButton}}"
+                                            GroupName="SEL-OPCOES"   
                                             Content="Data"
                                             Height="40"
                                             Width="150"
                                             FontFamily="Mentone"
-                                            Style="{StaticResource NTbutton}"
                                             Grid.Row="0" Click="Data_Click"/>
 
-                                    <Button x:Name="Prioridade"
+                                    <RadioButton x:Name="Prioridade"
+                                            Style="{StaticResource {x:Type ToggleButton}}"
+                                            GroupName="SEL-OPCOES"   
                                             Content="Prioridade"
                                             Height="40"
                                             Width="150"                                            
                                             FontFamily="Mentone"
-                                            Style="{StaticResource NTbutton}"
                                             Grid.Row="2" Click="Prioridade_Click"/>
 
-                                    <Button x:Name="Periodicidade"
+                                    <RadioButton x:Name="Periodicidade"
+                                            Style="{StaticResource {x:Type ToggleButton}}"
+                                            GroupName="SEL-OPCOES"   
                                             Content="Periodicidade"
                                             Height="40"
                                             Width="150"                                        
                                             FontFamily="Mentone"
-                                            Style="{StaticResource NTbutton}"
                                             Grid.Column="0"
                                             Grid.Row="1"
                                             Click="Periodicidade_Click"/>
 
-                                    <Button x:Name="Notificacoes"
+                                    <RadioButton x:Name="Notificacoes"
+                                            Style="{StaticResource {x:Type ToggleButton}}"
+                                            GroupName="SEL-OPCOES"   
                                             Content="Notificações"
                                             Height="40"
                                             Width="150"                                        
                                             FontFamily="Mentone"
-                                            Style="{StaticResource NTbutton}"
                                             Grid.Row="4"
                                             Click="Lembretes_Click"/>
 
