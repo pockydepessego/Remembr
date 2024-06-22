@@ -24,5 +24,10 @@ namespace Remembr.Views
         {
             InitializeComponent();
         }
+
+        private void nMes_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+
+        }
     }
 }

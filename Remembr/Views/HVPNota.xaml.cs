@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Remembr.Views
 {
     /// <summary>
-    /// Interaction logic for HVCalendario.xaml
+    /// Interaction logic for HVPNota.xaml
     /// </summary>
-    public partial class HVCalendario : UserControl
+    public partial class HVPNota : UserControl
     {
-        public HVCalendario()
+        public HVPNota()
         {
             InitializeComponent();
         }

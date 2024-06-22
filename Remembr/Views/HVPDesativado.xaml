@@ -9,7 +9,7 @@
              d:DesignHeight="235" 
              d:DesignWidth="321">
 
-    <Border Background="#FFEBEBEB">
+    <Border Background="#FFEBEBEB" CornerRadius="15">
         <Grid>
             <Grid.RowDefinitions>
 

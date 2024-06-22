@@ -271,7 +271,7 @@
                                     </Grid.RowDefinitions>
 
                                     <RadioButton x:Name="Data"
-                                            Style="{StaticResource {x:Type ToggleButton}}"
+                                            Style="{StaticResource botaofeio}"
                                             GroupName="SEL-OPCOES"   
                                             Content="Data"
                                             Height="40"
@@ -280,7 +280,7 @@
                                             Grid.Row="0" Click="Data_Click"/>
 
                                     <RadioButton x:Name="Prioridade"
-                                            Style="{StaticResource {x:Type ToggleButton}}"
+                                            Style="{StaticResource botaofeio}"
                                             GroupName="SEL-OPCOES"   
                                             Content="Prioridade"
                                             Height="40"
@@ -289,7 +289,7 @@
                                             Grid.Row="2" Click="Prioridade_Click"/>
 
                                     <RadioButton x:Name="Periodicidade"
-                                            Style="{StaticResource {x:Type ToggleButton}}"
+                                            Style="{StaticResource botaofeio}"
                                             GroupName="SEL-OPCOES"   
                                             Content="Periodicidade"
                                             Height="40"
@@ -300,7 +300,7 @@
                                             Click="Periodicidade_Click"/>
 
                                     <RadioButton x:Name="Notificacoes"
-                                            Style="{StaticResource {x:Type ToggleButton}}"
+                                            Style="{StaticResource botaofeio}"
                                             GroupName="SEL-OPCOES"   
                                             Content="Notificações"
                                             Height="40"
@@ -330,13 +330,18 @@
                                         MouseDown="textNomedaTarefa_MouseDown"/>
 
                             <TextBox x:Name="NomedaTarefa"
+                                     Template="{DynamicResource TextBox1}"
                                      VerticalContentAlignment="Center"
                                      FontFamily="Mentone"
                                      FontSize="18"
                                      Foreground="#FF3F3F3F"
                                      Padding="10"
                                      Grid.Row="1"
-                                     TextChanged="NomedaTarefa_TextChanged" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" Background="{x:Null}"/>
+                                     TextChanged="NomedaTarefa_TextChanged" 
+                                     BorderBrush="{x:Null}" 
+                                     SelectionBrush="Purple"
+                                     SelectionOpacity="0.2"
+                                     Background="{x:Null}"/>
 
                             <Rectangle Grid.Row="2"
                                        Stroke="#FF3F3F3F"
@@ -346,7 +351,7 @@
                                        RadiusY="10"/>
 
                             <TextBlock  x:Name="textDescricaodaTarefa"
-                                        Text="Descrição" Style="{StaticResource TextoNT}" 
+                                        Text="Descrição (não obrigatória)" Style="{StaticResource TextoNT}" 
                                         FontFamily="{StaticResource MentoneLig}" 
                                         Grid.Row="2"
                                         VerticalAlignment="Center"
@@ -354,13 +359,18 @@
                                         MouseDown="textDescricaodaTarefa_MouseDown"/>
 
                             <TextBox Grid.Row="2"
+                                     Template="{DynamicResource TextBox1}"
                                      x:Name="DescricaodaTarefa"
                                      FontFamily="Mentone"
                                      FontSize="18"
                                      Foreground="#FF3F3F3F"
                                      Padding="10"
                                      VerticalContentAlignment="Center"
-                                     TextChanged="DescricaodaTarefa_TextChanged" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" SelectionTextBrush="{x:Null}"/>
+                                     TextChanged="DescricaodaTarefa_TextChanged" 
+                                     BorderBrush="{x:Null}" 
+                                     SelectionBrush="Purple"
+                                     SelectionOpacity="0.2"
+                                     Background="{x:Null}" />
 
 
 

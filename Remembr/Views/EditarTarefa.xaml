@@ -10,9 +10,6 @@
              d:DesignWidth="920"
              Background="Transparent"
              >
-    <UserControl.DataContext>
-        <vm:EditarTarefaVM/>
-    </UserControl.DataContext>
 
     <Grid>
 
@@ -325,14 +322,18 @@
                                         Grid.Row="1"
                                         MouseDown="textNomedaTarefa_MouseDown"/>
 
-                            <TextBox x:Name="NomedaTarefa"
+                            <TextBox Template="{DynamicResource TextBox1}" x:Name="NomedaTarefa"
                                      VerticalContentAlignment="Center"
                                      FontFamily="{StaticResource MentoneLig}"
                                      FontSize="18"
                                      Foreground="#FF3F3F3F"
                                      Padding="10"
-                                     Grid.Row="1"
-                                     TextChanged="NomedaTarefa_TextChanged" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" Background="{x:Null}"/>
+                                     Grid.Row="1"                                     
+                                     TextChanged="NomedaTarefa_TextChanged" 
+                                     BorderBrush="{x:Null}" 
+                                     SelectionBrush="Purple"
+                                     SelectionOpacity="0.2"
+                                     Background="{x:Null}"/>
 
                             <Rectangle Grid.Row="2"
                                        Stroke="#FF3F3F3F"
@@ -342,7 +343,7 @@
                                        RadiusY="10"/>
 
                             <TextBlock  x:Name="textDescricaodaTarefa"
-                                        Text="Descrição" Style="{StaticResource TextoNT}" 
+                                        Text="Descrição (não obrigatória)" Style="{StaticResource TextoNT}" 
                                         FontFamily="{StaticResource MentoneLig}" 
                                         Grid.Row="2"
                                         VerticalAlignment="Center"
@@ -352,11 +353,16 @@
                             <TextBox Grid.Row="2"
                                      x:Name="DescricaodaTarefa"
                                      FontFamily="{StaticResource MentoneLig}"
+                                     Template="{DynamicResource TextBox1}"
                                      FontSize="18"
                                      Foreground="#FF3F3F3F"
                                      Padding="10"
                                      VerticalContentAlignment="Center"
-                                     TextChanged="DescricaodaTarefa_TextChanged" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" SelectionTextBrush="{x:Null}"/>
+                                     TextChanged="DescricaodaTarefa_TextChanged" 
+                                     BorderBrush="{x:Null}" 
+                                     SelectionBrush="Purple"
+                                     SelectionOpacity="0.2"
+                                     Background="{x:Null}"/>
 
 
 

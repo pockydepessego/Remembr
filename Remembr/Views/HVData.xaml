@@ -10,34 +10,28 @@
              d:DesignHeight="235" d:DesignWidth="643"
              Background="Transparent">
 
+
     <Border BorderBrush="#3F3F3F" BorderThickness="2" CornerRadius="15" Background="#EBEBEB">
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.05*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="0.05*"/>
             </Grid.RowDefinitions>
 
-            <Label Content="SELECIONAR DATA E HORAS DA TAREFA"               
-               FontFamily="{StaticResource MentoneLig}"
-               FontSize="22"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               Foreground="#FF3F3F3F"/>
-
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.2*"/>
-                    <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.05*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="6*"/>
                     </Grid.RowDefinitions>
 
                     <Label Content="Selecione as Datas:"
@@ -48,13 +42,28 @@
                    VerticalAlignment="Center"
                    Foreground="#FF3F3F3F"/>
 
-                    <Grid Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                    <Grid Grid.Row="2">
 
-                        <Label Content="Selecione as Horas:"
+                        <Viewbox Stretch="Uniform">
+                            <Calendar HorizontalAlignment="Center"  
+                                  Grid.Column="1" 
+                                    VerticalAlignment="Center"
+                          CalendarButtonStyle="{DynamicResource CalendarCalendarButtonStyle1}" 
+                                  Style="{DynamicResource CalendarStyle1}" >
+                            </Calendar>
+                        </Viewbox>
+                    </Grid>
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Selecione as Horas:"
                            FontFamily="{StaticResource MentoneLig}"
                            FontSize="18"
                            Grid.Row="0"
@@ -62,100 +71,116 @@
                            VerticalAlignment="Center"
                            Foreground="#FF3F3F3F"/>
 
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="1"
+                                        Height="30"
+                                        Width="30"
+                                        Orientation="Horizontal">
+                            <Viewbox Height="{Binding Path=ActualHeight, ElementName=StackPanel1}">
+                                <CheckBox Style="{DynamicResource CheckBoxStyle2}" x:Name="CheckTodoDia" 
+                                                  Background="Transparent"
+                                                  Foreground="#FF3F3F3F"
+                                                  BorderBrush="#FF3F3F3F" Checked="LembreteAntecipacao_Checked"
+                                                  IsChecked="True"/>
+                            </Viewbox>
+                        </StackPanel>
 
-                            <StackPanel Grid.Column="0"
-                    Height="30"
-                    Width="30"
-                    Orientation="Horizontal">
-                                <Viewbox Height="{Binding Path=ActualHeight, ElementName=StackPanel1}">
-                                    <CheckBox x:Name="CheckTodoDia" 
-                                          Background="Transparent"
-                                          Foreground="#FF3F3F3F"
-                                          BorderBrush="#FF3F3F3F" Checked="LembreteAntecipacao_Checked"
-                                          IsChecked="True"/>
-                                </Viewbox>
-                            </StackPanel>
-
-                            <TextBlock Text="Dia Todo"
-                                   Grid.Column="1"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   TextAlignment="Center"
-                                   TextWrapping="Wrap"
-                                   FontFamily="{StaticResource MentoneLig}"
-                                   FontSize="14"
-                                   Foreground="#FF3F3F3F"/>
-                            <Grid Grid.Column="2">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-
-                                <Label Content="Início da Tarefa:"
-                                   FontFamily="{StaticResource MentoneLig}"
-                                   FontSize="14"
-                                   Grid.Column="3"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Foreground="#FF3F3F3F"/>
-
-                                <Label Content="Fim da Tarefa:"
-                                   Grid.Row="1"
-                                   FontFamily="{StaticResource MentoneLig}"
-                                   FontSize="14"
-                                   Grid.Column="3"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Foreground="#FF3F3F3F"/>
-
-                            </Grid>
-
-                            <Grid Grid.Column="3">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-
-                                <xctk:TimePicker Margin="20 2 20 2"
-                                                 Background="#FFF3F3F3"
-                                                 BorderBrush="#FF3F3F3F"
-                                                 BorderThickness="2"
-                                                 Format="Custom"
-                                                 FormatString="HH:mm"
-                                                 />
-                                <xctk:TimePicker Grid.Row="2"
-                                                 Margin="20 2 20 2"
-                                                 Background="#FFF3F3F3"
-                                                 BorderBrush="#FF3F3F3F"
-                                                 BorderThickness="2"
-                                                 Format="Custom"
-                                                 FormatString="HH:mm"
-                                                 />
-
-                            </Grid>
-                        </Grid>
-
-
+                        <TextBlock Text="Dia Todo"
+                                           Grid.Column="2"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           TextAlignment="Center"
+                                           TextWrapping="Wrap"
+                                           FontFamily="{StaticResource MentoneLig}"
+                                           FontSize="16"
+                                           Foreground="#FF3F3F3F"/>
                     </Grid>
 
-                </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
 
-                <Grid Grid.Column="2">
 
-                    <Viewbox Stretch="Uniform">
-                        <Calendar HorizontalAlignment="Center"  
-                          Grid.Column="1" 
-                          VerticalAlignment="Center"
-                          >
-                           </Calendar>
-                    </Viewbox>
+
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Início da Tarefa:"
+                                   FontFamily="{StaticResource MentoneLig}"
+                                   FontSize="16"
+                                   Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="#FF3F3F3F"/>
+
+                            <Label Content="Fim da Tarefa:"
+                                   Grid.Row="1"
+                                   FontFamily="{StaticResource MentoneLig}"
+                                   FontSize="16"
+                                   Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="#FF3F3F3F"/>
+
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <xctk:TimePicker Margin="14 6 14 6"
+                                             Background="Transparent"
+                                             BorderBrush="Transparent"
+                                             Format="Custom"
+                                             FormatString="HH:mm"
+                                             FontFamily="Mentone"
+                                             FontSize="14"
+                                             
+                                             Foreground="#3F3F3F"/>
+
+                            <Rectangle Stroke="#FF3F3F3F"
+                                       StrokeThickness="1.5"
+                                       RadiusX="6"
+                                       RadiusY="6"
+                                       Margin="10 2 10 2"/>
+                            
+                            <xctk:TimePicker Grid.Row="2"
+                                             Margin="14 6 14 6"
+                                             Background="Transparent"
+                                             BorderBrush="Transparent"
+                                             Format="Custom"
+                                             FormatString="HH:mm"
+                                             FontFamily="Mentone"
+                                             FontSize="14"
+                                             
+                                             Foreground="#3F3F3F"/>
+                            <Rectangle Grid.Row="1"
+                                       Stroke="#FF3F3F3F"
+                                       StrokeThickness="1.5"
+                                       RadiusX="6"
+                                       RadiusY="6"
+                                       Margin="10 2 10 2"/> 
+
+                        </Grid>
+                    </Grid>
+
+
                 </Grid>
 
             </Grid>

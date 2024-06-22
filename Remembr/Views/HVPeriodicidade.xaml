@@ -31,8 +31,9 @@
                               FontSize="20"
                               Height="35"
                               Width="250"
-                              IsChecked="True"
-                              Style="{StaticResource {x:Type ToggleButton}}" Checked="BotaoDesativado_Checked"/>
+                              IsChecked="True"                                                         
+                             Checked="BotaoDesativado_Checked"
+                             Style="{StaticResource botaofeio}"/>
                 <RadioButton Content="Diária"
                              Grid.Row="1"
                               x:Name="BotaoDiario"
@@ -40,7 +41,7 @@
                               FontSize="20"
                               Height="35"
                               Width="250"
-                              Style="{StaticResource {x:Type ToggleButton}}" Checked="BotaoDiario_Checked"/>
+                              Style="{StaticResource botaofeio}" Checked="BotaoDiario_Checked"/>
                 <RadioButton Content="Mensal"
                               Grid.Row="3"
                               x:Name="BotaoMensal"
@@ -48,7 +49,7 @@
                               FontSize="20"
                               Height="35"
                               Width="250"
-                              Style="{StaticResource {x:Type ToggleButton}}" Checked="BotaoMensal_Checked"/>               
+                              Style="{StaticResource botaofeio}" Checked="BotaoMensal_Checked"/>               
                 <RadioButton Content="Semanal"
                               Grid.Row="2"
                               x:Name="BotaoSemanal"
@@ -56,7 +57,7 @@
                               FontSize="20"
                               Height="35"
                               Width="250"
-                              Style="{StaticResource {x:Type ToggleButton}}" Checked="BotaoSemanal_Checked"/>
+                              Style="{StaticResource botaofeio}" Checked="BotaoSemanal_Checked"/>
                 <RadioButton Content="Anual"
                               Grid.Row="4"
                               x:Name="BotaoAnual"
@@ -64,7 +65,7 @@
                               FontSize="20"
                               Height="35"
                               Width="250"
-                              Style="{StaticResource {x:Type ToggleButton}}" Checked="BotaoAnual_Checked"/>
+                              Style="{StaticResource botaofeio}" Checked="BotaoAnual_Checked"/>
 
 
 

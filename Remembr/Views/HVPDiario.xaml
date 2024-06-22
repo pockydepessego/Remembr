@@ -10,7 +10,8 @@
              d:DesignHeight="235" 
              d:DesignWidth="321">
 
-    <Border Background="#FFEBEBEB">
+
+    <Border Background="#FFEBEBEB" CornerRadius="15">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.2*"/>
@@ -38,16 +39,25 @@
                            TextWrapping="Wrap"
                            Foreground="#FF3F3F3F"/>
 
+                <Rectangle Stroke="#FF3F3F3F"
+                           StrokeThickness="1.5"
+                           RadiusX="6"
+                           RadiusY="6"
+                           Margin="8"
+                           Grid.Column="2"/>
+
                 <xctk:IntegerUpDown x:Name="nDias"
                                     Grid.Column="2"
                                     Minimum="1"
+                                    Maximum="99"
                                     Value="1"
-                                    Margin="10" Background="{x:Null}"
-                                    BorderBrush="#FF3F3F3F"
+                                    Margin="12" Background="{x:Null}"
+                                    BorderBrush="Transparent"
                                     BorderThickness="1"
                                     Foreground="#FF3F3F3F"
+                                    FontSize="18"
                                     FontFamily="{StaticResource MentoneLig}"
-                                    HorizontalContentAlignment="Center"
+                                    HorizontalContentAlignment="Left"
                                     VerticalContentAlignment="Center"
                                     ValueChanged="nDias_ValueChanged"/>
 
@@ -74,14 +84,27 @@
                            TextWrapping="Wrap"
                            Foreground="#FF3F3F3F"/>
 
+            <Rectangle Stroke="#FF3F3F3F"
+                           StrokeThickness="1.5"
+                           RadiusX="6"
+                           RadiusY="6"
+                           Margin="52 5"
+                           Grid.Row="3"
+                       Fill="White"/>
+            
             <DatePicker Grid.Row="3"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
-                        Margin="20 10"
+                        Margin="56 10"
                         Background="White"
                         VerticalContentAlignment="Center"
-                        BorderBrush="#FF3F3F3F"
-                        BorderThickness="1"/>
+                        BorderBrush="{x:Null}"
+                        BorderThickness="0"
+                        Style="{DynamicResource DatePickerStyle1}"
+                        >
+            </DatePicker>
+
+
 
         </Grid>
     </Border>
