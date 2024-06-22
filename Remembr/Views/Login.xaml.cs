@@ -29,14 +29,14 @@ namespace Remembr.Views
             InitializeComponent();
             MVM = (MainVM)Application.Current.MainWindow.DataContext;
 
-            if (MVM.gPerfil == null)
+            if (MVM.GPerfil == null)
             {
                 MessageBox.Show("Erro de perfil");
                 App.Current.Shutdown();
                 return;
             }
 
-            username.Text = MVM.gPerfil.Nome;
+            username.Text = MVM.GPerfil.Nome;
 
         }
 
@@ -44,12 +44,12 @@ namespace Remembr.Views
         {
             var salt = File.ReadAllBytes(Path.Combine(MVM.AppData, "rmbrs"));
 
-            if (salt == null || MVM.gPerfil == null || MVM.gPerfil.Password == null) {
+            if (salt == null || MVM.GPerfil == null || MVM.GPerfil.Password == null) {
                 MessageBox.Show("Erro de perfil");
                 return;
             }
 
-            if (MVM.VerifyPassword(txtPassword.Password, MVM.gPerfil.Password, salt))
+            if (MVM.VerifyPassword(txtPassword.Password, MVM.GPerfil.Password, salt))
             {
                 MVM.ChangeView("HomeTarefas");
             }

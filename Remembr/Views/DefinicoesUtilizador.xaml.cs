@@ -18,16 +18,16 @@ namespace Remembr.Views
         {
             InitializeComponent();
             MVM = (MainVM)Application.Current.MainWindow.DataContext;
-            if (MVM.gPerfil == null)
+            if (MVM.GPerfil == null)
             {
                 MessageBox.Show("Erro de perfil");
                 App.Current.Shutdown();
                 return;
             }
-            pfp.ImageSource = MVM.gPerfil.Fotografia;
-            pfp2.ImageSource = MVM.gPerfil.Fotografia;
-            Nomeutilizadorchanged.Text = MVM.gPerfil.Nome;
-            EmailChanged.Text = MVM.gPerfil.Email;
+            pfp.ImageSource = MVM.GPerfil.Fotografia;
+            pfp2.ImageSource = MVM.GPerfil.Fotografia;
+            Nomeutilizadorchanged.Text = MVM.GPerfil.Nome;
+            EmailChanged.Text = MVM.GPerfil.Email;
 
 
         }
@@ -84,7 +84,7 @@ namespace Remembr.Views
 
         private void GuardarDefiniçoes_Click(object sender, RoutedEventArgs e)
         {
-            if (MVM.gPerfil == null)
+            if (MVM.GPerfil == null)
             {
                 MessageBox.Show("Erro de perfil");
                 return;
@@ -101,14 +101,14 @@ namespace Remembr.Views
                     return;
                 }
                 */
-                MVM.gPerfil.Password = MVM.HashPassword(txtPassword.Password, out var salt);
+                MVM.GPerfil.Password = MVM.HashPassword(txtPassword.Password, out var salt);
                 using var writer = new BinaryWriter(File.OpenWrite(System.IO.Path.Combine(MVM.AppData, "rmbrs")));
                 writer.Write(salt);
             }
 
-            MVM.gPerfil.Nome = Nomeutilizadorchanged.Text;
-            MVM.gPerfil.Email = EmailChanged.Text;
-            MVM.gPerfil.Fotografia = (BitmapImage)pfp2.ImageSource;
+            MVM.GPerfil.Nome = Nomeutilizadorchanged.Text;
+            MVM.GPerfil.Email = EmailChanged.Text;
+            MVM.GPerfil.Fotografia = (BitmapImage)pfp2.ImageSource;
 
             if (!MVM.SavePerfil())
             {

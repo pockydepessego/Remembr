@@ -24,12 +24,12 @@ namespace Remembr.Models
         public bool[]? DiasSemana { get; set; } = [false, false, false, false, false, false, false];
         /* dias da semana para tipo 2, começa na segunda */
         
-        public int tipoMensal { get; set; }
+        public int? tipoMensal { get; set; }
         /* 0: dia original, de y em y meses
          * 1: dia da semana x da zª semana do mês, todos os y em y meses
          * 2: dia da semana x da última semana do mês, todos os y em y meses
          */
-        public int tipoAnual { get; set; }
+        public int? tipoAnual { get; set; }
         /* 0: dia original, de y em y anos
          * 1: dia da semana x da zª semana do mês original, todos os y em y anos
          * 2: dia da semana x da última semana do mês original, todos os y em y anos

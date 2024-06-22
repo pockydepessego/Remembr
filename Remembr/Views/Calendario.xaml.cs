@@ -26,13 +26,13 @@ namespace Remembr.Views
         {
             InitializeComponent();
             MVM = (MainVM)Application.Current.MainWindow.DataContext;
-            if (MVM.gPerfil == null)
+            if (MVM.GPerfil == null)
             {
                 MessageBox.Show("Erro de perfil");
                 App.Current.Shutdown();
                 return;
             }
-            pfp.ImageSource = MVM.gPerfil.Fotografia;
+            pfp.ImageSource = MVM.GPerfil.Fotografia;
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
