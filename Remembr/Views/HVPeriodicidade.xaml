@@ -38,7 +38,7 @@
                               FontSize="20"
                               Height="35"
                               Width="250"
-                              Style="{StaticResource {x:Type ToggleButton}}"/>               
+                              Style="{StaticResource {x:Type ToggleButton}}"/>
                 <RadioButton Content="Semanal"
                               Grid.Row="1"
                               x:Name="BotaoSemanal"
@@ -59,6 +59,7 @@
 
 
             </Grid>
+  
         </Grid>
     </Border>
 </UserControl>

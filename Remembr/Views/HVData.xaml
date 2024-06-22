@@ -148,16 +148,14 @@
                 </Grid>
 
                 <Grid Grid.Column="2">
-                    <Calendar HorizontalAlignment="Center"  
+
+                    <Viewbox Stretch="Uniform">
+                        <Calendar HorizontalAlignment="Center"  
                           Grid.Column="1" 
-                          VerticalAlignment="Center" 
-                          Background="#FFF3F3F3" 
-                          Foreground="#FF3F3F3F"
-                          BorderThickness="2">
-                        <Calendar.BorderBrush>
-                            <SolidColorBrush Color="#FF3F3F3F"/>
-                        </Calendar.BorderBrush>
-                    </Calendar>
+                          VerticalAlignment="Center"
+                          >
+                           </Calendar>
+                    </Viewbox>
                 </Grid>
 
             </Grid>
