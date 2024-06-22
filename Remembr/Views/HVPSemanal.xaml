@@ -29,7 +29,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Repetir a cada"
-                           FontFamily="Mentone"
+                           FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"
                            Grid.Column="1"
                            VerticalAlignment="Center"
@@ -38,20 +38,23 @@
                            TextWrapping="Wrap"
                            Foreground="#FF3F3F3F"/>
 
-                <xctk:IntegerUpDown Grid.Column="2"
+                <xctk:IntegerUpDown x:Name="nSemanas"
+                                    ValueChanged="nSemanas_ValueChanged"
+                                    Grid.Column="2"
                                     Minimum="1"
                                     Value="1"
                                     Margin="10" Background="{x:Null}"
                                     BorderBrush="#FF3F3F3F"
                                     BorderThickness="1"
                                     Foreground="#FF3F3F3F"
-                                    FontFamily="Mentone"
+                                    FontFamily="{StaticResource MentoneLig}"
                                     HorizontalContentAlignment="Center"
                                     VerticalContentAlignment="Center"/>
 
-                <TextBlock Text="Semana"
+                <TextBlock x:Name="plural"
+                           Text="Semana"
                            Grid.Column="3"
-                           FontFamily="Mentone"
+                           FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -72,60 +75,76 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <RadioButton Content="S"
-                             Grid.Column="0"
-                              FontFamily="Mentone"
+                <ToggleButton x:Name="SEGUNDA"
+                              Content="S"
+                              Grid.Column="0"
+                              FontFamily="{StaticResource MentoneLig}"
                               FontSize="20"
                               Margin="5 10"
                               Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-                <RadioButton Content="T"
+                              Foreground="#FF3F3F3F" 
+                              Checked="BotaoSemanal"
+                              Unchecked="BotaoSemanal"/>
+                <ToggleButton x:Name="TERCA" Content="T"
                              Grid.Column="1"
-                              FontFamily="Mentone"
+                              FontFamily="{StaticResource MentoneLig}"
                               FontSize="20"
                               Margin="5 10"
                               Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-                <RadioButton Content="Q"
+                              Foreground="#FF3F3F3F" 
+                              Checked="BotaoSemanal"
+                              Unchecked="BotaoSemanal"/>
+                <ToggleButton x:Name="QUARTA" Content="Q"
                              Grid.Column="2"
-                              FontFamily="Mentone"
+                              FontFamily="{StaticResource MentoneLig}"
                               FontSize="20"
                               Margin="5 10"
                               Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-                <RadioButton Content="Q"
+                              Foreground="#FF3F3F3F" 
+                              Checked="BotaoSemanal"
+                              Unchecked="BotaoSemanal"/>
+                <ToggleButton x:Name="QUINTA" Content="Q"
                              Grid.Column="3"
-                              FontFamily="Mentone"
+                              FontFamily="{StaticResource MentoneLig}"
                               FontSize="20"
                               Margin="5 10"
                               Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-                <RadioButton Content="S"
+                              Foreground="#FF3F3F3F" 
+                              Checked="BotaoSemanal"
+                              Unchecked="BotaoSemanal"/>
+                <ToggleButton x:Name="SEXTA" Content="S"
                              Grid.Column="4"
-                              FontFamily="Mentone"
+                              FontFamily="{StaticResource MentoneLig}"
                               FontSize="20"
                               Margin="5 10"
                               Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-                <RadioButton Content="S"
-                             Grid.Column="5"
-                              FontFamily="Mentone"
+                              Foreground="#FF3F3F3F" 
+                              Checked="BotaoSemanal"
+                              Unchecked="BotaoSemanal"/>
+                <ToggleButton x:Name="SABADO" Content="S"
+                              Grid.Column="5"
+                              FontFamily="{StaticResource MentoneLig}"
                               FontSize="20"
                               Margin="5 10"
                               Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-                <RadioButton Content="D"
+                              Foreground="#FF3F3F3F" 
+                              Checked="BotaoSemanal"
+                              Unchecked="BotaoSemanal"/>
+                <ToggleButton x:Name="DOMINGO" Content="D"
                              Grid.Column="6"
-                              FontFamily="Mentone"
+                              FontFamily="{StaticResource MentoneLig}"
                               FontSize="20"
                               Margin="5 10"
                               Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
+                              Foreground="#FF3F3F3F" 
+                              Checked="BotaoSemanal"
+                              Unchecked="BotaoSemanal"/>
             </Grid>
 
-            <TextBlock Text="Ocorre até"
+            <TextBlock x:Name="ate"
+                           Text="Ocorre até"
                            Grid.Row="3"
-                           FontFamily="Mentone"
+                           FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"

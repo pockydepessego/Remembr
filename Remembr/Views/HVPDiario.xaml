@@ -17,7 +17,6 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1">
@@ -31,7 +30,7 @@
 
                 <TextBlock Text="Repetir a cada"
                            Grid.Column="1"
-                           FontFamily="Mentone"
+                           FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -39,20 +38,22 @@
                            TextWrapping="Wrap"
                            Foreground="#FF3F3F3F"/>
 
-                <xctk:IntegerUpDown Grid.Column="2"
+                <xctk:IntegerUpDown x:Name="nDias"
+                                    Grid.Column="2"
                                     Minimum="1"
                                     Value="1"
                                     Margin="10" Background="{x:Null}"
                                     BorderBrush="#FF3F3F3F"
                                     BorderThickness="1"
                                     Foreground="#FF3F3F3F"
-                                    FontFamily="Mentone"
+                                    FontFamily="{StaticResource MentoneLig}"
                                     HorizontalContentAlignment="Center"
-                                    VerticalContentAlignment="Center"/>
+                                    VerticalContentAlignment="Center"
+                                    ValueChanged="nDias_ValueChanged"/>
 
-                <TextBlock Text="Dia"
+                <TextBlock x:Name="plural" Text="Dia"
                            Grid.Column="3"
-                           FontFamily="Mentone"
+                           FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -62,72 +63,10 @@
 
             </Grid>
 
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <RadioButton Content="S"
-                             Grid.Column="0"
-                              FontFamily="Mentone"
-                              FontSize="20"
-                              Margin="5 10"
-                              Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"
-                             />
-                <RadioButton Content="T"
-                             Grid.Column="1"
-                              FontFamily="Mentone"
-                              FontSize="20"
-                              Margin="5 10"
-                              Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-                <RadioButton Content="Q"
-                             Grid.Column="2"
-                              FontFamily="Mentone"
-                              FontSize="20"
-                              Margin="5 10"
-                              Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-                <RadioButton Content="Q"
-                             Grid.Column="3"
-                              FontFamily="Mentone"
-                              FontSize="20"
-                              Margin="5 10"
-                              Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-                <RadioButton Content="S"
-                             Grid.Column="4"
-                              FontFamily="Mentone"
-                              FontSize="20"
-                              Margin="5 10"
-                              Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-                <RadioButton Content="S"
-                             Grid.Column="5"
-                              FontFamily="Mentone"
-                              FontSize="20"
-                              Margin="5 10"
-                              Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-                <RadioButton Content="D"
-                             Grid.Column="6"
-                              FontFamily="Mentone"
-                              FontSize="20"
-                              Margin="5 10"
-                              Style="{StaticResource {x:Type ToggleButton}}"
-                             Foreground="#FF3F3F3F"/>
-            </Grid>
-
-            <TextBlock Text="Ocorre todos os dias até"
-                           Grid.Row="3"
-                           FontFamily="Mentone"
+            <TextBlock x:Name="ate"
+                        Text="Ocorre todos os dias até"
+                           Grid.Row="2"
+                           FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
@@ -135,7 +74,7 @@
                            TextWrapping="Wrap"
                            Foreground="#FF3F3F3F"/>
 
-            <DatePicker Grid.Row="4"
+            <DatePicker Grid.Row="3"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         Margin="20 10"
