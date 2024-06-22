@@ -71,25 +71,119 @@
                            Margin="10"
                            Opacity="0.8"/>
 
-            <Image Grid.Column="1"
-                       x:Name="pastata"
-                       Source="/Resources/Images/pastata.png"
-                       Margin="20"/>
+            <Grid Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.18*"/>
+                        <RowDefinition Height="0.8*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.16*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.16*"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Grid.Column="2"
+                               Grid.Row="1"
+                               Fill="#89C762"                               
+                               RadiusX="10"
+                               RadiusY="10"
+                               Margin="0 0 5 0"/>
 
-            <Image Grid.Column="1"
-                       x:Name="pastatt"
-                       Source="/Resources/Images/pastatt.png"
-                       Margin="20"/>
+                    <Rectangle Grid.Row="1"
+                               Grid.Column="3"
+                               Fill="#f16992"                               
+                               RadiusX="10"
+                               RadiusY="10"
+                               Margin="0 0 5 0"/>
 
-            <Image Grid.Column="1"
-                       x:Name="pastatee"
-                       Source="/Resources/Images/pastatee.png"
-                       Margin="20"/>
+                    <Rectangle Grid.Row="1"
+                               Grid.Column="4"
+                               Fill="#878888"                               
+                               RadiusX="10"
+                               RadiusY="10"
+                               Margin="0 0 0 0"/>
 
-            <Image Grid.Column="1"
-                       x:Name="pastatpi"
-                       Source="/Resources/Images/pastatpi.png"
-                       Margin="18.5"/>
+                    <Rectangle Grid.Row="1"
+                               Grid.Column="1"
+                               Fill="#FEDC85"                               
+                               RadiusX="10"
+                               RadiusY="10"
+                               Margin="0 0 5 0"/>
+
+                    <Grid Grid.Row="1"
+                          Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="1.5*"/>
+                        </Grid.RowDefinitions>
+                            <Button Content="POR INICIAR"
+                                    x:Name="BotaotarefastI"
+                                    Margin="10 10 15 10"
+                                    FontFamily="Mentone"
+                                    Style="{StaticResource ButtonTarefas}"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch" 
+                                    Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="TarefasPorIniciar"/>
+
+                    </Grid>
+                    <Grid Grid.Row="1"
+                          Grid.Column="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="1.5*"/>
+                        </Grid.RowDefinitions>
+                        <Button Content="EM EXECUÇÃO"
+                                    x:Name="BotaotarefastII"
+                                    Margin="10 10 15 10"
+                                    FontFamily="Mentone"
+                                    Style="{StaticResource ButtonTarefas}"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch" 
+                                    Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="TarefasPorIniciar"/>
+
+                    </Grid>
+                    <Grid Grid.Row="1"
+                          Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="1.5*"/>
+                        </Grid.RowDefinitions>
+                        <Button Content="TERMINADAS"
+                                    x:Name="BotaotarefastIII"
+                                    Margin="10 10 15 10"
+                                    FontFamily="Mentone"
+                                    Style="{StaticResource ButtonTarefas}"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch" 
+                                    Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="TarefasPorIniciar"/>
+
+                    </Grid>
+                    <Grid Grid.Row="1"
+                          Grid.Column="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="1.5*"/>
+                        </Grid.RowDefinitions>
+                        <Button Content="APAGADAS"
+                                    x:Name="BotaotarefastIV"
+                                    Margin="10 10 15 10"
+                                    FontFamily="Mentone"
+                                    Style="{StaticResource ButtonTarefas}"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch" 
+                                    Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="TarefasPorIniciar"/>
+
+                    </Grid>
+
+
+                </Grid>
+
+            </Grid>
+
 
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
@@ -104,6 +198,15 @@
                         <RowDefinition Height="15*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+
+                    <Rectangle Grid.Row="2"
+                               Fill="#FEDC85"
+                               Stroke="#FEDC85"
+                               RadiusX="15"
+                               RadiusY="15"/>
+
+
+                    
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.6*"/>
@@ -114,47 +217,9 @@
                             <ColumnDefinition Width="6.3*"/>
                             <ColumnDefinition Width="1.5*"/>
                             <ColumnDefinition Width="6.5*"/>
-                            <ColumnDefinition Width="1.8*"/>
+                            <ColumnDefinition Width="0.6*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Content="APAGADAS"
-                     x:Name="Botaotarefasta"
-                     Grid.Column="7"
-                     FontFamily="Mentone"
-                     Style="{StaticResource ButtonTarefas}"
-                     VerticalAlignment="Stretch"
-                     HorizontalAlignment="Stretch" 
-                     Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="TarefasApagadas"
-             />
-
-                        <Button Content="TERMINADAS"
-                     x:Name="Botaotarefastt"
-                     Grid.Column="5"
-                     FontFamily="Mentone"
-                     Style="{StaticResource ButtonTarefas}"
-                     VerticalAlignment="Stretch"
-                     HorizontalAlignment="Stretch"
-                     Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="TarefasTerminadas"
-                     />
-
-                        <Button Content="EM EXECUÇÃO"
-                     x:Name="Botaotarefaste"
-                     Grid.Column="3"
-                     FontFamily="Mentone"
-                     Style="{StaticResource ButtonTarefas}"
-                     VerticalAlignment="Stretch"
-                     HorizontalAlignment="Stretch" 
-                     Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="TarefasExec"
-             />
-
-                        <Button Content="POR INICIAR"
-                     x:Name="BotaotarefastI"
-                     Grid.Column="1"
-                     FontFamily="Mentone"
-                     Style="{StaticResource ButtonTarefas}"
-                     VerticalAlignment="Stretch"
-                     HorizontalAlignment="Stretch" 
-                     Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="TarefasPorIniciar"/>
 
                     </Grid>
                 </Grid>

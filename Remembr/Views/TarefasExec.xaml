@@ -101,30 +101,6 @@
                            Margin="10"
                            Opacity="0.8"/>
 
-            <Image Grid.Column="1"
-                       x:Name="pastata"
-                       Source="/Resources/Images/pastata.png"
-                       Margin="20"
-                       Stretch="Uniform"/>
-
-            <Image Grid.Column="1"
-                       x:Name="pastatt"
-                       Source="/Resources/Images/pastatt.png"
-                       Margin="20"
-                   Stretch="Uniform"/>
-
-            <Image Grid.Column="1"
-                       x:Name="pastatpi"
-                       Source="/Resources/Images/pastatpi.png"
-                       Margin="20"
-                   Stretch="Uniform"/>
-
-            <Image Grid.Column="1"
-                       x:Name="pastatee"
-                       Source="/Resources/Images/pastatee.png"
-                       Margin="18.5"
-                   Stretch="Uniform"/>
-
             <Grid Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
