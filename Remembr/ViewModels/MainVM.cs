@@ -599,16 +599,7 @@ namespace Remembr.ViewModels
                     return false;
                 }
 
-                List<Prioridade> basePrioridades =
-                    [
-                        new Prioridade() { Valor = 100, Cor = "#76d074" },
-                        new Prioridade() { Valor = 200, Cor = "#feff00" },
-                        new Prioridade() { Valor = 300, Cor = "#feb022" },
-                        new Prioridade() { Valor = 400, Cor = "#fe3f3f" },
-                    ];
-
-
-                if (GPrioridades == basePrioridades)
+                if (GPrioridades.Count == 4)
                 {
                     return true;
                 }
@@ -730,6 +721,11 @@ namespace Remembr.ViewModels
                 if (GPeriodicidades == null)
                 {
                     return false;
+                }
+
+                if (GPeriodicidades.Count == 0)
+                {
+                    return true;
                 }
 
                 Directory.CreateDirectory(basePath);
