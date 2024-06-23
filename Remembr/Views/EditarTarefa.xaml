@@ -203,7 +203,8 @@
                                 Name="cancelartarefa"
                                 Background="Transparent"
                                 BorderBrush="Transparent"
-                                Padding="15" Click="cancelartarefa_Click">
+                                Padding="15" Click="cancelartarefa_Click"
+                                Template="{DynamicResource ButtonTemplate1}">
                             <Image Source="/Resources/Images/close.png"/>
                         </Button>
 

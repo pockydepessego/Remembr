@@ -203,7 +203,10 @@
                                 Name="cancelartarefa"
                                 Background="Transparent"
                                 BorderBrush="Transparent"
-                                Padding="15" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="62" Click="cancelartarefa_Click">
+                                Padding="15" Grid.ColumnSpan="2" 
+                                HorizontalAlignment="Right" 
+                                Width="62" Click="cancelartarefa_Click"
+                                Template="{DynamicResource ButtonTemplate1}">
                             <Image Source="/Resources/Images/close.png"/>
                         </Button>
 

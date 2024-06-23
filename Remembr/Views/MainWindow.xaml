@@ -85,34 +85,54 @@
                         </Grid.ColumnDefinitions>
                         
                         <!--Botao de fechar-->
-                        <Ellipse x:Name="ButtonClose" Grid.Column="3"
+                        <Button Click="CloseApp_button"
+                                Grid.Column="3"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                Template="{DynamicResource ButtonTemplate1}" Height="40" VerticalAlignment="Top">
+                        <Ellipse x:Name="ButtonClose" 
                             Fill="#FF3D3D3D"
                             Height="20"
                             Width="20"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"  
-                            MouseLeftButtonDown="CloseApp_button"
-                            Style="{StaticResource Closebutton}"/>
+                            />   
+                        </Button>
+
 
                         <!--Botao de minimizar -->
-                        <Ellipse x:Name="BigButton" Grid.Column="2"
+
+                        <Button Click="BigApp_button"
+                                 Grid.Column="2"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                Template="{DynamicResource ButtonTemplate1}" >                                 
+                         <Ellipse x:Name="BigButton" 
                              Fill="#FF787878"
                              Height="20"
                              Width="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center" 
-                             MouseLeftButtonDown="BigApp_button"
-                             Style="{StaticResource Hidebutton}"/>
+                             />                           
+                        </Button>
+
 
                         <!--Botao de minimizar -->
-                        <Ellipse x:Name="HideButton" Grid.Column="1"
+
+                        <Button Click="HideApp_button"
+                                Grid.Column="1"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                Template="{DynamicResource ButtonTemplate1}">                                
+                            <Ellipse x:Name="HideButton" 
                              Fill="#FF787878"
                              Height="20"
                              Width="20"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center" 
-                             MouseLeftButtonDown="HideApp_button"
-                             Style="{StaticResource Hidebutton}"/>
+                             />
+                        </Button>
+
 
                     </Grid>
                 </Grid>

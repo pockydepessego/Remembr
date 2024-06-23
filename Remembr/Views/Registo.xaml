@@ -60,13 +60,16 @@
                                             MouseDown="textNome_MouseDown"/>
                                 <TextBox x:Name="txtNome"
                                          TextChanged="txtNome_TextChanged" 
-                                         Margin="0,0,2,0" 
+                                         Margin="9,0,0,0" 
+                                         VerticalContentAlignment="Center"
                                          Background="{x:Null}" 
                                          BorderBrush="{x:Null}"
                                          SelectionBrush="Purple"
                                          SelectionOpacity="0.2"
                                          Template="{DynamicResource TextBox1}"
-                                         Foreground="#FF3F3F3F"/>
+                                         FontFamily="{StaticResource MentoneLig}"
+                                         Foreground="#3f3f3f"
+                                         FontSize="20"/>
                             </Grid>
                         </Border>
 
@@ -92,10 +95,14 @@
                                          TextChanged="txtemail_TextChanged" 
                                          Grid.ColumnSpan="2" 
                                          Margin="9,0,0,0" 
+                                         VerticalContentAlignment="Center"
                                          Background="{x:Null}" 
                                          BorderBrush="{x:Null}"
                                          SelectionBrush="Purple"
-                                         SelectionOpacity="0.2"/>
+                                         SelectionOpacity="0.2"
+                                         FontFamily="{StaticResource MentoneLig}"
+                                         Foreground="#3f3f3f"
+                                         FontSize="20"/>
                             </Grid>
 
                         </Border>
@@ -124,7 +131,9 @@
                                              SelectionOpacity="0.2" 
                                              BorderBrush="{x:Null}"
                                              Margin="9,0,0,0"
-                                             VerticalContentAlignment="Center"/>
+                                             VerticalContentAlignment="Center"
+                                             Foreground="#3f3f3f"
+                                             FontSize="20"/>
                             </Grid>
                         </Border>
 
@@ -152,6 +161,8 @@
                                              BorderBrush="{x:Null}"
                                              Margin="9 0 0 0"
                                              VerticalContentAlignment="Center"
+                                             Foreground="#3f3f3f"
+                                             FontSize="20"                                             
                                              Style="{DynamicResource PasswordBoxStyle1}"/>
                             </Grid> 
                         </Border>

@@ -23,7 +23,7 @@ namespace Remembr
         }
 
 
-        private void CloseApp_button(object sender, MouseButtonEventArgs e)
+        private void CloseApp_button(object sender, RoutedEventArgs e)
         {
 
             if (!Directory.Exists(MVM.basePath)) { Close(); return; }
@@ -38,7 +38,7 @@ namespace Remembr
             Close();
         }
 
-        private void HideApp_button(object sender, MouseButtonEventArgs e)
+        private void HideApp_button(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
@@ -52,7 +52,7 @@ namespace Remembr
             }
         }
 
-        private void BigApp_button(object sender, MouseButtonEventArgs e)
+        private void BigApp_button(object sender, RoutedEventArgs e)
         {
             if (WindowState == WindowState.Normal)
             {
@@ -68,6 +68,19 @@ namespace Remembr
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
