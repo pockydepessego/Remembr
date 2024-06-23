@@ -26,5 +26,19 @@ namespace Remembr.Views
         {
             InitializeComponent();
         }
+
+        public WAlerta(Models.Notificacao n)
+        {
+            InitializeComponent();
+            
+            if (n == null)
+            {
+                MessageBox.Show("Erro ao carregar notificação");
+                return;
+            }
+            mensagem.Text = n.Mensagem;
+
+
+        }
     }
 }

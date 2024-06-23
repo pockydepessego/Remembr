@@ -14,6 +14,8 @@ using System.Security.Cryptography;
 using System.Windows.Documents.DocumentStructures;
 using Syncfusion.UI.Xaml.Gauges;
 using System.Diagnostics;
+using System.Threading;
+using Remembr.Views;
 
 
 namespace Remembr.ViewModels
@@ -196,6 +198,7 @@ namespace Remembr.ViewModels
 
                     } else
                     {
+                        StartPeriodicCheck();
                         ChangeView("HomeTarefas");
                     }
                 
@@ -1042,6 +1045,110 @@ namespace Remembr.ViewModels
             }
         }
 
+
+
+
+
+        private bool _isRunning;
+        private SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
+
+        private async void StartPeriodicCheck()
+        {
+            _isRunning = true;
+            while (_isRunning)
+            {
+                await Task.Delay(TimeSpan.FromMinutes(1));
+                await CheckAsync();
+            }
+        }
+
+        private async Task CheckAsync()
+        {
+            await _semaphore.WaitAsync();
+            try
+            {
+                DateTime agora = DateTime.Now;
+
+                if (GTarefas == null || GNotificacoes == null)
+                {
+                    return;
+                }
+
+
+                for (int i = 0; i < GTarefas.Count; i++)
+                {
+                    Tarefa t = GTarefas[i];
+                    TimeSpan diff = t.DataInicio - agora;
+                    TimeSpan pdiff = agora - t.DataInicio;
+
+                    if (t.AlertaAntecipacao != null)
+                    {
+                        if (diff <= t.AlertaAntecipacao.Tempo && diff.TotalSeconds > 0 && t.Estado != 2 && t.Estado != -1)
+                        {
+                            
+                            if (GNotificacoes.Any(n => n.IDOriginal == t.ID && n.Tipo == 1))
+                            {
+                                continue;
+                            }
+
+                            Notificacao notA = new Notificacao()
+                            {
+                                Mensagem = "ALERTA ANTECIPAÇÃO: A hora prevista para a tarefa " + t.Titulo + " está quase a chegar.",
+                                Data = DateTime.Now,
+                                Tipo = 1,
+                                Lida = false,
+                                IDOriginal = t.ID
+                            };
+
+                            GNotificacoes.Add(notA);
+
+                            var WA = new WAlerta(notA);
+                            WA.Show();
+                            
+                        }
+                    }
+
+                    if (t.AlertaAtraso != null)
+                    {
+                        if (pdiff >= t.AlertaAtraso.Tempo && pdiff.TotalSeconds > 0 && t.Estado != 2 && t.Estado != -1)
+                        {
+                            
+                            if (GNotificacoes.Any(n => n.IDOriginal == t.ID && n.Tipo == 2))
+                            {
+                                continue;
+                            }
+
+                            Notificacao notE = new Notificacao()
+                            {
+                                Mensagem = "ALERTA EXECUÇÃO: A hora prevista para a tarefa " + t.Titulo + " já passou.",
+                                Data = DateTime.Now,
+                                Tipo = 2,
+                                Lida = false,
+                                IDOriginal = t.ID
+                            };
+
+                            GNotificacoes.Add(notE);
+
+                            var WA = new WAlerta(notE);
+                            WA.Show();
+
+                        }
+                    }
+
+                    SaveNotifs();
+
+                }
+            }
+            finally
+            {
+                _semaphore.Release();
+            }
+        }
+
+        public void StopPeriodicCheck()
+        {
+            _isRunning = false;
+        }
 
     }
 }
