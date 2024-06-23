@@ -1009,6 +1009,10 @@
         <!--Fim Estilo combobox-->
 
 
+        <!--SYNCFUSION SCHEDULER-->
+        
+        
+        <!--FIM-->
 
         <DataTemplate DataType="{x:Type vm:RegistoVM}">
             <v:Registo/>
