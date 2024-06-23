@@ -62,10 +62,11 @@
                                          TextChanged="txtNome_TextChanged" 
                                          Margin="0,0,2,0" 
                                          Background="{x:Null}" 
+                                         BorderBrush="{x:Null}"
                                          SelectionBrush="Purple"
                                          SelectionOpacity="0.2"
                                          Template="{DynamicResource TextBox1}"
-                                         Style="{StaticResource TextBox}" Foreground="#FF3F3F3F"/>
+                                         Foreground="#FF3F3F3F"/>
                             </Grid>
                         </Border>
 
@@ -90,11 +91,11 @@
                                          Template="{DynamicResource TextBox1}"
                                          TextChanged="txtemail_TextChanged" 
                                          Grid.ColumnSpan="2" 
-                                         Margin="0,0,2,0" 
+                                         Margin="9,0,0,0" 
                                          Background="{x:Null}" 
+                                         BorderBrush="{x:Null}"
                                          SelectionBrush="Purple"
-                                         SelectionOpacity="0.2"
-                                         Style="{StaticResource TextBox}"/>
+                                         SelectionOpacity="0.2"/>
                             </Grid>
 
                         </Border>
@@ -122,7 +123,8 @@
                                              SelectionBrush="Purple"
                                              SelectionOpacity="0.2" 
                                              BorderBrush="{x:Null}"
-                                             Margin="0,0,0,0"/>
+                                             Margin="9,0,0,0"
+                                             VerticalContentAlignment="Center"/>
                             </Grid>
                         </Border>
 
@@ -148,7 +150,9 @@
                                              SelectionBrush="Purple"
                                              SelectionOpacity="0.2"
                                              BorderBrush="{x:Null}"
-                                             Style="{DynamicResource PasswordBoxStyle1}" Margin="0,0,0,0"/>
+                                             Margin="9 0 0 0"
+                                             VerticalContentAlignment="Center"
+                                             Style="{DynamicResource PasswordBoxStyle1}"/>
                             </Grid> 
                         </Border>
 
