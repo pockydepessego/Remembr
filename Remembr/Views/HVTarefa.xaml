@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="140" d:DesignWidth="630"
              xmlns:svgc="http://sharpvectors.codeplex.com/svgc/">
-    <Border BorderBrush="#FFEBEBEB" BorderThickness="6" CornerRadius="15">
+    <Border BorderBrush="#FFEBEBEB" Background="#FFEBEBEB" BorderThickness="6" CornerRadius="15">
         <Border BorderBrush="Red" BorderThickness="3" CornerRadius="15" Background="#FFEBEBEB" x:Name="border">
 
         <Grid>
@@ -20,7 +20,16 @@
                            HorizontalAlignment="center"                       
                            VerticalAlignment="Center" FontWeight="Bold"/>
             </Grid>
-            <Grid x:Name="gr" >
+            <Grid x:Name="movida" Visibility="Hidden">
+                <TextBlock                         
+                        Text="Tarefa movida."                               
+                        FontFamily="{StaticResource MentoneLig}"                              
+                        FontSize="16"                       
+                        Foreground="#FF6C6C6C"                       
+                        HorizontalAlignment="center"                       
+                        VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
+                <Grid x:Name="gr" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="10*"/>

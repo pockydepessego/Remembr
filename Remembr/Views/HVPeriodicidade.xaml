@@ -9,7 +9,7 @@
              d:DesignHeight="235" d:DesignWidth="643"
              Background="Transparent"
             >
-    <Border BorderBrush="#FF3F3F3F" BorderThickness="2" CornerRadius="15" Background="#FFEBEBEB">
+    <Border x:Name="tudo" BorderBrush="#FF3F3F3F" BorderThickness="2" CornerRadius="15" Background="#FFEBEBEB">
 
         <Grid>
             <Grid.ColumnDefinitions>

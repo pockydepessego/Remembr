@@ -53,7 +53,6 @@ namespace Remembr.Views
                 data.Text = t.DataInicio.ToString("dd/MM/yyyy") + " das " + t.DataInicio.ToString("HH:mm") + " até às " + ((DateTime)t.DataFim).ToString("HH:mm");
             }
 
-
             if (new List<int> { 100, 200, 300, 400 }.Contains(t.valorPrio))
             {
                 switch (t.valorPrio)
@@ -109,6 +108,16 @@ namespace Remembr.Views
             }
             border.BorderBrush = new BrushConverter().ConvertFromString(prio.Cor) as SolidColorBrush;
 
+            if (t.Estado == 0 || t.Estado == 1)
+            {
+                PassarTarefa.Visibility = Visibility.Visible;
+                PassarTarefa.IsEnabled = true;
+            }
+            else { 
+                PassarTarefa.Visibility = Visibility.Hidden;
+                PassarTarefa.IsEnabled = false;
+            }
+
 
         }
 
@@ -144,12 +153,52 @@ namespace Remembr.Views
 
         private void EditarTarefa_Click(object sender, RoutedEventArgs e)
         {
+            if (MVM == null)
+            {
+                MessageBox.Show("erro MVM");
+                return;
+            }
+            if (MVM.GTarefas == null)
+            {
+                MessageBox.Show("erro tarefas");
+                return;
+            }
+            if (task == null)
+            {
+                MessageBox.Show("erro tarefa");
+                return;
+            }
 
+            MVM.editarTarefa(task.ID);
         }
 
         private void PassarTarefa_Click(object sender, RoutedEventArgs e)
         {
+            if (MVM == null)
+            {
+                MessageBox.Show("erro MVM");
+                return;
+            }
+            if (MVM.GTarefas == null)
+            {
+                MessageBox.Show("erro tarefas");
+                return;
+            }
 
+            if (task == null)
+            {
+                MessageBox.Show("erro tarefa");
+                return;
+            }
+
+            if (task.Estado == 0 || task.Estado == 1)
+            {
+                task.Estado += 1;
+            }
+
+            MVM.SaveTarefas();
+            gr.Visibility = Visibility.Hidden;
+            movida.Visibility = Visibility.Visible;
         }
     }
 }

@@ -34,8 +34,18 @@ namespace Remembr.ViewModels
         public RelayCommand<string> ChangeViewCommand { get; }
 
         private BaseVM? lastVM;
+
+        public void editarTarefa(string idTarefa)
+        {
+            if (CurrentViewModel != null)
+                lastVM = CurrentViewModel;
+            CurrentEditarTarefa = idTarefa;
+            CurrentViewModel = new EditarTarefaVM();
+        }
+        public string? CurrentEditarTarefa { get; set; } = null;
         public void ChangeView(string viewName)
         {
+            CurrentEditarTarefa = null;
             if (viewName == "BACK")
             {
                 if (lastVM == null)

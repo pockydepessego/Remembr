@@ -9,6 +9,9 @@ namespace Remembr.ViewModels
 {
     class EditarTarefaVM : BaseVM
     {
+        public EditarTarefaVM()
+        {
+        }
 
     }
 }

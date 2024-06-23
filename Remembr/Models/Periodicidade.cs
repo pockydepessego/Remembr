@@ -37,6 +37,18 @@ namespace Remembr.Models
 
         public string[]? IDChildTarefas { get; set; }
 
+        public void copy(Periodicidade p)
+        {
+            IDTarefaOriginal = p.IDTarefaOriginal;
+            DataOriginal = p.DataOriginal;
+            DataLimite = p.DataLimite;
+            Tipo = p.Tipo;
+            intervaloRepeticao = p.intervaloRepeticao;
+            DiasSemana = p.DiasSemana;
+            tipoMensal = p.tipoMensal;
+            tipoAnual = p.tipoAnual;
+            IDChildTarefas = p.IDChildTarefas;
+        }
 
     }
 }

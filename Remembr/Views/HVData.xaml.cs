@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Remembr.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,25 @@ namespace Remembr.Views
             InitializeComponent();
             tpInicio.IsEnabled = false;
             tpFim.IsEnabled = false;
+
+        }
+
+        public HVData(Tarefa t)
+        {
+            InitializeComponent();
+
+            if (t.FullDia)
+            {
+                CheckTodoDia.IsChecked = true;
+                calendario.SelectedDate = t.DataInicio;
+            }
+            else
+            {
+                CheckTodoDia.IsChecked = false;
+                calendario.SelectedDate = t.DataInicio;
+                tpInicio.Value = t.DataInicio;
+                tpFim.Value = t.DataFim;
+            }
 
         }
 

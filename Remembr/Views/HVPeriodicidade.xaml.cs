@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Remembr.Models;
 using Remembr.ViewModels;
 using Syncfusion.UI.Xaml.Schedule;
 
@@ -33,15 +34,17 @@ namespace Remembr.Views
         public HVPMensal? hvPMensalV;
         public HVPAnual? hvPAnualV;
         public HVPDesativado? hvPDesativadoV;
+
         public HVPeriodicidade()
         {
             InitializeComponent();
             MessageBox.Show("view periodicidade iniciada sem datetime");
 
+
         }
         public HVPeriodicidade(DateTime dataInicial)
         {
-            InitializeComponent();
+            InitializeComponent(); 
 
             timeInicial = dataInicial;
             perSelecionada = 0;
@@ -55,6 +58,91 @@ namespace Remembr.Views
 
         }
 
+        public HVPeriodicidade(DateTime dataInicial, Tarefa t)
+        {
+            InitializeComponent();
+            MainVM MVM = (MainVM)Application.Current.MainWindow.DataContext;
+
+            timeInicial = dataInicial;
+
+            if (!t.IsTarefaOriginal)
+            {
+                tudo.IsEnabled = false;
+                MessageBox.Show("Não é possível editar a periodicidade de tarefas criadas por periodicidade."); return;
+            }
+
+            if (t.idPeriodicidade == null)
+            {
+                perSelecionada = 0;
+                if (hvPDesativadoV == null)
+                {
+                    hvPDesativadoV = new HVPDesativado(dataInicial);
+                    hvPDesativadoV.DataContext = new HVPDesativadoVM();
+                }
+                cc.Content = hvPDesativadoV;
+
+            }
+            else
+            {
+                var idP = t.idPeriodicidade;
+                if (MVM.GPeriodicidades == null)
+                {
+                    MessageBox.Show("erro periodicidades");
+                    return;
+                }
+                var p = MVM.GPeriodicidades.Where(p => p.ID == idP).FirstOrDefault();
+                if (p == null)
+                {
+                    MessageBox.Show("configuração existente de periodicidade não encontrada");
+                    perSelecionada = 0;
+                    if (hvPDesativadoV == null)
+                    {
+                        hvPDesativadoV = new HVPDesativado(dataInicial);
+                        hvPDesativadoV.DataContext = new HVPDesativadoVM();
+                    }
+                    cc.Content = hvPDesativadoV;
+                    return;
+                }
+                
+                switch (p.Tipo)
+                {
+                    case 1:
+                        perSelecionada = 1;
+                        BotaoDiario.IsChecked = true;
+                        hvPDiarioV = new HVPDiario(dataInicial, p);
+                        hvPDiarioV.DataContext = new HPVDiarioVM();
+                        cc.Content = hvPDiarioV;
+                        break;
+                    case 2:
+                        perSelecionada = 2;
+                        BotaoSemanal.IsChecked = true;
+                        hvPSemanalV = new HVPSemanal(dataInicial, p);
+                        hvPSemanalV.DataContext = new HVPSemanalVM();
+                        cc.Content = hvPSemanalV;
+                        break;
+
+                    case 3:
+                        perSelecionada = 3;
+                        BotaoMensal.IsChecked = true;
+                        hvPMensalV = new HVPMensal(dataInicial, p);
+                        hvPMensalV.DataContext = new HVPMensalVM();
+                        cc.Content = hvPMensalV;
+                        break;
+                    case 4:
+                        perSelecionada = 4;
+                        BotaoAnual.IsChecked = true;
+                        hvPAnualV = new HVPAnual(dataInicial, p);
+                        hvPAnualV.DataContext = new HVPAnualVM();
+                        cc.Content = hvPAnualV;
+                        break;
+
+                }
+                
+
+
+            }
+
+        }
 
         private void BotaoDiario_Checked(object sender, RoutedEventArgs e)
         {

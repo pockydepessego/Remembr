@@ -53,6 +53,43 @@ namespace Remembr.Views
 
         }
 
+        public HVPMensal(DateTime dataInicial, Models.Periodicidade p)
+        {
+            InitializeComponent();
+            this.dataInicial = dataInicial;
+
+            diax.Content = "No dia " + dataInicial.Day.ToString();
+            zdia.Content = "N" + HVPeriodicidade.Gender((int)dataInicial.DayOfWeek) + " " + HVPeriodicidade.CardinalSemana(HVPeriodicidade.WOM(dataInicial), (int)dataInicial.DayOfWeek) + " " + HVPeriodicidade.DiaSemana(dataInicial.DayOfWeek);
+
+            nMes.Value = p.intervaloRepeticao;
+            dataate.SelectedDate = p.DataLimite;
+
+            switch (p.tipoMensal)
+            {
+                case 1:
+                    diax.IsChecked = true;
+                    break;
+                case 2:
+                    zdia.IsChecked = true;
+                    break;
+                default:
+                    break;
+            }
+
+            if (nMes.Value == 1)
+            {
+                plural.Text = "Mes";
+
+                ate.Text = "Ocorre todas os meses até";
+            }
+            else
+            {
+                plural.Text = "Meses";
+                ate.Text = "Ocorre de " + nMes.Value + " em " + nMes.Value + " meses até";
+            }
+
+        }
+
         private void nMes_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (nMes.Value == null || plural == null || ate == null)

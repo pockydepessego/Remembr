@@ -1,4 +1,5 @@
-﻿using Remembr.ViewModels;
+﻿using Remembr.Models;
+using Remembr.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,45 @@ namespace Remembr.Views
 
 
         }
+
+        public HVNovaPrioridade(int valorPrio)
+        {
+            InitializeComponent();
+            MVM = (MainVM)Application.Current.MainWindow.DataContext;
+
+            combo.Items.Add("Nova prioridade");
+
+            if (MVM.GPrioridades == null) return;
+
+            var sortedPrioridades = MVM.GPrioridades.OrderBy(x => x.Valor).ToList();
+            foreach (var item in sortedPrioridades)
+            {
+                if (new List<int> { 100, 200, 300, 400 }.Contains(item.Valor))
+                {
+                    continue;
+                }
+
+                combo.Items.Add(item.Valor);
+            }
+
+            combo.SelectedIndex = 0;
+            gridnovaprio.IsEnabled = true;
+
+
+
+
+            if (new List<int> { 100, 200, 300, 400 }.Contains(valorPrio))
+            {
+                combo.SelectedIndex = 0;
+                gridnovaprio.IsEnabled = true;
+            } else
+            {
+                combo.SelectedItem = valorPrio;
+                gridnovaprio.IsEnabled = false;
+            }
+
+        }
+
 
         private void combo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
