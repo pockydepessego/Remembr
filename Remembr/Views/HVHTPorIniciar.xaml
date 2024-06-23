@@ -52,7 +52,6 @@
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
             <Setter Property="VerticalContentAlignment" Value="Stretch"/>
             <Setter Property="Margin" Value="0,0,0,5"/>
-            <Setter Property="Height" Value="140"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
@@ -62,9 +61,13 @@
                             <ContentPresenter />
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsSelected" Value="true">
+                            <Trigger Property="IsMouseOver" Value="true">
                                 <Setter TargetName="_Border" Property="Background" Value="Transparent"/>
                                 <Setter Property="Opacity" Value="0.9"/>
+                            </Trigger>                            
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="_Border" Property="Background" Value="Transparent"/>
+                                <Setter Property="Opacity" Value="0.95"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -77,16 +80,9 @@
 
     <Border Background="#FEDC85" CornerRadius="0,0,15,15">   
         <Grid PreviewMouseDown="Grid_MouseDown">
-            <ListBox Style="{DynamicResource ListBoxStyle1}"  Background="Transparent" x:Name="listinha" Margin="10">
-
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-                        <Setter Property="Margin" Value="0,0,0,5"/>
-
-                    </Style>
-                </ListBox.ItemContainerStyle>
+            <ListBox Style="{DynamicResource ListBoxStyle1}"  
+                     ItemContainerStyle="{DynamicResource _ListBoxItemStyle}"
+                     Background="Transparent" x:Name="listinha" Margin="10">
             </ListBox>
         </Grid>
     </Border>
