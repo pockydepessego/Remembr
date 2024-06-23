@@ -8,16 +8,19 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
 
-    <Border Background="#FEDC85" CornerRadius="0,0,15,15" >
+    <Border Background="#FEDC85" CornerRadius="0,0,15,15">
         <Grid>
-            <ListBox Background="Transparent" Margin="15" x:Name="listinha">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid HorizontalAlignment="Stretch" Background="red">
-                            <local:HVTarefa HorizontalAlignment="Stretch"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+            <ListBox Background="Transparent" Margin="10" x:Name="listinha">
+
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Margin" Value="0,0,0,5"/>
+                        <Setter Property="Height" Value="140"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+
             </ListBox>
         </Grid>
     </Border>

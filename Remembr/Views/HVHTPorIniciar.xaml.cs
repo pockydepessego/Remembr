@@ -36,15 +36,15 @@ namespace Remembr.Views
                 return;
             }
 
+            
             foreach (var tarefa in MVM.GTarefas)
             {
-                var cc = new HVTarefa();
+                var cc = new HVTarefa(tarefa);
                 cc.DataContext = tarefa;
                 listaCC.Add(cc);
             }
             
             listinha.ItemsSource = listaCC;
-
 
         }
     }

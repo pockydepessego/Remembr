@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Remembr.Models;
+using Remembr.ViewModels;
+using Syncfusion.UI.Xaml.CellGrid.Styles;
+using Syncfusion.UI.Xaml.Diagram;
+using Syncfusion.Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +25,89 @@ namespace Remembr.Views
     /// </summary>
     public partial class HVTarefa : UserControl
     {
+        MainVM? MVM;
         public HVTarefa()
         {
             InitializeComponent();
+            MessageBox.Show("hvtarefa chamado sem tarefa");
         }
+
+        public HVTarefa(Tarefa t)
+        {
+            InitializeComponent();
+            MVM = (MainVM)Application.Current.MainWindow.DataContext;
+            nomeTarefa.Text = t.Titulo;
+
+            if (t.FullDia)
+            {
+                data.Text = t.DataInicio.ToString("dd/MM/yyyy");
+            } else if (t.DataFim == null)
+            {
+                data.Text = t.DataInicio.ToString("dd/MM/yyyy") + " às " + t.DataInicio.ToString("HH:mm");
+            } else
+            {
+                data.Text = t.DataInicio.ToString("dd/MM/yyyy") + " das " + t.DataInicio.ToString("HH:mm") + " até às " + ((DateTime)t.DataFim).ToString("HH:mm");
+            }
+
+
+            if (new List<int> { 100, 200, 300, 400 }.Contains(t.valorPrio))
+            {
+                switch (t.valorPrio)
+                {
+                    case 100:
+                        prioridade.Text = "Sem Importância";
+                        break;
+                    case 200:
+                        prioridade.Text = "Pouco Importante";
+                        break;
+                    case 300:
+                        prioridade.Text = "Importante";
+                        break;
+                    case 400:
+                        prioridade.Text = "Prioritária";
+                        break;
+                }
+
+            } else
+            {
+                prioridade.Text = "Prioridade " + t.valorPrio.ToString();
+            }
+
+
+            if (t.Descricao == null)
+            {
+                griddesc.Children.Clear();
+                gr.RowDefinitions.Clear();
+                gr.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+                gr.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(10, GridUnitType.Star) });
+                gr.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(10, GridUnitType.Star) });
+                gr.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+                Grid.SetRow(grid3, 2);
+            }
+            else
+            {
+                desc.Text = t.Descricao;
+            }
+
+
+
+            if (MVM.GPrioridades == null)
+            {
+                MessageBox.Show("erro prioridades");
+                return;
+            }
+            var prio = MVM.GPrioridades.FirstOrDefault(n => n.Valor == t.valorPrio);
+
+            if (prio == null)
+            {
+                MessageBox.Show("erro prioridade");
+                return;
+            }
+            border.BorderBrush = new BrushConverter().ConvertFromString(prio.Cor) as SolidColorBrush;
+
+
+        }
+
+
     }
 }

@@ -8,32 +8,34 @@
              d:DesignHeight="140" d:DesignWidth="630"
              xmlns:svgc="http://sharpvectors.codeplex.com/svgc/">
 
-    <Border BorderBrush="Red" BorderThickness="2" CornerRadius="15" Background="#FFEBEBEB">
-        
-        <Grid>
+    <Border BorderBrush="Red" BorderThickness="3" CornerRadius="15" Background="#FFEBEBEB" x:Name="border">
+
+        <Grid x:Name="gr">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="1*"/>
-                
+
             </Grid.RowDefinitions>
 
-            <Border BorderBrush="#FF3F3F3F" 
+            <Grid x:Name="griddesc" Grid.Row="2">
+                <Border BorderBrush="#FF3F3F3F" 
                             BorderThickness="2" 
                             CornerRadius="10"
                         Margin="13 3 15 3"
-                    Grid.Row="2">
+                    >
 
-                <TextBlock Margin="20 0 0 0"                               
+                    <TextBlock Margin="20 0 0 0" x:Name="desc"                         
                            Text="Descrição da Tarefa"                               
                            FontFamily="{StaticResource MentoneLig}"                              
                            FontSize="16"                       
                            Foreground="#FF6C6C6C"                       
                            HorizontalAlignment="Left"                       
                            VerticalAlignment="Center" FontWeight="Bold"/>
-            </Border>
+                </Border>
+            </Grid>
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -41,7 +43,7 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="0" 
+                <TextBlock Grid.Column="0" x:Name="nomeTarefa"
                            Text="Nome da Tarefa"                           
                            FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"
@@ -61,10 +63,10 @@
                             Background="{x:Null}" 
                             BorderBrush="{x:Null}" 
                             Foreground="{x:Null}"
-                            Grid.Column="1"
+                            Grid.Column="2"
                             Template="{DynamicResource ButtonTemplate1}">
                         <Button.Content>
-                            <svgc:SvgViewbox Source="/Resources/SVG/trash-solid(1).svg" Height="30"/>
+                            <svgc:SvgViewbox Source="/Resources/SVG/trash-solid(1).svg" Height="25"/>
                         </Button.Content>
                     </Button>
 
@@ -72,10 +74,10 @@
                             Background="{x:Null}" 
                             BorderBrush="{x:Null}" 
                             Foreground="{x:Null}"
-                            Grid.Column="2"
+                            Grid.Column="1"
                             Template="{DynamicResource ButtonTemplate1}">
                         <Button.Content>
-                            <svgc:SvgViewbox Source="/Resources/SVG/pencil-solid.svg" Height="30"/>
+                            <svgc:SvgViewbox Source="/Resources/SVG/pencil-solid.svg" Height="25"/>
                         </Button.Content>
                     </Button>
 
@@ -84,7 +86,7 @@
 
 
 
-            <Grid Grid.Row="3">
+            <Grid Grid.Row="3" x:Name="grid3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.1*"/>
                     <ColumnDefinition Width="2.5*"/>
@@ -100,55 +102,21 @@
                             Margin="0 3 0 3">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.9*"/>
+                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="0.1*"/>
-                                <ColumnDefinition Width="0.9*"/>
                                 <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="0.26*"/>
-                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="Data: "
-                                       Grid.Column="0"
-                                       FontFamily="{StaticResource MentoneLig}"
-                                       FontSize="16"
-                                       Foreground="#FF3F3F3F"
-                                       HorizontalAlignment="Right"
-                                       VerticalAlignment="Center" FontWeight="Bold"/>
-                            <TextBlock Text="Data"
-                                       Padding="10"
+                            <TextBlock Text="Data: " 
                                        Grid.Column="1"
                                        FontFamily="{StaticResource MentoneLig}"
                                        FontSize="16"
-                                       Foreground="#FF6C6C6C"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center" FontWeight="Bold"/>
-                            <TextBlock Text="Horas: "
-                                       Grid.Column="3"
-                                       FontFamily="{StaticResource MentoneLig}"
-                                       FontSize="16"
                                        Foreground="#FF3F3F3F"
                                        HorizontalAlignment="Right"
                                        VerticalAlignment="Center" FontWeight="Bold"/>
-                            <TextBlock Text="Hora1"
-                                       Padding="10"
-                                       Grid.Column="4"
-                                       FontFamily="{StaticResource MentoneLig}"
-                                       FontSize="16"
-                                       Foreground="#FF6C6C6C"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center" FontWeight="Bold"/>
-                            <TextBlock Text="às"
-                                       Grid.Column="5"
-                                       FontFamily="{StaticResource MentoneLig}"
-                                       FontSize="16"
-                                       Foreground="#FF3F3F3F"
-                                       HorizontalAlignment="Center"
-                                       VerticalAlignment="Center" FontWeight="Bold"/>
-                            <TextBlock Text="Hora2"
-                                       Padding="10"
-                                       Grid.Column="6"
+                            <TextBlock Text="Data" x:Name="data"
+                                       Grid.Column="2"
                                        FontFamily="{StaticResource MentoneLig}"
                                        FontSize="16"
                                        Foreground="#FF6C6C6C"
@@ -164,35 +132,27 @@
                             CornerRadius="10"
                             Margin="0 3 0 3">
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.2*"/>
-                                <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="0.2*"/>
                             </Grid.ColumnDefinitions>
-                            
-                            <TextBlock Grid.Column="1" 
-                                       Text="Prioridade: "
-                                       FontFamily="{StaticResource MentoneLig}"
-                                       FontSize="16"
-                                       Foreground="#FF3F3F3F"
-                                       HorizontalAlignment="Right"
-                                       VerticalAlignment="Center" FontWeight="Bold"
-                                       />
 
-                            <TextBlock Grid.Column="2" 
-                                       Text="Prioridade1"
+                            <TextBlock Grid.Column="1" x:Name="prioridade" 
+                                       Text="PRIO"
                                        FontFamily="{StaticResource MentoneLig}"
                                        FontSize="16"
                                        Foreground="#FF6C6C6C"
-                                       HorizontalAlignment="Left"
-                                       Padding="10"
+                                       HorizontalAlignment="Center"
                                        VerticalAlignment="Center" FontWeight="Bold"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap"/>
                         </Grid>
                     </Border>
-                    
+
                 </Grid>
             </Grid>
         </Grid>
