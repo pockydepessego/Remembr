@@ -319,11 +319,13 @@
                                        Foreground="#FF3F3F3F"/>
 
                                 <Rectangle Grid.Column="1"
+                                           x:Name="pass1"
                                             Fill="#FFEBEBEB"
                                                RadiusX="12"
                                                RadiusY="12"
                                                Margin="10"/>
                                 <Rectangle Grid.Column="2"
+                                           x:Name="pass2"
                                             Fill="#FFEBEBEB"
                                                RadiusX="12"
                                                RadiusY="12"
@@ -331,7 +333,7 @@
 
                                 <TextBlock Grid.Column="1"
                                          x:Name="PasswordChanged"
-                                         Text="Alterar Palavra-Passe"
+                                         Text="Alterar Password"
                                          MouseDown="PasswordChanged_MouseDown"
                                          FontFamily="{StaticResource MentoneLig}"
                                          FontSize="18"
@@ -341,18 +343,19 @@
 
                                 <PasswordBox Grid.Column="1" x:Name="txtPassword"
                                              PasswordChanged="txtPassword_PasswordChanged" 
+                                             VerticalContentAlignment="Center"
                                              Grid.ColumnSpan="2" 
                                              Background="{x:Null}"  
                                              BorderBrush="{x:Null}"
                                              Style="{DynamicResource PasswordBoxStyle1}"
-                                             Margin="0,0,0,0"
+                                             Margin="20,0,0,0"
                                              SelectionBrush="Purple"
                                              SelectionOpacity="0.2"/>
 
                                 <TextBlock Grid.Column="2"
                                            x:Name="PasswordConfirmChanged"
-                                           Text="Alterar Palavra-Passe"
-                                           MouseDown="PasswordChanged_MouseDown"
+                                           Text="Confirmar Password"
+                                           MouseDown="PasswordConfirmChanged_MouseDown"
                                            FontFamily="{StaticResource MentoneLig}"
                                            FontSize="18"
                                            Foreground="#FF3F3F3F"
@@ -360,11 +363,12 @@
                                            Background="{x:Null}"/>
 
                                 <PasswordBox Grid.Column="2" x:Name="txtPasswordconfirm"
-                                             PasswordChanged="txtPassword_PasswordChanged" 
+                                             PasswordChanged="txtPasswordconfirm_PasswordChanged" 
+                                             VerticalAlignment="Center"
                                              Grid.ColumnSpan="2" 
                                              Background="{x:Null}"                                          
                                              BorderBrush="{x:Null}"
-                                             Margin="0,0,0,0"
+                                             Margin="20,0,0,0"
                                              SelectionBrush="Purple"
                                              SelectionOpacity="0.2"
                                              Style="{DynamicResource PasswordBoxStyle1}"/>
