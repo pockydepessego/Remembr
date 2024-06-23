@@ -26,7 +26,7 @@
             </Grid.RowDefinitions>
 
 
-            <TextBlock Text="Atenção: Se a tarefa for prioritária (nível 400 ou acima), os lembretes não poderão ser desligados"
+            <TextBlock
                    TextWrapping="WrapWithOverflow"
                    Grid.Row="3"
                    VerticalAlignment="Center"
@@ -35,7 +35,7 @@
                    FontFamily="{StaticResource MentoneLig}"
                    Foreground="#FF3F3F3F"
                        FontSize="16"
-                       Padding="20"/>
+                       Padding="20"><Run Text="Atenção"/><Run Text=": "/><Run Text="Se a tarefa for prioritária (nível 400 ou acima), os lembretes não poderão ser desligados"/><Run Text=". O "/><Run Text="formato do tempo é dias.horas:minutos:segundos"/><Run Text="."/></TextBlock>
 
             <Grid Grid.Row="1">
 
@@ -65,7 +65,7 @@
                    VerticalAlignment="Center"
                    Foreground="#FF3F3F3F"/>
 
-                <xctk:TimeSpanUpDown Grid.Column="4"
+                <xctk:TimeSpanUpDown x:Name="tsAntec" Grid.Column="4"
                                      Margin="12"
                                      Background="Transparent"
                                      BorderBrush="Transparent"
@@ -94,8 +94,8 @@
                                   Background="Transparent"
                                   Foreground="#FF3F3F3F"
                                   BorderBrush="#FF3F3F3F" 
-                                  IsChecked="True"
-                                  Checked="LembreteAntecipacao_Checked"
+                                  IsChecked="False"
+                                  Checked="LembreteAntecipacao_Checked" Unchecked="LembreteAntecipacao_Checked"
                                   Style="{DynamicResource CheckBoxStyle2}"/>
                     </Viewbox>
                 </StackPanel>
@@ -129,7 +129,7 @@
                    VerticalAlignment="Center"
                    Foreground="#FF3F3F3F"/>
 
-                <xctk:TimeSpanUpDown Grid.Column="4"
+                <xctk:TimeSpanUpDown x:Name="tsExec" Grid.Column="4"
                                      Margin="12"
                                      Background="Transparent"
                                      BorderBrush="Transparent"
@@ -159,8 +159,8 @@
                                   Background="Transparent"
                                   Foreground="#FF3F3F3F"
                                   BorderBrush="#FF3F3F3F" 
-                                  IsChecked="True"
-                                  Checked="LembreteExecucao_Checked"
+                                  IsChecked="False"
+                                  Checked="LembreteExecucao_Checked" Unchecked="LembreteExecucao_Checked"
                                   Style="{DynamicResource CheckBoxStyle2}"/>
                     </Viewbox>
                 </StackPanel>

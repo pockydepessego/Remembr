@@ -30,12 +30,12 @@ namespace Remembr.Views
             {
                 plural.Text = "Semana";
 
-                ate.Text = "Ocorre todas as semanas " + diasDaSemana() + "até";
+                ate.Text = "Ocorre todas as semanas até";
             }
             else
             {
                 plural.Text = "Semanas";
-                ate.Text = "Ocorre de " + nSemanas.Value + " em " + nSemanas.Value + " semanas " + diasDaSemana() + "até";
+                ate.Text = "Ocorre de " + nSemanas.Value + " em " + nSemanas.Value + " semanas até";
             }
 
         }
@@ -44,7 +44,7 @@ namespace Remembr.Views
 
         private void BotaoSemanal(object sender, RoutedEventArgs e)
         {
-            if (SEGUNDA.IsChecked == true)
+            if (SEGUNDA.IsChecked != null && SEGUNDA.IsChecked.Value)
             {
                 lDias[0] = true;
             }
@@ -53,7 +53,7 @@ namespace Remembr.Views
                 lDias[0] = false;
             }
 
-            if (TERCA.IsChecked == true)
+            if (TERCA.IsChecked != null && TERCA.IsChecked.Value)
             {
                 lDias[1] = true;
             }
@@ -62,7 +62,7 @@ namespace Remembr.Views
                 lDias[1] = false;
             }
 
-            if (QUARTA.IsChecked == true)
+            if (QUARTA.IsChecked != null && QUARTA.IsChecked.Value)
             {
                 lDias[2] = true;
             }
@@ -71,7 +71,7 @@ namespace Remembr.Views
                 lDias[2] = false;
             }
 
-            if (QUINTA.IsChecked == true)
+            if (QUINTA.IsChecked != null && QUINTA.IsChecked.Value)
             {
                 lDias[3] = true;
             }
@@ -80,7 +80,7 @@ namespace Remembr.Views
                 lDias[3] = false;
             }
 
-            if (SEXTA.IsChecked == true)
+            if (SEXTA.IsChecked != null && SEXTA.IsChecked.Value)
             {
                 lDias[4] = true;
             }
@@ -89,7 +89,7 @@ namespace Remembr.Views
                 lDias[4] = false;
             }
 
-            if (SABADO.IsChecked == true)
+            if (SABADO.IsChecked != null && SABADO.IsChecked.Value)
             {
                 lDias[5] = true;
             }
@@ -98,7 +98,7 @@ namespace Remembr.Views
                 lDias[5] = false;
             }
 
-            if (DOMINGO.IsChecked == true)
+            if (DOMINGO.IsChecked != null && DOMINGO.IsChecked.Value)
             {
                 lDias[6] = true;
             }
@@ -107,96 +107,8 @@ namespace Remembr.Views
                 lDias[6] = false;
             }
 
-            if (nSemanas.Value == null || plural == null || ate == null)
-            {
-                return;
-            }
-            if (nSemanas.Value == 1)
-            {
-                plural.Text = "Semana";
-
-                ate.Text = "Ocorre todas as semanas " + diasDaSemana() + "até";
-            }
-            else
-            {
-                plural.Text = "Semanas";
-                ate.Text = "Ocorre de " + nSemanas.Value + " em " + nSemanas.Value + " semanas " + diasDaSemana() + "até";
-            }
-
-
         }
 
-
-        private string diasDaSemana()
-        {
-            string dias = "";
-            for (int i = 0; i < lDias.Length; i++)
-            {
-                if (lDias[i] == true)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                            dias += "segundas";
-                            break;
-                        case 1:
-                            if (dias != "")
-                            {
-                                dias += ", ";
-                            }
-                            dias += "terças";
-                            break;
-                        case 2:
-                            if (dias != "")
-                            {
-                                dias += ", ";
-                            }
-                            dias += "quartas";
-                            break;
-                        case 3:
-                            if (dias != "")
-                            {
-                                dias += ", ";
-                            }
-                            dias += "quintas";
-                            break;
-                        case 4:
-                            if (dias != "")
-                            {
-                                dias += ", ";
-                            }
-                            dias += "sextas";
-                            break;
-                        case 5:
-                            if (dias != "")
-                            {
-                                dias += ", ";
-                            }
-                            dias += "sábados";
-                            break;
-                        case 6:
-                            if (dias != "")
-                            {
-                                dias += ", ";
-                            }
-                            dias += "domingos";
-                            break;
-                    }
-
-                    
-                }
-            }
-
-            if (dias != "")
-            {
-                dias = "("+dias+") ";
-            } else if (dias == "")
-            {
-                dias = "(SELECIONAR DIAS) ";
-            }
-
-            return dias;
-        }
 
         private void nSemanas_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
@@ -208,12 +120,12 @@ namespace Remembr.Views
             {
                 plural.Text = "Semana";
 
-                ate.Text = "Ocorre todas as semanas " + diasDaSemana() + "até";
+                ate.Text = "Ocorre todas as semanas até";
             }
             else
             {
                 plural.Text = "Semanas";
-                ate.Text = "Ocorre de " + nSemanas.Value + " em " + nSemanas.Value + " semanas " + diasDaSemana() +  "até";
+                ate.Text = "Ocorre de " + nSemanas.Value + " em " + nSemanas.Value + " semanas até";
             }
 
         }

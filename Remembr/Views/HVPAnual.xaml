@@ -61,6 +61,7 @@
                                     ValueChanged="nAnos_ValueChanged"/>
 
                 <TextBlock Text="Ano"
+                           x:Name="plural"
                            Grid.Column="3"
                            FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"
@@ -78,7 +79,8 @@
                     <RowDefinition Height="*"/>
 
                 </Grid.RowDefinitions>
-                <RadioButton Content="No dia X de Y"
+                <RadioButton x:Name="diaxdey"
+                             Content="No dia X de Y"
                              Grid.Row="0"
                              Margin="10"
                              FontFamily="{StaticResource MentoneLig}"
@@ -88,7 +90,8 @@
                              VerticalContentAlignment="Center"
                              BorderBrush="#FF3F3F3F"
                              BorderThickness="2"/>
-                <RadioButton Content="Na segunda X do Y"
+                <RadioButton x:Name="zdiadey"
+                             Content="Na segunda X do Y"
                              Grid.Row="1"
                              Margin="10"
                              FontFamily="{StaticResource MentoneLig}"
@@ -100,7 +103,7 @@
                              BorderThickness="2"/>
             </Grid>
 
-            <TextBlock Text="Ocorre até ao X"
+            <TextBlock Text="Ocorre até" x:Name="ate"
                            Grid.Row="3"
                            FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"

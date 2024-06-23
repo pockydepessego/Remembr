@@ -23,6 +23,7 @@
             </Grid.RowDefinitions>
 
             <ComboBox Background="{x:Null}"
+                      x:Name="combo"
                   FontFamily="{StaticResource MentoneLig}"
                   FontSize="16"
                   Foreground="#FF3F3F3F"
@@ -34,9 +35,9 @@
                   Margin="20 20"
                   Text="Nova Prioridade"
                   Style="{DynamicResource theComboBox}"
-                  ItemContainerStyle="{DynamicResource theComboBoxItem}"/>
+                  ItemContainerStyle="{DynamicResource theComboBoxItem}" SelectionChanged="combo_SelectionChanged"/>
 
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="2" x:Name="gridnovaprio">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.3*"/>
@@ -47,7 +48,7 @@
                     <ColumnDefinition Width="0.3*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="Valor da Prioridade:"
+                <TextBlock Text="Valor:"
                        TextWrapping="Wrap"
                        TextAlignment="Center"
                    FontFamily="{StaticResource MentoneLig}"
@@ -56,21 +57,22 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    Grid.Column="1"/>
-                <Rectangle Grid.Column="2"
+                <Rectangle Grid.Column="2" x:Name="rectPrio"
                        Stroke="#FF3F3F3F"
                        StrokeThickness="2"
                        RadiusX="6"
                        RadiusY="6"
                        Width="60"
                        Height="40"/>
-                <xctk:IntegerUpDown Name="pila"
+                <xctk:IntegerUpDown x:Name="valorp"
                                 Grid.Column="2"
                                 Width="50"
                                 Height="30" Background="{x:Null}" BorderBrush="{x:Null}"
                                 Foreground="#FF3F3F3F"
-                                Minimum="0"/>
+                                Minimum="0"
+                                    ValueChanged="valorp_ValueChanged"/>
                 <TextBlock TextWrapping="WrapWithOverflow"
-                       Text="Cor da Prioridade: "
+                       Text="Cor: "
                        FontFamily="{StaticResource MentoneLig}"
                        Foreground="#FF3F3F3F"
                        FontSize="13"
@@ -86,7 +88,7 @@
                        RadiusX="6"
                        RadiusY="6"/>
 
-                <xctk:ColorPicker Grid.Column="4" 
+                <xctk:ColorPicker x:Name="colorp" Grid.Column="4" 
                               HorizontalAlignment="Center" 
                               VerticalAlignment="Center" 
                               Width="50" 

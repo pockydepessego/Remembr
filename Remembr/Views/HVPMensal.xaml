@@ -59,7 +59,7 @@
                                     HorizontalContentAlignment="Left"
                                     VerticalContentAlignment="Center"
                                     ValueChanged="nMes_ValueChanged"/>
-                <TextBlock Text="Mês"
+                <TextBlock Text="Mês" x:Name="plural"
                            Grid.Column="3"
                            FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"
@@ -77,7 +77,7 @@
                     <RowDefinition Height="*"/>
 
                 </Grid.RowDefinitions>
-                <RadioButton Content="No dia X"
+                <RadioButton Content="No dia X" x:Name="diax"
                              Grid.Row="0"
                              Margin="10"
                              FontFamily="{StaticResource MentoneLig}"
@@ -87,7 +87,7 @@
                              VerticalContentAlignment="Center"
                              BorderBrush="#FF3F3F3F"
                              BorderThickness="2"/>
-                <RadioButton Content="Na segunda X do mês"
+                <RadioButton Content="Na segunda X do mês" x:Name="zdia"
                              Grid.Row="1"
                              Margin="10"
                              FontFamily="{StaticResource MentoneLig}"
@@ -96,10 +96,10 @@
                              Foreground="#FF3F3F3F"
                              VerticalContentAlignment="Center"
                              BorderBrush="#FF3F3F3F"
-                             BorderThickness="2"/>
+                             BorderThickness="2" Checked="RadioButton_Checked"/>
             </Grid>
 
-            <TextBlock Text="Ocorre até"
+            <TextBlock Text="Ocorre até" x:Name="ate"
                            Grid.Row="3"
                            FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"

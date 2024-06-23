@@ -22,13 +22,12 @@ namespace Remembr.Views
     /// 
     public partial class HVPrioridade : UserControl
     {
-        MainVM MVM;
-        HVNovaPrioridade? HVNovaPrioridade;
+        public HVNovaPrioridade? HVNovaPrioridade;
+        public int? selectedPrio;
 
         public HVPrioridade()
         {
             InitializeComponent();
-            MVM = (MainVM)Application.Current.MainWindow.DataContext;
             if (HVNovaPrioridade == null)
             {
                 HVNovaPrioridade = new HVNovaPrioridade();
@@ -41,26 +40,31 @@ namespace Remembr.Views
         private void Prioridadex_Click(object sender, RoutedEventArgs e)
         {
             pcc.Content = HVNovaPrioridade;
+            selectedPrio = -100;
         }
 
         private void Prioridade400_Click(object sender, RoutedEventArgs e)
         {
             pcc.Content = null;
+            selectedPrio = 400;
         }
 
         private void Prioridade300_Click(object sender, RoutedEventArgs e)
         {
             pcc.Content = null;
+            selectedPrio = 300;
         }
 
         private void Prioridade200_Click(object sender, RoutedEventArgs e)
         {
             pcc.Content = null;
+            selectedPrio = 200;
         }
 
         private void Prioridade100_Click(object sender, RoutedEventArgs e)
         {
             pcc.Content = null;
+            selectedPrio = 100;
         }
     }
 }

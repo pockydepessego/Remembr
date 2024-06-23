@@ -21,19 +21,57 @@ namespace Remembr.Views
     /// </summary>
     public partial class HVLembretes : UserControl
     {
-
+        public int prio;
         public HVLembretes()
         {
             InitializeComponent();
+            MessageBox.Show("inicializado sem prio");
 
+        }
+
+        public HVLembretes(int priov)
+        {
+            InitializeComponent();
+            prio = priov;
+
+            if (priov >= 400)
+            {
+                LembreteAntecipacao.IsChecked = true;
+                LembreteExecucao.IsChecked = true;
+                LembreteAntecipacao.IsEnabled = false;
+                LembreteExecucao.IsEnabled = false;
+            } else
+            {
+                LembreteAntecipacao.IsChecked = false;
+                LembreteExecucao.IsChecked = false;
+                tsAntec.IsEnabled = false;
+                tsExec.IsEnabled = false;
+
+            }
         }
 
         private void LembreteAntecipacao_Checked(object sender, RoutedEventArgs e)
         {
+            if (LembreteAntecipacao.IsChecked == true)
+            {
+                tsAntec.IsEnabled = true;
+            }
+            else
+            {
+                tsAntec.IsEnabled = false;
+            }
         }
 
         private void LembreteExecucao_Checked(object sender, RoutedEventArgs e)
         {
+            if (LembreteExecucao.IsChecked == true)
+            {
+                tsExec.IsEnabled = true;
+            }
+            else
+            {
+                tsExec.IsEnabled = false;
+            }
         }
     }
 }

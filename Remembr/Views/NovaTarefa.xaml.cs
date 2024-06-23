@@ -132,10 +132,79 @@ namespace Remembr.Views
 
         }
 
+        int? priov = null;
+
         private void Lembretes_Click(object sender, RoutedEventArgs e)
         {
-            if (hvLembV == null) {
-                hvLembV = new HVLembretes();
+            if (hvPriV == null)
+            {
+                MessageBox.Show("É obrigatório escolher a prioridade antes de alterar as notificações");
+                Prioridade.IsChecked = true;
+                Notificacoes.IsChecked = false;
+                return;
+            }
+
+            if (hvPriV.selectedPrio == null)
+            {
+                MessageBox.Show("É obrigatório escolher a prioridade antes de alterar as notificações");
+                Prioridade.IsChecked = true;
+                Notificacoes.IsChecked = false;
+                return;
+            }
+
+
+            if (hvPriV.selectedPrio == -100)
+            {
+                if (hvPriV.HVNovaPrioridade == null)
+                {
+                    MessageBox.Show("É obrigatório escolher a prioridade antes de alterar as notificações");
+                    Prioridade.IsChecked = true;
+                    Notificacoes.IsChecked = false;
+                    return;
+                }
+                else if (hvPriV.HVNovaPrioridade.valorp.Value == null && hvPriV.HVNovaPrioridade.combo.SelectedIndex == 0)
+                {
+                    MessageBox.Show("É obrigatório escolher a prioridade antes de alterar as notificações");
+                    Prioridade.IsChecked = true;
+                    Notificacoes.IsChecked = false;
+                    return;
+                }
+                else if (hvPriV.HVNovaPrioridade.combo.SelectedIndex != 0)
+                {
+                    var s = hvPriV.HVNovaPrioridade.combo.SelectedItem.ToString();
+                    if (s == null)
+                    {
+                        return;
+                    }
+                    priov = int.Parse(s);
+                }
+                else if (hvPriV.HVNovaPrioridade.valorp.Value != null)
+                {
+                    priov = (int)hvPriV.HVNovaPrioridade.valorp.Value;
+                }
+            }
+            else
+            {
+                priov = (int)hvPriV.selectedPrio;
+            }
+
+
+            if (hvLembV == null || hvLembV.prio != priov  || priov == null) {
+
+                if (hvLembV != null) {
+                    MessageBox.Show("A importância foi alterada, a configuração de notificações será resetada");
+                }
+
+
+                if (priov == null)
+                {
+                    MessageBox.Show("É obrigatório escolher a prioridade antes de alterar as notificações");
+                    Prioridade.IsChecked = true;
+                    Notificacoes.IsChecked = false;
+                    return;
+                }
+
+                hvLembV = new HVLembretes((int)priov);
                 hvLembV.DataContext = new HVLembretesVM();
             }
             cc.Content = hvLembV;
@@ -197,8 +266,14 @@ namespace Remembr.Views
                 return;
             }
 
-            if (hvPerV == null)
+
+            if (hvPerV == null || hVDataV.calendario.SelectedDate.Value != hvPerV.timeInicial)
             {
+
+                if (hvPerV != null && hvPerV.perSelecionada != 0)
+                {
+                    MessageBox.Show("A data foi alterada, a configuração de periodicidade será resetada");
+                }
 
                 if (hVDataV.CheckTodoDia.IsChecked != null && hVDataV.CheckTodoDia.IsChecked.Value)
                 {
@@ -220,7 +295,6 @@ namespace Remembr.Views
             // MessageBox.Show(hvlView.LembreteAntecipacao.IsChecked.Value.ToString());
 
         }
-
 
     }
 }
