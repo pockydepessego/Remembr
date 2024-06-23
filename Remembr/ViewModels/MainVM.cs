@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Security.Cryptography;
 using System.Windows.Documents.DocumentStructures;
 using Syncfusion.UI.Xaml.Gauges;
+using System.Diagnostics;
 
 
 namespace Remembr.ViewModels
@@ -112,6 +113,17 @@ namespace Remembr.ViewModels
         public List<Notificacao>? GNotificacoes { get; set; } = [];
         public MainVM()
         {
+
+            Process proc = Process.GetCurrentProcess();
+            int count = Process.GetProcesses().Where(p =>
+                p.ProcessName == proc.ProcessName).Count();
+
+            if (count > 1)
+            {
+                MessageBox.Show("Só é permitido rodar uma instância desta aplicação. Se outra janela existe mas não está a responder, encerre-a e tente novamente");
+                App.Current.Shutdown();
+            }
+
 
 #pragma warning disable CS8622 // Nullability of reference types in type of parameter doesn't match the target delegate (possibly because of nullability attributes).
             ChangeViewCommand = new RelayCommand<string>(ChangeView);

@@ -45,7 +45,9 @@ namespace Remembr.Views
 
         private void Prioridade400_Click(object sender, RoutedEventArgs e)
         {
-            pcc.Content = null;
+            pcc.Content = new HVPrioritaria() {
+                DataContext = new HVPrioritariaVM()
+            };
             selectedPrio = 400;
         }
 
@@ -66,5 +68,6 @@ namespace Remembr.Views
             pcc.Content = null;
             selectedPrio = 100;
         }
+
     }
 }
