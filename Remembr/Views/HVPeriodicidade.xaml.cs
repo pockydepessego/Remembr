@@ -58,9 +58,15 @@ namespace Remembr.Views
 
         private void BotaoDiario_Checked(object sender, RoutedEventArgs e)
         {
-            if (hvPDiarioV == null)
+            if (hvPDiarioV == null || hvPDiarioV.dataInicial != timeInicial)
             {
-                hvPDiarioV = new HVPDiario();
+                if (cc == null) return;
+
+                var dataInicial = timeInicial;
+                if (dataInicial == null)
+                    return;
+
+                hvPDiarioV = new HVPDiario((DateTime)dataInicial);
                 hvPDiarioV.DataContext = new HPVDiarioVM();
             }
 
@@ -71,9 +77,15 @@ namespace Remembr.Views
 
         private void BotaoSemanal_Checked(object sender, RoutedEventArgs e)
         {
-            if (hvPSemanalV == null)
+            if (hvPSemanalV == null || hvPSemanalV.dataInicial != timeInicial)
             {
-                hvPSemanalV = new HVPSemanal();
+                if (cc == null) return;
+
+                var dataInicial = timeInicial;
+                if (dataInicial == null)
+                    return;
+
+                hvPSemanalV = new HVPSemanal((DateTime)dataInicial);
                 hvPSemanalV.DataContext = new HVPSemanalVM();
             }
 

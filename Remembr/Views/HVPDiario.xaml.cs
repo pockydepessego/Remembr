@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,22 @@ namespace Remembr.Views
     /// </summary>
     public partial class HVPDiario : UserControl
     {
+        public DateTime? dataInicial;
+        SolidColorBrush? blackOutline = new BrushConverter().ConvertFromString("#3F3F3F") as SolidColorBrush;
+        SolidColorBrush redOutline = Brushes.Red;
+
         public HVPDiario()
         {
             InitializeComponent();
+            MessageBox.Show("iniciado sem data inicial");
         }
+
+        public HVPDiario(DateTime dataInicial)
+        {
+            InitializeComponent();
+            this.dataInicial = dataInicial;
+        }
+
 
         private void nDias_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
@@ -40,6 +53,23 @@ namespace Remembr.Views
             {
                 plural.Text = "Dias";
                 ate.Text = "Ocorre de " + nDias.Value + " em " + nDias.Value  + " dias até";
+            }
+        }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dataInicial == null || dataate.SelectedDate == null)
+            {
+                return;
+            }
+
+            if (dataate.SelectedDate <= dataInicial)
+            {
+                MessageBox.Show("A data final da periodicidade deve ser depois da data da tarefa (" + dataInicial.ToDateTime().ToString("dd/MM/yyyy") + ").");
+                datafinal.Stroke = redOutline;
+            } else
+            {
+                datafinal.Stroke = blackOutline;
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
@@ -22,9 +23,21 @@ namespace Remembr.Views
     /// </summary>
     public partial class HVPSemanal : UserControl
     {
+
+        public DateTime? dataInicial;
+        SolidColorBrush? blackOutline = new BrushConverter().ConvertFromString("#3F3F3F") as SolidColorBrush;
+        SolidColorBrush redOutline = Brushes.Red;
+
         public HVPSemanal()
         {
             InitializeComponent();
+            MessageBox.Show("inicializado sem data");
+        }
+
+        public HVPSemanal(DateTime dataR)
+        {
+            InitializeComponent();
+            dataInicial = dataR;
 
             if (nSemanas.Value == 1)
             {
@@ -128,6 +141,24 @@ namespace Remembr.Views
                 ate.Text = "Ocorre de " + nSemanas.Value + " em " + nSemanas.Value + " semanas até";
             }
 
+        }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dataInicial == null || dataate.SelectedDate == null)
+            {
+                return;
+            }
+
+            if (dataate.SelectedDate <= dataInicial)
+            {
+                MessageBox.Show("A data final da periodicidade deve ser depois da data da tarefa (" + dataInicial.ToDateTime().ToString("dd/MM/yyyy") + ").");
+                datafinal.Stroke = redOutline;
+            }
+            else
+            {
+                datafinal.Stroke = blackOutline;
+            }
         }
 
     }
