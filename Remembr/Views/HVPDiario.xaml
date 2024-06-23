@@ -85,6 +85,7 @@
                            Foreground="#FF3F3F3F"/>
 
             <Rectangle Stroke="#FF3F3F3F"
+                           x:Name="datafinal"
                            StrokeThickness="1.5"
                            RadiusX="6"
                            RadiusY="6"
@@ -92,7 +93,8 @@
                            Grid.Row="3"
                        Fill="White"/>
             
-            <DatePicker Grid.Row="3"
+            <DatePicker x:Name="dataate"
+                        Grid.Row="3"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         Margin="56 10"
@@ -100,7 +102,7 @@
                         VerticalContentAlignment="Center"
                         BorderBrush="{x:Null}"
                         BorderThickness="0"
-                        Style="{DynamicResource DatePickerStyle1}"
+                        SelectedDateChanged="DatePicker_SelectedDateChanged"
                         >
             </DatePicker>
 

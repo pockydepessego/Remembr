@@ -109,7 +109,7 @@
                            TextWrapping="Wrap"
                            Foreground="#FF3F3F3F"/>
 
-            <Rectangle Stroke="#FF3F3F3F"
+            <Rectangle Stroke="#FF3F3F3F" x:Name="datafinal"
                            StrokeThickness="1.5"
                            RadiusX="6"
                            RadiusY="6"
@@ -117,7 +117,8 @@
                            Grid.Row="4"
                        Fill="White"/>
 
-            <DatePicker Grid.Row="4"
+            <DatePicker Grid.Row="4" x:Name="dataate"
+                        SelectedDateChanged="DatePicker_SelectedDateChanged"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         Margin="56 10"
@@ -125,7 +126,6 @@
                         VerticalContentAlignment="Center"
                         BorderBrush="{x:Null}"
                         BorderThickness="0"
-                        Style="{DynamicResource DatePickerStyle1}"
                         >
             </DatePicker>
 

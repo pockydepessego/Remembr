@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.Windows.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,10 @@ namespace Remembr.Views
     /// </summary>
     public partial class HVPMensal : UserControl
     {
-        public DateTime dataInicial;
+        public DateTime? dataInicial;
+        SolidColorBrush? blackOutline = new BrushConverter().ConvertFromString("#3F3F3F") as SolidColorBrush;
+        SolidColorBrush redOutline = Brushes.Red;
+
         public HVPMensal()
         {
             InitializeComponent();
@@ -71,6 +75,24 @@ namespace Remembr.Views
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dataInicial == null || dataate.SelectedDate == null)
+            {
+                return;
+            }
+
+            if (dataate.SelectedDate <= dataInicial)
+            {
+                MessageBox.Show("A data final da periodicidade deve ser depois da data da tarefa (" + dataInicial.ToDateTime().ToString("dd/MM/yyyy") + ").");
+                datafinal.Stroke = redOutline;
+            }
+            else
+            {
+                datafinal.Stroke = blackOutline;
+            }
         }
     }
 }

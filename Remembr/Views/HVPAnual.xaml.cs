@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Remembr.Views;
+using Syncfusion.Windows.Controls;
 
 namespace Remembr.Views
 {
@@ -21,7 +22,10 @@ namespace Remembr.Views
     /// </summary>
     public partial class HVPAnual : UserControl
     {
-        public DateTime dataInicial;
+        public DateTime? dataInicial;
+        SolidColorBrush? blackOutline = new BrushConverter().ConvertFromString("#3F3F3F") as SolidColorBrush;
+        SolidColorBrush redOutline = Brushes.Red;
+
         public HVPAnual()
         {
             InitializeComponent();
@@ -67,6 +71,24 @@ namespace Remembr.Views
             {
                 plural.Text = "Anos";
                 ate.Text = "Ocorre de " + nAnos.Value + " em " + nAnos.Value + " anos até";
+            }
+        }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dataInicial == null || dataate.SelectedDate == null)
+            {
+                return;
+            }
+
+            if (dataate.SelectedDate <= dataInicial)
+            {
+                MessageBox.Show("A data final da periodicidade deve ser depois da data da tarefa (" + dataInicial.ToDateTime().ToString("dd/MM/yyyy") + ").");
+                datafinal.Stroke = redOutline;
+            }
+            else
+            {
+                datafinal.Stroke = blackOutline;
             }
         }
     }
