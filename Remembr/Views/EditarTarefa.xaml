@@ -233,7 +233,7 @@
                                   IsEditable="true"
                                   IsReadOnly="true"
                                   SelectedIndex="0"
-                                  Style="{DynamicResource theComboBox}"
+                                  Style="{StaticResource ComboBoxFlatStyle}"
                                   ItemContainerStyle="{DynamicResource theComboBoxItem}">
                             <ComboBoxItem Content="Por Iniciar" />
                             <ComboBoxItem Content="Em Execução" />

@@ -9,7 +9,8 @@
         d:DesignHeight="600" 
         d:DesignWidth="920"
         Background="Transparent"
-        >
+        
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
 
     <UserControl.DataContext>
         <vm:NovaTarefaVM/>
@@ -233,8 +234,7 @@
                                   IsEditable="true"
                                   IsReadOnly="true"
                                   SelectedIndex="0"
-                                  Style="{DynamicResource theComboBox}"
-                                  ItemContainerStyle="{DynamicResource theComboBoxItem}">
+                                  Style="{StaticResource ComboBoxFlatStyle}">
                             <ComboBoxItem Content="Por Iniciar" />
                             <ComboBoxItem Content="Em Execução" />
                             <ComboBoxItem Content="Terminada" />

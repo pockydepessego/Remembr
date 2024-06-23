@@ -162,5 +162,10 @@ namespace Remembr.Views
 
             MVM.editarTarefa(task.ID);
         }
+
+        private void PassarTarefa_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

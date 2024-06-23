@@ -24,18 +24,18 @@
 
             <ComboBox Background="{x:Null}"
                       x:Name="combo"
-                  FontFamily="{StaticResource MentoneLig}"
-                  FontSize="16"
-                  Foreground="#FF3F3F3F"
-                  VerticalContentAlignment="Center"
-                  HorizontalContentAlignment="Center"
-                  IsEditable="true"
-                  IsReadOnly="true"
-                  Grid.Row="1"
-                  Margin="20 20"
-                  Text="Nova Prioridade"
-                  Style="{DynamicResource theComboBox}"
-                  ItemContainerStyle="{DynamicResource theComboBoxItem}" SelectionChanged="combo_SelectionChanged"/>
+                      FontFamily="{StaticResource MentoneLig}"
+                      FontSize="16"
+                      Foreground="#FF3F3F3F"
+                      VerticalContentAlignment="Center"
+                      HorizontalContentAlignment="Center"
+                      IsEditable="true"
+                      IsReadOnly="true"
+                      Grid.Row="1"
+                      Margin="20 20"
+                      Text="Nova Prioridade"
+                      Style="{StaticResource ComboBoxFlatStyle}" 
+                      SelectionChanged="combo_SelectionChanged"/>
 
             <Grid Grid.Row="2" x:Name="gridnovaprio">
 
