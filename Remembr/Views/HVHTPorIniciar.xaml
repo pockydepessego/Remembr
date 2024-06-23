@@ -76,13 +76,17 @@
 
 
     <Border Background="#FEDC85" CornerRadius="0,0,15,15">   
-            <Grid>
-            <ListBox Style="{DynamicResource ListBoxStyle1}"  
-                     Background="Transparent" x:Name="listinha" Margin="10"
-                     ItemContainerStyle="{DynamicResource _ListBoxItemStyle}">
+        <Grid PreviewMouseDown="Grid_MouseDown">
+            <ListBox Style="{DynamicResource ListBoxStyle1}"  Background="Transparent" x:Name="listinha" Margin="10">
 
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Margin" Value="0,0,0,5"/>
 
-
+                    </Style>
+                </ListBox.ItemContainerStyle>
             </ListBox>
         </Grid>
     </Border>

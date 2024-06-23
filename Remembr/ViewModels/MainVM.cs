@@ -345,7 +345,20 @@ namespace Remembr.ViewModels
 
             if (GTarefas.Count == 0)
             {
-                return true;
+                try
+                {
+                    if (File.Exists(System.IO.Path.Combine(basePath, "tarefas.xml")))
+                    {
+                        File.Delete(System.IO.Path.Combine(basePath, "tarefas.xml"));
+                        return true;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao apagar ficheiro de tarefas:\n\n" + ex.Message + "\n" + ex.StackTrace);
+                    return false;
+                }
             }
 
             try

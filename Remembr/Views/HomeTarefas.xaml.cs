@@ -40,13 +40,10 @@ namespace Remembr.Views
             pfp.ImageSource = MVM.GPerfil.Fotografia;
 
 
-            if (hvHTPorIniciarV == null)
-            {
                 hvHTPorIniciarV = new HVHTPorIniciar();
                 hvHTPorIniciarV.DataContext = new HVHTPorIniciarVM();
 
                 hcc.Content = hvHTPorIniciarV;
-            }
 
 
         }
@@ -93,41 +90,31 @@ namespace Remembr.Views
 
         private void BotaotarefastIV_Click(object sender, RoutedEventArgs e)
         {
-            if (hVHTApagadasV == null)
-            {
                 hVHTApagadasV = new HVHTApagadas();
                 hVHTApagadasV.DataContext = new HVHTApagadasVM();
-            }
             hcc.Content = hVHTApagadasV;
         }
 
         private void BotaotarefastIII_Click(object sender, RoutedEventArgs e)
         {
-            if (hvHTTerminadasV == null)
-            {
                 hvHTTerminadasV = new HVHTTerminadas();
                 hvHTTerminadasV.DataContext = new HVHTTerminadasVM();
-            }
             hcc.Content = hvHTTerminadasV;
         }
 
         private void BotaotarefastII_Click(object sender, RoutedEventArgs e)
         {
-            if (hvHTExecV == null)
-            {
+
                 hvHTExecV = new HVHTExec();
                 hvHTExecV.DataContext = new HVHTExecVM();
-            }
             hcc.Content = hvHTExecV;
         }
 
         private void BotaotarefastI_Click(object sender, RoutedEventArgs e)
         {
-            if (hvHTPorIniciarV == null)
-            {
+
                 hvHTPorIniciarV = new HVHTPorIniciar();
                 hvHTPorIniciarV.DataContext = new HVHTPorIniciarVM();
-            }
             hcc.Content = hvHTPorIniciarV;
         }
     }

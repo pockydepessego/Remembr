@@ -36,16 +36,61 @@ namespace Remembr.Views
                 return;
             }
 
-            
-            foreach (var tarefa in MVM.GTarefas)
+            var listaOrdenada = MVM.GTarefas.Where(t => t.Estado == 0).OrderBy(t => t.DataInicio).ThenBy(t => t.CreationTime).ToList();
+
+            foreach (var tarefa in listaOrdenada)
             {
                 var cc = new HVTarefa(tarefa);
                 cc.DataContext = tarefa;
                 listaCC.Add(cc);
+                if (tarefa.Descricao == null)
+                {
+                    cc.Height = 100;
+                } else
+                {
+                    cc.Height = 150;
+                }
             }
             
             listinha.ItemsSource = listaCC;
 
+        }
+
+        private void reload()
+        {
+            var listaCC = new List<UserControl>();
+
+            if (MVM.GTarefas == null)
+            {
+                MessageBox.Show("Erro tarefas");
+                return;
+            }
+
+            var listaOrdenada = MVM.GTarefas.Where(t => t.Estado == 0).OrderBy(t => t.DataInicio).ThenBy(t => t.CreationTime).ToList();
+
+            foreach (var tarefa in listaOrdenada)
+            {
+                var cc = new HVTarefa(tarefa);
+                cc.DataContext = tarefa;
+                listaCC.Add(cc);
+                if (tarefa.Descricao == null)
+                {
+                    cc.Height = 100;
+                }
+                else
+                {
+                    cc.Height = 150;
+                }
+            }
+
+            listinha.ItemsSource = listaCC;
+        }
+
+        private async void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = false;
+            await Task.Delay(500);
+            reload();
         }
     }
 }
