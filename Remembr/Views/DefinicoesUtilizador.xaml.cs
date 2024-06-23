@@ -118,5 +118,10 @@ namespace Remembr.Views
             MVM.ChangeView("BACK");
 
         }
+
+        private void RemoverPassword_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
