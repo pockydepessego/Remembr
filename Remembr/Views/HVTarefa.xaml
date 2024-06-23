@@ -20,9 +20,7 @@
                            HorizontalAlignment="center"                       
                            VerticalAlignment="Center" FontWeight="Bold"/>
             </Grid>
-
-
-            <Grid x:Name="gr">
+            <Grid x:Name="gr" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="10*"/>

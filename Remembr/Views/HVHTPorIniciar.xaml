@@ -51,7 +51,7 @@
 
 
     <Border Background="#FEDC85" CornerRadius="0,0,15,15">   
-            <Grid>
+        <Grid PreviewMouseDown="Grid_MouseDown">
             <ListBox Style="{DynamicResource ListBoxStyle1}"  Background="Transparent" x:Name="listinha" Margin="10">
 
                 <ListBox.ItemContainerStyle>

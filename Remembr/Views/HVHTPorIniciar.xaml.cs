@@ -56,9 +56,8 @@ namespace Remembr.Views
 
         }
 
-        private void listinha_MouseDown(object sender, MouseButtonEventArgs e)
+        private void reload()
         {
-            MessageBox.Show("clicou");
             var listaCC = new List<UserControl>();
 
             if (MVM.GTarefas == null)
@@ -85,6 +84,13 @@ namespace Remembr.Views
             }
 
             listinha.ItemsSource = listaCC;
+        }
+
+        private async void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = false;
+            await Task.Delay(500);
+            reload();
         }
     }
 }

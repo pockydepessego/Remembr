@@ -24,7 +24,6 @@
     <Border CornerRadius="20" 
         BorderBrush="Gray" 
         BorderThickness="0"
-        MouseDown="Border_MouseDown"
         >
         <Border.Background>
             <ImageBrush ImageSource="\Resources\Images\Background.png" Stretch="UniformToFill"/>
@@ -75,7 +74,10 @@
 
 
                     <Grid Height="40" 
-                          VerticalAlignment="Top">
+                          VerticalAlignment="Top"
+                          MouseDown="Border_MouseDown"
+                          Background="Transparent"
+                          >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="30"/>

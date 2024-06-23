@@ -33,7 +33,7 @@ namespace Remembr.Views
             MessageBox.Show("hvtarefa chamado sem tarefa");
         }
 
-        Tarefa task;
+        Tarefa? task;
         public HVTarefa(Tarefa t)
         {
             InitializeComponent();
@@ -124,6 +124,13 @@ namespace Remembr.Views
                 MessageBox.Show("erro tarefas");
                 return;
             }
+
+            if (task == null)
+            {
+                MessageBox.Show("erro tarefa");
+                return;
+            }
+
             if (task.Estado != -1)
             {
                 task.Estado = -1;
