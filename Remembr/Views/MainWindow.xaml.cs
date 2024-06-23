@@ -1,6 +1,7 @@
 ﻿using Remembr.Views;
 using Remembr.Models;
 using System.Windows;
+using System.IO;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Remembr.ViewModels;
@@ -24,6 +25,9 @@ namespace Remembr
 
         private void CloseApp_button(object sender, MouseButtonEventArgs e)
         {
+
+            if (!Directory.Exists(MVM.basePath)) { Close(); return; }
+
             MVM.SavePerfil();
             MVM.SavePrioridades();
             MVM.SavePeriodicidades();
