@@ -37,6 +37,13 @@ namespace Remembr.Views
             this.dataInicial = dataInicial;
         }
 
+        public HVPDiario(DateTime dataInicial, Models.Periodicidade p)
+        {
+            InitializeComponent();
+            this.dataInicial = dataInicial;
+            nDias.Value = p.intervaloRepeticao;
+            dataate.SelectedDate = p.DataLimite;
+        }
 
         private void nDias_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {

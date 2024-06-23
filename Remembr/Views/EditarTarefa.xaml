@@ -11,6 +11,9 @@
              Background="Transparent"
              >
 
+    <UserControl.DataContext>
+        <vm:NovaTarefaVM/>
+    </UserControl.DataContext>
     <Grid>
 
         <Grid>
@@ -193,46 +196,49 @@
                                CornerRadius="15 15 0 0"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="18*"/>
+                            <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="4.8*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button Grid.Column="3"
+                        <Button Template="{DynamicResource ButtonTemplate1}" Grid.Column="3"
                                 Name="cancelartarefa"
                                 Background="Transparent"
                                 BorderBrush="Transparent"
                                 Padding="15" Click="cancelartarefa_Click"
-                                Template="{DynamicResource ButtonTemplate1}">
+                                >
                             <Image Source="/Resources/Images/close.png"/>
                         </Button>
 
-                        <Label Grid.Column="0"
+                        <Label Grid.Column="0" x:Name="editar"
                                Content="Editar Tarefa"
-                               Padding="15"
+                               Padding="15,0,0,0"
                                VerticalContentAlignment="Center"
                                HorizontalContentAlignment="Left" FontFamily="{StaticResource MentoneLig}" FontSize="22"
                                Foreground="#FF3F3F3F"/>
 
-                        <ComboBox Grid.Column="2"
+                        <ComboBox x:Name="estado"
+                                  Grid.Column="2"
                                   Text="Por Iniciar"
                                   Height="40"
                                   Width="150"
                                   Background="{x:Null}"
                                   HorizontalAlignment="Right" BorderBrush="{x:Null}"
-                                  FontFamily="{StaticResource MentoneLig}"
+                                  FontFamily="Mentone"
                                   FontSize="18"
                                   Foreground="#FF3F3F3F"
                                   VerticalContentAlignment="Center"
                                   HorizontalContentAlignment="Center"
                                   IsEditable="true"
                                   IsReadOnly="true"
+                                  SelectedIndex="0"
                                   Style="{DynamicResource theComboBox}"
                                   ItemContainerStyle="{DynamicResource theComboBoxItem}">
                             <ComboBoxItem Content="Por Iniciar" />
                             <ComboBoxItem Content="Em Execução" />
                             <ComboBoxItem Content="Terminada" />
+                            <ComboBoxItem Content="Apagada" />
                         </ComboBox>
                     </Grid>
 
@@ -259,7 +265,7 @@
 
                                 <ContentControl Margin="0 0 7 0"
                                                 Grid.Column="1"
-                                                x:Name="cc" Content="{Binding EditarVM}" />
+                                                x:Name="cc" />
                                 <Grid >
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
@@ -268,40 +274,44 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
-                                    <Button x:Name="Data"
+                                    <RadioButton x:Name="Data"
+                                            Style="{StaticResource botaofeio}"
+                                            GroupName="SEL-OPCOES"   
                                             Content="Data"
                                             Height="40"
                                             Width="150"
-                                            FontFamily="{StaticResource MentoneLig}"
-                                            Style="{StaticResource NTbutton}"
-                                            Grid.Row="0" Click="Data_Click"/>
+                                            FontFamily="Mentone"
+                                            Grid.Row="0" Checked="Data_Click"/>
 
-                                    <Button x:Name="Prioridade"
+                                    <RadioButton x:Name="Prioridade"
+                                            Style="{StaticResource botaofeio}"
+                                            GroupName="SEL-OPCOES"   
                                             Content="Prioridade"
                                             Height="40"
                                             Width="150"                                            
-                                            FontFamily="{StaticResource MentoneLig}"
-                                            Style="{StaticResource NTbutton}"
-                                            Grid.Row="2" Click="Prioridade_Click"/>
+                                            FontFamily="Mentone"
+                                            Grid.Row="2" Checked="Prioridade_Click"/>
 
-                                    <Button x:Name="Periodicidade"
+                                    <RadioButton x:Name="Periodicidade"
+                                            Style="{StaticResource botaofeio}"
+                                            GroupName="SEL-OPCOES"   
                                             Content="Periodicidade"
                                             Height="40"
                                             Width="150"                                        
-                                            FontFamily="{StaticResource MentoneLig}"
-                                            Style="{StaticResource NTbutton}"
+                                            FontFamily="Mentone"
                                             Grid.Column="0"
                                             Grid.Row="1"
-                                            Click="Periodicidade_Click"/>
+                                            Checked="Periodicidade_Click"/>
 
-                                    <Button x:Name="Notificacoes"
+                                    <RadioButton x:Name="Notificacoes"
+                                            Style="{StaticResource botaofeio}"
+                                            GroupName="SEL-OPCOES"   
                                             Content="Notificações"
                                             Height="40"
                                             Width="150"                                        
-                                            FontFamily="{StaticResource MentoneLig}"
-                                            Style="{StaticResource NTbutton}"
+                                            FontFamily="Mentone"
                                             Grid.Row="4"
-                                            Click="Lembretes_Click"/>
+                                            Checked="Lembretes_Click"/>
 
 
 
@@ -323,13 +333,14 @@
                                         Grid.Row="1"
                                         MouseDown="textNomedaTarefa_MouseDown"/>
 
-                            <TextBox Template="{DynamicResource TextBox1}" x:Name="NomedaTarefa"
+                            <TextBox x:Name="NomedaTarefa"
+                                     Template="{DynamicResource TextBox1}"
                                      VerticalContentAlignment="Center"
-                                     FontFamily="{StaticResource MentoneLig}"
+                                     FontFamily="Mentone"
                                      FontSize="18"
                                      Foreground="#FF3F3F3F"
                                      Padding="10"
-                                     Grid.Row="1"                                     
+                                     Grid.Row="1"
                                      TextChanged="NomedaTarefa_TextChanged" 
                                      BorderBrush="{x:Null}" 
                                      SelectionBrush="Purple"
@@ -352,9 +363,9 @@
                                         MouseDown="textDescricaodaTarefa_MouseDown"/>
 
                             <TextBox Grid.Row="2"
-                                     x:Name="DescricaodaTarefa"
-                                     FontFamily="{StaticResource MentoneLig}"
                                      Template="{DynamicResource TextBox1}"
+                                     x:Name="DescricaodaTarefa"
+                                     FontFamily="Mentone"
                                      FontSize="18"
                                      Foreground="#FF3F3F3F"
                                      Padding="10"
@@ -363,7 +374,7 @@
                                      BorderBrush="{x:Null}" 
                                      SelectionBrush="Purple"
                                      SelectionOpacity="0.2"
-                                     Background="{x:Null}"/>
+                                     Background="{x:Null}" />
 
 
 
@@ -374,10 +385,10 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Button Grid.Column="1"
-                                            x:Name="ModificarTarefa"
-                                            Content="Modificar Tarefa"
+                                            x:Name="CriarTarefa"
+                                            Content="Guardar Tarefa"
                                             Height="40"
-                                            FontFamily="{StaticResource MentoneLig}"
+                                            FontFamily="Mentone"
                                             Style="{StaticResource NTbutton}"
                                             VerticalAlignment="Center"
                                             Margin="0 5 0 0" Click="CriarTarefa_Click"/>

@@ -54,6 +54,46 @@ namespace Remembr.Views
 
         }
 
+        public HVPAnual(DateTime dataInicial, Models.Periodicidade p)
+        {
+            InitializeComponent();
+            this.dataInicial = dataInicial;
+
+            diaxdey.Content = "No dia " + dataInicial.Day.ToString() + " de " + HVPeriodicidade.MonthPT(dataInicial.Month);
+            zdiadey.Content = "N" + HVPeriodicidade.Gender((int)dataInicial.DayOfWeek) + " " + HVPeriodicidade.CardinalSemana(HVPeriodicidade.WOM(dataInicial), (int)dataInicial.DayOfWeek) + " " + HVPeriodicidade.DiaSemana(dataInicial.DayOfWeek) + " de " + HVPeriodicidade.MonthPT(dataInicial.Month);
+
+            nAnos.Value = p.intervaloRepeticao;
+            dataate.SelectedDate = p.DataLimite;
+
+            switch (p.tipoAnual)
+            {
+                case 1:
+                    diaxdey.IsChecked = true;
+                    break;
+                case 2:
+                    zdiadey.IsChecked = true;
+                    break;
+                default:
+                    break;
+            }
+
+
+            if (nAnos.Value == 1)
+            {
+                plural.Text = "Ano";
+
+                ate.Text = "Ocorre todas os anos até";
+            }
+            else
+            {
+                plural.Text = "Anos";
+                ate.Text = "Ocorre de " + nAnos.Value + " em " + nAnos.Value + " anos até";
+            }
+
+        }
+
+
+
 
         private void nAnos_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {

@@ -28,5 +28,22 @@ namespace Remembr.Models
         public Alerta? AlertaAntecipacao { get; set; }
         public required bool IsTarefaOriginal { get; set; } = true;
 
+
+        public void copy(Tarefa t)
+        {
+            Titulo = t.Titulo;
+            CreationTime = t.CreationTime;
+            DataInicio = t.DataInicio;
+            FullDia = t.FullDia;
+            valorPrio = t.valorPrio;
+            Estado = t.Estado;
+            Descricao = t.Descricao;
+            DataFim = t.DataFim;
+            idPeriodicidade = t.idPeriodicidade;
+            AlertaAtraso = t.AlertaAtraso;
+            AlertaAntecipacao = t.AlertaAntecipacao;
+            IsTarefaOriginal = t.IsTarefaOriginal;
+        }
+
     }
 }

@@ -53,6 +53,32 @@ namespace Remembr.Views
 
         }
 
+        public HVPSemanal(DateTime dataR, Models.Periodicidade p)
+        {
+            InitializeComponent();
+            dataInicial = dataR;
+
+            nSemanas.Value = p.intervaloRepeticao;
+            dataate.SelectedDate = p.DataLimite;
+            if (p.DiasSemana != null)
+            {
+                checkBotaoSemanal(p.DiasSemana);
+            }
+
+            if (nSemanas.Value == 1)
+            {
+                plural.Text = "Semana";
+
+                ate.Text = "Ocorre todas as semanas até";
+            }
+            else
+            {
+                plural.Text = "Semanas";
+                ate.Text = "Ocorre de " + nSemanas.Value + " em " + nSemanas.Value + " semanas até";
+            }
+
+        }
+
         public bool[] lDias = [false, false, false, false, false, false, false];
 
         private void BotaoSemanal(object sender, RoutedEventArgs e)
@@ -122,7 +148,72 @@ namespace Remembr.Views
 
         }
 
+        private void checkBotaoSemanal(bool[] dias)
+        {
+            if (dias[0])
+            {
+                SEGUNDA.IsChecked = true;
+            }
+            else
+            {
+                SEGUNDA.IsChecked = false;
+            }
 
+            if (dias[1])
+            {
+                TERCA.IsChecked = true;
+            }
+            else
+            {
+                TERCA.IsChecked = false;
+            }
+
+            if (dias[2])
+            {
+                QUARTA.IsChecked = true;
+            }
+            else
+            {
+                QUARTA.IsChecked = false;
+            }
+
+            if (dias[3])
+            {
+                QUINTA.IsChecked = true;
+            }
+            else
+            {
+                QUINTA.IsChecked = false;
+            }
+
+            if (dias[4])
+            {
+                SEXTA.IsChecked = true;
+            }
+            else
+            {
+                SEXTA.IsChecked = false;
+            }
+
+            if (dias[5])
+            {
+                SABADO.IsChecked = true;
+            }
+            else
+            {
+                SABADO.IsChecked = false;
+            }
+
+            if (dias[6])
+            {
+                DOMINGO.IsChecked = true;
+            }
+            else
+            {
+                DOMINGO.IsChecked = false;
+            }
+
+        }
         private void nSemanas_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (nSemanas.Value == null || plural == null || ate == null)

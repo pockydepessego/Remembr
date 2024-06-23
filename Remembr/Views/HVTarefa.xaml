@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="140" d:DesignWidth="630"
              xmlns:svgc="http://sharpvectors.codeplex.com/svgc/">
-    <Border BorderBrush="#FFEBEBEB" BorderThickness="6" CornerRadius="15">
+    <Border BorderBrush="#FFEBEBEB" Background="#FFEBEBEB" BorderThickness="6" CornerRadius="15">
         <Border BorderBrush="Red" BorderThickness="3" CornerRadius="15" Background="#FFEBEBEB" x:Name="border">
 
         <Grid>
@@ -74,7 +74,7 @@
                             Grid.Column="1"
                             Template="{DynamicResource ButtonTemplate1}" Height="32" VerticalAlignment="Bottom" Click="ApagarTarefa_Click">
                             <Button.Content>
-                                <svgc:SvgViewbox Source="/Resources/SVG/trash-solid(1).svg" Height="25"/>
+                                <svgc:SvgViewbox Source="/Resources/SVG/trash-solid(1).svg" Height="20"/>
                             </Button.Content>
                         </Button>
 
@@ -86,7 +86,7 @@
                             Grid.Column="0"
                             Template="{DynamicResource ButtonTemplate1}" Click="EditarTarefa_Click">
                             <Button.Content>
-                                <svgc:SvgViewbox Source="/Resources/SVG/pencil-solid.svg" Height="25"/>
+                                <svgc:SvgViewbox Source="/Resources/SVG/pencil-solid.svg" Height="20"/>
                             </Button.Content>
                         </Button>
 

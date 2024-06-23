@@ -1,4 +1,5 @@
-﻿using Remembr.ViewModels;
+﻿using Remembr.Models;
+using Remembr.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,36 @@ namespace Remembr.Views
                 tsExec.IsEnabled = false;
 
             }
+        }
+
+        public HVLembretes(int priov, Tarefa t)
+        {
+            InitializeComponent();
+            prio = priov;
+
+            if (t.AlertaAntecipacao != null)
+            {
+                LembreteAntecipacao.IsChecked = true;
+                tsAntec.IsEnabled = true;
+                tsAntec.Value = t.AlertaAntecipacao.Tempo;
+            }
+
+            if (t.AlertaAtraso != null)
+            {
+                LembreteExecucao.IsChecked = true;
+                tsExec.IsEnabled = true;
+                tsExec.Value = t.AlertaAtraso.Tempo;
+            }
+
+
+            if (priov >= 400)
+            {
+                LembreteAntecipacao.IsChecked = true;
+                LembreteExecucao.IsChecked = true;
+                LembreteAntecipacao.IsEnabled = false;
+                LembreteExecucao.IsEnabled = false;
+            }
+
         }
 
         private void LembreteAntecipacao_Checked(object sender, RoutedEventArgs e)

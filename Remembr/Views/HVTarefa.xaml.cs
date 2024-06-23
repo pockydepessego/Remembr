@@ -144,7 +144,23 @@ namespace Remembr.Views
 
         private void EditarTarefa_Click(object sender, RoutedEventArgs e)
         {
+            if (MVM == null)
+            {
+                MessageBox.Show("erro MVM");
+                return;
+            }
+            if (MVM.GTarefas == null)
+            {
+                MessageBox.Show("erro tarefas");
+                return;
+            }
+            if (task == null)
+            {
+                MessageBox.Show("erro tarefa");
+                return;
+            }
 
+            MVM.editarTarefa(task.ID);
         }
     }
 }

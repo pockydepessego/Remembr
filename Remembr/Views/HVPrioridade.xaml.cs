@@ -1,4 +1,5 @@
-﻿using Remembr.ViewModels;
+﻿using Remembr.Models;
+using Remembr.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,46 @@ namespace Remembr.Views
             }
 
 
+        }
+
+        public HVPrioridade(Tarefa tarefa)
+        {
+            InitializeComponent();
+            if (HVNovaPrioridade == null)
+            {
+                HVNovaPrioridade = new HVNovaPrioridade(tarefa.valorPrio);
+                HVNovaPrioridade.DataContext = new HVNovaPrioridadeVM();
+            }
+
+            if ((new List<int> { 100, 200, 300, 400 }.Contains(tarefa.valorPrio)))
+            {
+                switch (tarefa.valorPrio)
+                {
+                    case 100:
+                        Prioridade100.IsChecked = true;
+                        selectedPrio = 100;
+                        break;
+                    case 200:
+                        Prioridade200.IsChecked = true;
+                        selectedPrio = 200;
+                        break;
+                    case 300:
+                        Prioridade300.IsChecked = true;
+                        selectedPrio = 300;
+                        break;
+                    case 400:
+                        Prioridade400.IsChecked = true;
+                        selectedPrio = 400;
+                        break;
+                }
+            }
+            else
+            {
+                Prioridadex.IsChecked = true;
+                selectedPrio = -100;
+
+                pcc.Content = HVNovaPrioridade;
+            }
         }
 
         private void Prioridadex_Click(object sender, RoutedEventArgs e)
