@@ -53,7 +53,7 @@ namespace Remembr.Views
 
         }
 
-        private bool[] lDias = [false, false, false, false, false, false, false];
+        public bool[] lDias = [false, false, false, false, false, false, false];
 
         private void BotaoSemanal(object sender, RoutedEventArgs e)
         {

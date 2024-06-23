@@ -232,6 +232,7 @@
                                   HorizontalContentAlignment="Center"
                                   IsEditable="true"
                                   IsReadOnly="true"
+                                  SelectedIndex="0"
                                   Style="{DynamicResource theComboBox}"
                                   ItemContainerStyle="{DynamicResource theComboBoxItem}">
                             <ComboBoxItem Content="Por Iniciar" />
@@ -279,7 +280,7 @@
                                             Height="40"
                                             Width="150"
                                             FontFamily="Mentone"
-                                            Grid.Row="0" Click="Data_Click"/>
+                                            Grid.Row="0" Checked="Data_Click"/>
 
                                     <RadioButton x:Name="Prioridade"
                                             Style="{StaticResource botaofeio}"
@@ -288,7 +289,7 @@
                                             Height="40"
                                             Width="150"                                            
                                             FontFamily="Mentone"
-                                            Grid.Row="2" Click="Prioridade_Click"/>
+                                            Grid.Row="2" Checked="Prioridade_Click"/>
 
                                     <RadioButton x:Name="Periodicidade"
                                             Style="{StaticResource botaofeio}"
@@ -299,7 +300,7 @@
                                             FontFamily="Mentone"
                                             Grid.Column="0"
                                             Grid.Row="1"
-                                            Click="Periodicidade_Click"/>
+                                            Checked="Periodicidade_Click"/>
 
                                     <RadioButton x:Name="Notificacoes"
                                             Style="{StaticResource botaofeio}"
@@ -309,7 +310,7 @@
                                             Width="150"                                        
                                             FontFamily="Mentone"
                                             Grid.Row="4"
-                                            Click="Lembretes_Click"/>
+                                            Checked="Lembretes_Click"/>
 
 
 
@@ -389,7 +390,7 @@
                                             FontFamily="Mentone"
                                             Style="{StaticResource NTbutton}"
                                             VerticalAlignment="Center"
-                                            Margin="0 5 0 0"/>
+                                            Margin="0 5 0 0" Click="CriarTarefa_Click"/>
 
                                 </Grid>
                         </Grid>

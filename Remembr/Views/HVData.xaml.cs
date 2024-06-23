@@ -38,7 +38,9 @@ namespace Remembr.Views
             if (CheckTodoDia.IsChecked.Value == true)
             {
                 tpInicio.IsEnabled = false;
+                tpInicio.Value = null;
                 tpFim.IsEnabled = false;
+                tpFim.Value = null;
             }
             else 
             {

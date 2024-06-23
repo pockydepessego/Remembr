@@ -28,11 +28,11 @@ namespace Remembr.Views
         public DateTime? timeInicial;
         public int? perSelecionada;
 
-        HVPDiario? hvPDiarioV;
-        HVPSemanal? hvPSemanalV;
-        HVPMensal? hvPMensalV;
-        HVPAnual? hvPAnualV;
-        HVPDesativado? hvPDesativadoV;
+        public HVPDiario? hvPDiarioV;
+        public HVPSemanal? hvPSemanalV;
+        public HVPMensal? hvPMensalV;
+        public HVPAnual? hvPAnualV;
+        public HVPDesativado? hvPDesativadoV;
         public HVPeriodicidade()
         {
             InitializeComponent();

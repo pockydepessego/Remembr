@@ -74,8 +74,7 @@
                                      FontSize="12"
                                      FontFamily="Mentone"
                                      Foreground="#FF3F3F3F"
-                                     Value="0.00:00:00"
-                                     Minimum="0.00:00:00"
+                                     Minimum="0.00:00:01"
                                      Maximum="7.00:00:00"/>
                 
                 <Rectangle Grid.Column="4"
@@ -138,8 +137,7 @@
                                      FontSize="12"
                                      FontFamily="Mentone"
                                      Foreground="#FF3F3F3F"
-                                     Value="0.00:00:00"
-                                     Minimum="0.00:00:00"
+                                     Minimum="0.00:00:01"
                                      Maximum="7.00:00:00"/>
 
                 <Rectangle Grid.Column="4"
