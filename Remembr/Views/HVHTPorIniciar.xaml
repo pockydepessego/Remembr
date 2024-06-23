@@ -10,17 +10,16 @@
 
     <Border Background="#FEDC85" CornerRadius="0,0,15,15">
         <Grid>
-            <ListBox Background="Transparent" Margin="10" x:Name="listinha">
+            <ListBox Background="Transparent" Margin="10" x:Name="listinha" MouseDown="listinha_MouseDown">
 
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
                         <Setter Property="Margin" Value="0,0,0,5"/>
-                        <Setter Property="Height" Value="140"/>
+
                     </Style>
                 </ListBox.ItemContainerStyle>
-
             </ListBox>
         </Grid>
     </Border>

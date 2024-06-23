@@ -3,6 +3,7 @@ using Remembr.ViewModels;
 using Syncfusion.UI.Xaml.CellGrid.Styles;
 using Syncfusion.UI.Xaml.Diagram;
 using Syncfusion.Windows.Controls;
+using Syncfusion.Windows.Tools.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,10 +33,13 @@ namespace Remembr.Views
             MessageBox.Show("hvtarefa chamado sem tarefa");
         }
 
+        Tarefa task;
         public HVTarefa(Tarefa t)
         {
             InitializeComponent();
             MVM = (MainVM)Application.Current.MainWindow.DataContext;
+            task = t;
+
             nomeTarefa.Text = t.Titulo;
 
             if (t.FullDia)
@@ -108,6 +112,32 @@ namespace Remembr.Views
 
         }
 
+        private void ApagarTarefa_Click(object sender, RoutedEventArgs e)
+        {
+            if (MVM == null)
+            {
+                MessageBox.Show("erro MVM");
+                return;
+            }
+            if (MVM.GTarefas == null)
+            {
+                MessageBox.Show("erro tarefas");
+                return;
+            }
+            if (task.Estado != -1)
+            {
+                task.Estado = -1;
+            } else {
+                MVM.GTarefas.Remove(task);
+            }
+            MVM.SaveTarefas();
+            gr.Visibility = Visibility.Hidden;
+            apagada.Visibility = Visibility.Visible;
+        }
 
+        private void EditarTarefa_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

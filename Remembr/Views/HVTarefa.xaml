@@ -10,138 +10,148 @@
 
     <Border BorderBrush="Red" BorderThickness="3" CornerRadius="15" Background="#FFEBEBEB" x:Name="border">
 
-        <Grid x:Name="gr">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="1*"/>
+        <Grid>
+            <Grid x:Name="apagada" Visibility="Hidden">
+                <TextBlock                         
+                           Text="Tarefa apagada."                               
+                           FontFamily="{StaticResource MentoneLig}"                              
+                           FontSize="16"                       
+                           Foreground="#FF6C6C6C"                       
+                           HorizontalAlignment="center"                       
+                           VerticalAlignment="Center" FontWeight="Bold"/>
+            </Grid>
 
-            </Grid.RowDefinitions>
 
-            <Grid x:Name="griddesc" Grid.Row="2">
-                <Border BorderBrush="#FF3F3F3F" 
+            <Grid x:Name="gr">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="1*"/>
+
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="griddesc" Grid.Row="2" Margin="10,5,10,5">
+                    <Border BorderBrush="#FF3F3F3F" 
                             BorderThickness="2" 
                             CornerRadius="10"
-                        Margin="13 3 15 3"
                     >
 
-                    <TextBlock Margin="20 0 0 0" x:Name="desc"                         
+                        <TextBlock Margin="20 0 0 0" x:Name="desc"                         
                            Text="Descrição da Tarefa"                               
                            FontFamily="{StaticResource MentoneLig}"                              
                            FontSize="16"                       
                            Foreground="#FF6C6C6C"                       
                            HorizontalAlignment="Left"                       
                            VerticalAlignment="Center" FontWeight="Bold"/>
-                </Border>
-            </Grid>
+                    </Border>
+                </Grid>
 
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1" Margin="10,5,10,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" x:Name="nomeTarefa"
+                    <TextBlock Grid.Column="0" x:Name="nomeTarefa"
                            Text="Nome da Tarefa"                           
                            FontFamily="{StaticResource MentoneLig}"
                            FontSize="20"
-                           Margin="18 0 0 0"
+                           Margin="10 0 0 0"
                            Foreground="#FF3F3F3F"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center" FontWeight="Bold"/>
 
-                <Grid Grid.Column="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="0.5*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button x:Name="ApagarTarefa" 
-                            Background="{x:Null}" 
-                            BorderBrush="{x:Null}" 
-                            Foreground="{x:Null}"
-                            Grid.Column="2"
-                            Template="{DynamicResource ButtonTemplate1}">
-                        <Button.Content>
-                            <svgc:SvgViewbox Source="/Resources/SVG/trash-solid(1).svg" Height="25"/>
-                        </Button.Content>
-                    </Button>
-
-                    <Button x:Name="EditarTarefa" 
+                    <Grid Grid.Column="2" HorizontalAlignment="Right">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="ApagarTarefa" 
+                            Margin="5,0,5,0"
                             Background="{x:Null}" 
                             BorderBrush="{x:Null}" 
                             Foreground="{x:Null}"
                             Grid.Column="1"
-                            Template="{DynamicResource ButtonTemplate1}">
-                        <Button.Content>
-                            <svgc:SvgViewbox Source="/Resources/SVG/pencil-solid.svg" Height="25"/>
-                        </Button.Content>
-                    </Button>
+                            Template="{DynamicResource ButtonTemplate1}" Height="32" VerticalAlignment="Bottom" Click="ApagarTarefa_Click">
+                            <Button.Content>
+                                <svgc:SvgViewbox Source="/Resources/SVG/trash-solid(1).svg" Height="25"/>
+                            </Button.Content>
+                        </Button>
+
+                        <Button x:Name="EditarTarefa" 
+                            Margin="5,0,5,0"
+                            Background="{x:Null}" 
+                            BorderBrush="{x:Null}" 
+                            Foreground="{x:Null}"
+                            Grid.Column="0"
+                            Template="{DynamicResource ButtonTemplate1}" Click="EditarTarefa_Click">
+                            <Button.Content>
+                                <svgc:SvgViewbox Source="/Resources/SVG/pencil-solid.svg" Height="25"/>
+                            </Button.Content>
+                        </Button>
+
+                    </Grid>
 
                 </Grid>
-            </Grid>
 
 
 
-            <Grid Grid.Row="3" x:Name="grid3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.1*"/>
-                    <ColumnDefinition Width="2.5*"/>
-                    <ColumnDefinition Width="0.1*"/>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="0.1*"/>
-                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="3" x:Name="grid3" Margin="10,5,10,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
 
-                <Grid Grid.Column="1">
-                    <Border BorderBrush="#FF3F3F3F" 
+                    <Grid Grid.Column="0">
+                        <Border BorderBrush="#FF3F3F3F" 
                             BorderThickness="2" 
                             CornerRadius="10"
-                            Margin="0 3 0 3">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                            >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock Text="Data: " 
+                                <TextBlock Text="Data: " 
                                        Grid.Column="1"
                                        FontFamily="{StaticResource MentoneLig}"
                                        FontSize="16"
                                        Foreground="#FF3F3F3F"
                                        HorizontalAlignment="Right"
                                        VerticalAlignment="Center" FontWeight="Bold"/>
-                            <TextBlock Text="Data" x:Name="data"
+                                <TextBlock Text="Data" x:Name="data"
                                        Grid.Column="2"
                                        FontFamily="{StaticResource MentoneLig}"
                                        FontSize="16"
                                        Foreground="#FF6C6C6C"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center" FontWeight="Bold"/>
-                        </Grid>
-                    </Border>
-                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
 
-                <Grid Grid.Column="3">
-                    <Border BorderBrush="#FF3F3F3F" 
+                    <Grid Grid.Column="2">
+                        <Border BorderBrush="#FF3F3F3F" 
                             BorderThickness="2" 
                             CornerRadius="10"
-                            Margin="0 3 0 3">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.2*"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="0.2*"/>
-                            </Grid.ColumnDefinitions>
+                            >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="1" x:Name="prioridade" 
+                                <TextBlock Grid.Column="1" x:Name="prioridade" 
                                        Text="PRIO"
                                        FontFamily="{StaticResource MentoneLig}"
                                        FontSize="16"
@@ -150,9 +160,10 @@
                                        VerticalAlignment="Center" FontWeight="Bold"
                                        TextAlignment="Center"
                                        TextWrapping="Wrap"/>
-                        </Grid>
-                    </Border>
+                            </Grid>
+                        </Border>
 
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
