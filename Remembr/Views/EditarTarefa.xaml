@@ -228,8 +228,7 @@
                                   HorizontalContentAlignment="Center"
                                   IsEditable="true"
                                   IsReadOnly="true"
-                                  Style="{DynamicResource theComboBox}"
-                                  ItemContainerStyle="{DynamicResource theComboBoxItem}">
+                                  Style="{StaticResource ComboBoxFlatStyle}">
                             <ComboBoxItem Content="Por Iniciar" />
                             <ComboBoxItem Content="Em Execução" />
                             <ComboBoxItem Content="Terminada" />
