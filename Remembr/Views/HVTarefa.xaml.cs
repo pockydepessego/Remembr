@@ -146,5 +146,15 @@ namespace Remembr.Views
         {
 
         }
+
+        private void ApagarTarefa_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PassarTarefa_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

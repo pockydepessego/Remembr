@@ -76,7 +76,7 @@
                            BorderBrush="{x:Null}" 
                            Foreground="{x:Null}"
                            Grid.Column="0"
-                           Template="{DynamicResource ButtonTemplate1}" Height="32" VerticalAlignment="Bottom" Click="ApagarTarefa_Click"
+                           Template="{DynamicResource ButtonTemplate1}" Height="32" VerticalAlignment="Bottom" Click="PassarTarefa_Click"
                                ToolTip="Começar Tarefa">
                                 <Button.Content>
                                     <svgc:SvgViewbox Source="/Resources/SVG/arrow-right-solid.svg" Width="20"/>
@@ -89,7 +89,7 @@
                             BorderBrush="{x:Null}" 
                             Foreground="{x:Null}"
                             Grid.Column="2"
-                            Template="{DynamicResource ButtonTemplate1}" Height="32" VerticalAlignment="Bottom" Click="ApagarTarefa_Click"
+                            Template="{DynamicResource ButtonTemplate1}" Height="32" VerticalAlignment="Bottom" Click="ApagarTarefa_Click"  
                                 ToolTip="Apagar Tarefa">
                             <Button.Content>
                                 <svgc:SvgViewbox Source="/Resources/SVG/trash-solid(1).svg" Height="20"/>
