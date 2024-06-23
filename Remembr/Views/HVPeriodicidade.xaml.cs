@@ -22,6 +22,7 @@ namespace Remembr.Views
     public partial class HVPeriodicidade : UserControl
     {
 
+        public DateTime? timeInicial;
         HVPDiario? hvPDiarioV;
         HVPSemanal? hvPSemanalV;
         HVPMensal? hvPMensalV;
@@ -30,13 +31,24 @@ namespace Remembr.Views
         public HVPeriodicidade()
         {
             InitializeComponent();
+            MessageBox.Show("view periodicidade iniciada sem datetime");
+
+        }
+        public HVPeriodicidade(DateTime dataInicial)
+        {
+            InitializeComponent();
+
+            timeInicial = dataInicial;
+
             if (hvPDesativadoV == null)
             {
-                hvPDesativadoV = new HVPDesativado();
+                hvPDesativadoV = new HVPDesativado(dataInicial);
                 hvPDesativadoV.DataContext = new HVPDesativadoVM();
             }
             cc.Content = hvPDesativadoV;
+
         }
+
 
         private void BotaoDiario_Checked(object sender, RoutedEventArgs e)
         {
@@ -84,9 +96,14 @@ namespace Remembr.Views
         private void BotaoDesativado_Checked(object sender, RoutedEventArgs e)
         {
             if (cc == null) return;
+
+            var dataInicial = timeInicial;
+            if ( dataInicial == null)
+                return;
+
             if (hvPDesativadoV == null)
             {
-                hvPDesativadoV = new HVPDesativado();
+                hvPDesativadoV = new HVPDesativado((DateTime)dataInicial);
                 hvPDesativadoV.DataContext = new HVPDesativadoVM();
             }
             cc.Content = hvPDesativadoV;

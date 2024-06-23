@@ -23,11 +23,28 @@ namespace Remembr.Views
         public HVData()
         {
             InitializeComponent();
+            tpInicio.IsEnabled = false;
+            tpFim.IsEnabled = false;
+
         }
 
-        private void LembreteAntecipacao_Checked(object sender, RoutedEventArgs e)
+        private void CheckTodoDia_Checked(object sender, RoutedEventArgs e)
         {
 
+            if (CheckTodoDia.IsChecked == null || tpInicio == null || tpFim == null)
+                return;
+
+
+            if (CheckTodoDia.IsChecked.Value == true)
+            {
+                tpInicio.IsEnabled = false;
+                tpFim.IsEnabled = false;
+            }
+            else 
+            {
+                tpInicio.IsEnabled = true;
+                tpFim.IsEnabled = true;
+            }
         }
     }
 }

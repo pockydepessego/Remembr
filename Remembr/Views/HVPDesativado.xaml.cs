@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Remembr.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,9 +22,19 @@ namespace Remembr.Views
     /// </summary>
     public partial class HVPDesativado : UserControl
     {
+        public DateTime? dataInicial;
         public HVPDesativado()
         {
             InitializeComponent();
+            MessageBox.Show("view periodicidade desativada iniciada sem datetime");
+            
+        }
+
+        public HVPDesativado(DateTime dataInicial)
+        {
+            InitializeComponent();
+            desativado.Text = "Ocorre apenas no dia " + dataInicial.ToString("dd/MM/yyyy");
+
         }
     }
 }

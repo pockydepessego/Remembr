@@ -44,7 +44,6 @@ namespace Remembr.Views
                 cc.Content = hVDataV;
             }
 
-
         }
 
 
@@ -164,10 +163,54 @@ namespace Remembr.Views
 
         private void Periodicidade_Click(object sender, RoutedEventArgs e)
         {
+
+            if (hVDataV == null)
+            {
+                MessageBox.Show("É obrigatório preencher a data antes de alterar a periodicidade");
+                Data.IsChecked = true;
+                Periodicidade.IsChecked = false;
+                return;
+            }
+
+
+            if (!hVDataV.calendario.SelectedDate.HasValue)
+            {
+                MessageBox.Show("É obrigatório preencher a data antes de alterar a periodicidade");
+                Data.IsChecked = true;
+                Periodicidade.IsChecked = false;
+                return;
+            }
+
+            if (!((hVDataV.tpInicio != null && hVDataV.tpInicio.Value == null && hVDataV.CheckTodoDia.IsChecked != null &&  hVDataV.CheckTodoDia.IsChecked.Value==true)^
+                (hVDataV.CheckTodoDia.IsChecked != null && hVDataV.CheckTodoDia.IsChecked.Value==false && hVDataV.tpInicio != null && hVDataV.tpInicio.Value != null))) {
+                MessageBox.Show("É obrigatório preencher a data antes de alterar a periodicidade");
+                Data.IsChecked = true;
+                Periodicidade.IsChecked = false;
+                return;
+            }
+
+            if (hVDataV.tpInicio != null && hVDataV.tpFim != null && hVDataV.tpInicio.Value >= hVDataV.tpFim.Value)
+            {
+                MessageBox.Show("A hora de fim deve ser maior ou igual que a hora de início.");
+                Data.IsChecked = true;
+                Periodicidade.IsChecked = false;
+                return;
+            }
+
             if (hvPerV == null)
             {
-                hvPerV = new HVPeriodicidade();
-                hvPerV.DataContext = new HVPeriodicidadeVM();
+
+                if (hVDataV.CheckTodoDia.IsChecked != null && hVDataV.CheckTodoDia.IsChecked.Value)
+                {
+
+                    hvPerV = new HVPeriodicidade(hVDataV.calendario.SelectedDate.Value);
+                    hvPerV.DataContext = new HVPeriodicidadeVM();
+
+
+                }
+
+
+
             }
             cc.Content = hvPerV;
         }

@@ -45,11 +45,11 @@
                     <Grid Grid.Row="2">
 
                         <Viewbox Stretch="Uniform">
-                            <Calendar HorizontalAlignment="Center"  
+                            <Calendar HorizontalAlignment="Center" x:Name="calendario" 
                                   Grid.Column="1" 
                                     VerticalAlignment="Center"
-                          CalendarButtonStyle="{DynamicResource CalendarCalendarButtonStyle1}" 
-                                  Style="{DynamicResource CalendarStyle1}" >
+                                    CalendarButtonStyle="{DynamicResource CalendarCalendarButtonStyle1}" 
+                                    Style="{DynamicResource CalendarStyle1}" >
                             </Calendar>
                         </Viewbox>
                     </Grid>
@@ -86,7 +86,7 @@
                                 <CheckBox Style="{DynamicResource CheckBoxStyle2}" x:Name="CheckTodoDia" 
                                                   Background="Transparent"
                                                   Foreground="#FF3F3F3F"
-                                                  BorderBrush="#FF3F3F3F" Checked="LembreteAntecipacao_Checked"
+                                                  BorderBrush="#FF3F3F3F" Checked="CheckTodoDia_Checked" Unchecked="CheckTodoDia_Checked"
                                                   IsChecked="True"/>
                             </Viewbox>
                         </StackPanel>
@@ -144,7 +144,8 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <xctk:TimePicker Margin="14 6 14 6"
+                            <xctk:TimePicker x:Name="tpInicio"
+                                Margin="14 6 14 6"
                                              Background="Transparent"
                                              BorderBrush="Transparent"
                                              Format="Custom"
@@ -160,7 +161,8 @@
                                        RadiusY="6"
                                        Margin="10 2 10 2"/>
                             
-                            <xctk:TimePicker Grid.Row="2"
+                            <xctk:TimePicker x:Name="tpFim"
+                                             Grid.Row="2"
                                              Margin="14 6 14 6"
                                              Background="Transparent"
                                              BorderBrush="Transparent"
@@ -170,7 +172,8 @@
                                              FontSize="14"
                                              
                                              Foreground="#3F3F3F"/>
-                            <Rectangle Grid.Row="1"
+                            <Rectangle 
+                                       Grid.Row="1"
                                        Stroke="#FF3F3F3F"
                                        StrokeThickness="1.5"
                                        RadiusX="6"

@@ -218,7 +218,8 @@
                                HorizontalContentAlignment="Left" FontFamily="{StaticResource MentoneLig}" FontSize="22"
                                Foreground="#FF3F3F3F"/>
 
-                        <ComboBox Grid.Column="2"
+                        <ComboBox x:Name="estado"
+                                  Grid.Column="2"
                                   Text="Por Iniciar"
                                   Height="40"
                                   Width="150"
