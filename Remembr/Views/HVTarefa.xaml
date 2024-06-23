@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="140" d:DesignWidth="630"
              xmlns:svgc="http://sharpvectors.codeplex.com/svgc/">
-
-    <Border BorderBrush="Red" BorderThickness="3" CornerRadius="15" Background="Transparent" x:Name="border">
+    <Border BorderBrush="#FFEBEBEB" BorderThickness="6" CornerRadius="15">
+        <Border BorderBrush="Red" BorderThickness="3" CornerRadius="15" Background="#FFEBEBEB" x:Name="border">
 
         <Grid x:Name="gr">
             <Grid.RowDefinitions>
@@ -156,5 +156,7 @@
                 </Grid>
             </Grid>
         </Grid>
+    </Border>
+    
     </Border>
 </UserControl>
