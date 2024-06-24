@@ -147,22 +147,95 @@
 
             </Grid>
 
-
             <Rectangle Margin="22"
                        Grid.Column="1"
                        RadiusX="15"
                        RadiusY="15"
                        Fill="White"/>
 
+            <Grid Grid.Column="1" Margin="30">
 
-            <syncfusion:SfScheduler Grid.Column="1" 
+                <syncfusion:SfScheduler x:Name="Schedule"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
-                                    Margin="30"                                    
-                                    ViewType="Week"
+                                    ViewType="Month"
                                     BorderBrush="Transparent"
-                                    FontFamily="{StaticResource MentoneLig}"/>
+                                    FirstDayOfWeek="Monday"
+                                    FontFamily="{StaticResource MentoneLig}"
+                                    AllowDrop="False"
+                                    EnableToolTip="True"
+                                    AppointmentEditFlag="None"
+                                    AllowViewNavigation="True"
+                                    AppointmentTapped="Schedule_AppointmentTapped"
+                                    >
+                    <syncfusion:SfScheduler.ToolTipTemplate>
+                        <DataTemplate>
+                            <Border x:Name="PART_ToolTipBorder"
+                            BorderBrush="{Binding AppointmentBackground}"
+                            BorderThickness="2"
+                            Background="White" 
+                            Opacity="0.75"
+                            CornerRadius="4"
+                            VerticalAlignment="Stretch" 
+                            HorizontalAlignment="Stretch"
+                            Padding="5">
+                                <StackPanel>
 
+                                    <TextBlock x:Name="PART_DisplayTextBlock"
+                                    Text="{Binding Subject}" 
+                                    Foreground="Black"
+                                    FontWeight="Bold"
+                                    FontSize="14"
+                                    TextWrapping="Wrap"
+                                    TextTrimming="CharacterEllipsis"
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Left" />
+
+                                    <TextBlock x:Name="PART_DisplayTextBlock2"
+                                    Text="{Binding Notes}" 
+                                    Foreground="Black"
+                                    FontSize="14"
+                                    TextWrapping="Wrap"
+                                    TextTrimming="CharacterEllipsis"
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Left" >
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Notes}" Value="">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding Notes}" Value="{x:Null}">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+
+                                    <TextBlock x:Name="PART_DisplayTextBlock3"
+                                    Foreground="Black"
+                                    FontSize="14"
+                                    TextWrapping="Wrap"
+                                    TextTrimming="CharacterEllipsis"
+                                    VerticalAlignment="Center" 
+                                    HorizontalAlignment="Left" >
+                                <Run FontWeight="Bold">Prioridade: </Run>
+                                <Run Text="{Binding Location}" />
+                                    </TextBlock>
+
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </syncfusion:SfScheduler.ToolTipTemplate>
+                </syncfusion:SfScheduler>
+
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Orientation="Horizontal" >
+                    <Button Content="DIA" Click="DayViewButton_Click" Margin="5"/>
+                    <Button Content="MÊS" Click="MonthViewButton_Click" Margin="5"/>
+                </StackPanel>
+            </Grid>
 
 
         </Grid>

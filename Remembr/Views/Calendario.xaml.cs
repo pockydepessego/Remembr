@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Syncfusion.UI.Xaml.Scheduler;
+using System.Security.Cryptography;
 
 namespace Remembr.Views
 {
@@ -33,6 +35,52 @@ namespace Remembr.Views
                 return;
             }
             pfp.ImageSource = MVM.GPerfil.Fotografia;
+
+            if (MVM.GTarefas == null)
+            {
+                MessageBox.Show("Erro tarefas");
+                return;
+            }
+
+            if (MVM.GPrioridades == null)
+            {
+                MessageBox.Show("Erro prioridades");
+                return;
+            }
+
+            ScheduleAppointmentCollection appointmentCollection = new ScheduleAppointmentCollection();
+
+            foreach (var tarefa in MVM.GTarefas)
+            {
+                var appointment = new ScheduleAppointment();
+                appointment.StartTime = (DateTime)tarefa.DataInicio;
+                appointment.IsAllDay = tarefa.FullDia;
+                appointment.Subject = tarefa.Titulo;
+                appointment.Notes = tarefa.Descricao;
+                appointment.Id = tarefa.ID;
+                appointment.Location = tarefa.valorPrio.ToString(); // TEM DE SER TEM DE SER
+
+                if (tarefa.DataFim != null)
+                {
+                    appointment.EndTime = (DateTime)tarefa.DataFim;
+                }
+
+                Models.Prioridade? prio = MVM.GPrioridades.Where(p => p.Valor == tarefa.valorPrio).FirstOrDefault();
+                if (prio != null)
+                {
+                    appointment.AppointmentBackground = new BrushConverter().ConvertFromString(prio.Cor) as SolidColorBrush;
+                }
+
+                appointmentCollection.Add(appointment);
+            }
+
+            Schedule.ItemsSource = appointmentCollection;
+            Schedule.DaysViewSettings.TimeRulerFormat = "HH:mm";
+            Schedule.MonthViewSettings.ShowWeekNumber = true;
+            
+
+
+
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -88,6 +136,38 @@ namespace Remembr.Views
         private void Ellipse_MouseDown(object sender, MouseButtonEventArgs e)
         {
             MVM.ChangeView("DefinicoesUtilizador");
+        }
+
+        private void Schedule_AppointmentDragOver(object sender, AppointmentDragOverEventArgs e)
+        {
+
+        }
+
+        private void Schedule_AppointmentTapped(object sender, AppointmentTappedArgs e)
+        {
+            if (e.Appointment == null)
+            {
+                return;
+            }
+
+            var tid = e.Appointment.Id.ToString();
+
+            if (tid == null)
+            {
+                return;
+            }
+
+            MVM.editarTarefa(tid);
+        }
+
+        private void DayViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            Schedule.ViewType = SchedulerViewType.Day;
+        }
+
+        private void MonthViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            Schedule.ViewType = SchedulerViewType.Month;
         }
     }
 
