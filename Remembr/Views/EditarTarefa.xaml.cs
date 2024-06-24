@@ -535,6 +535,14 @@ namespace Remembr.Views
 
             if (task == null) return;
 
+            
+            var est = estado.SelectedIndex;
+            if (estado.SelectedIndex == 3)
+            {
+                est = -1;
+            }
+            
+
             tTarefa = new Models.Tarefa()
             {
                 ID = task.ID,
@@ -544,7 +552,7 @@ namespace Remembr.Views
                 DataInicio = tDataInicio,
                 DataFim = tDataFim,
                 valorPrio = (int)priov,
-                Estado = estado.SelectedIndex,
+                Estado = est,
                 FullDia = hVDataV.CheckTodoDia.IsChecked.Value,
                 IsTarefaOriginal = true
             };
