@@ -34,7 +34,7 @@
                         <RowDefinition Height="6*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Selecione as Datas:"
+                    <Label Content="Selecione a Data de Início:"
                    FontFamily="{StaticResource MentoneLig}"
                    FontSize="18"
                    Grid.Column="3"
