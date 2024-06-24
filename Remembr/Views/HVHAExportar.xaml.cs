@@ -42,7 +42,9 @@ namespace Remembr.Views
                 return;
             }
 
+#pragma warning disable CS0618 // Type or member is obsolete
             SfSchedule scheduler = new SfSchedule();
+#pragma warning restore CS0618 // Type or member is obsolete
             ScheduleAppointmentCollection appointmentCollection = new ScheduleAppointmentCollection();
 
             foreach (var tarefa in MVM.GTarefas)

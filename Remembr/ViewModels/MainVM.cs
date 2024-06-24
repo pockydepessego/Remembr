@@ -951,10 +951,23 @@ namespace Remembr.ViewModels
             }
 
 
+
             if (GNotificacoes.Count == 0)
             {
-                // nenhuma notificação para guardar
-                return true;
+                try
+                {
+                    if (File.Exists(System.IO.Path.Combine(basePath, "notifs.xml")))
+                    {
+                        File.Delete(System.IO.Path.Combine(basePath, "notifs.xml"));
+                        return true;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao apagar ficheiro de notificações:\n\n" + ex.Message + "\n" + ex.StackTrace);
+                    return false;
+                }
             }
 
             XDocument doc = new();

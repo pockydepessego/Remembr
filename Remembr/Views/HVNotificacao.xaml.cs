@@ -211,6 +211,7 @@ namespace Remembr.Views
             }
 
             MVM.GNotificacoes.Remove(notif);
+            var pila = MVM.GNotificacoes;
             gr.Visibility = Visibility.Hidden;
             apagada.Visibility = Visibility.Visible;
         }
