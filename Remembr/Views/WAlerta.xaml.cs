@@ -36,9 +36,46 @@ namespace Remembr.Views
                 MessageBox.Show("Erro ao carregar notificação");
                 return;
             }
+
+            switch (n.Tipo)
+            {
+                case 0:
+                    titulo.Text = "Aviso";
+                    break;
+                case 1:
+                    titulo.Text = "Alerta de Antecipação";
+                    break;
+                case 2:
+                    titulo.Text = "Alerta de Execução";
+                    break;
+            }
             mensagem.Text = n.Mensagem;
 
 
+        }
+
+        private void AlertaOk_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+
+        private void CloseApp_button(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void HideApp_button(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+            {
+                WindowState = WindowState.Minimized;
+            }
         }
     }
 }

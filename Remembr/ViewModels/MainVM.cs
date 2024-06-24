@@ -1095,7 +1095,7 @@ namespace Remembr.ViewModels
 
                             Notificacao notA = new Notificacao()
                             {
-                                Mensagem = "ALERTA ANTECIPAÇÃO: A hora prevista para a tarefa " + t.Titulo + " está quase a chegar.",
+                                Mensagem = "A hora prevista para a tarefa '" + t.Titulo + "' está quase a chegar.",
                                 Data = DateTime.Now,
                                 Tipo = 1,
                                 Lida = false,
@@ -1122,7 +1122,7 @@ namespace Remembr.ViewModels
 
                             Notificacao notE = new Notificacao()
                             {
-                                Mensagem = "ALERTA EXECUÇÃO: A hora prevista para a tarefa " + t.Titulo + " já passou.",
+                                Mensagem = "A hora prevista para a tarefa '" + t.Titulo + "' já passou.",
                                 Data = DateTime.Now,
                                 Tipo = 2,
                                 Lida = false,

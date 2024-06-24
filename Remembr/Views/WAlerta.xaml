@@ -84,11 +84,14 @@
 
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="0.75*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
-                    <TextBlock x:Name="mensagem" 
-                               Text=""
+                    <TextBlock Grid.Row="0"
+                               x:Name="titulo" 
+                               Text="ALERTA"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                TextAlignment="Center"
@@ -96,7 +99,18 @@
                                FontFamily="{StaticResource MentoneLig}"
                                FontSize="18"
                                Foreground="#3f3f3f"/>
-                    <Button Grid.Row="1"
+                    <TextBlock Grid.Row="1"
+                               x:Name="mensagem" 
+                               Text="mensagem"
+                               Width="350"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               FontFamily="{StaticResource MentoneLig}"
+                               FontSize="18"
+                               Foreground="#3f3f3f"/>
+                    <Button Grid.Row="2"
                             x:Name="AlertaOk"
                             Content="OK"
                             Height="40"
@@ -106,7 +120,7 @@
                             FontFamily="Mentone"
                             Style="{StaticResource CTbutton}"
                             VerticalAlignment="Center"
-                            Margin="20 0 " Click="CriarTarefa_Click"/>
+                            Margin="20 0 " Click="AlertaOk_Click"/>
                 </Grid>    
 
 
