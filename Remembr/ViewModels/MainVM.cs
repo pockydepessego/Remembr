@@ -14,6 +14,8 @@ using System.Security.Cryptography;
 using System.Windows.Documents.DocumentStructures;
 using Syncfusion.UI.Xaml.Gauges;
 using System.Diagnostics;
+using System.Threading;
+using Remembr.Views;
 
 
 namespace Remembr.ViewModels
@@ -196,6 +198,7 @@ namespace Remembr.ViewModels
 
                     } else
                     {
+                        StartPeriodicCheck();
                         ChangeView("HomeTarefas");
                     }
                 
@@ -450,6 +453,7 @@ namespace Remembr.ViewModels
                     }
 
                 }
+                MkPeriodicidades();
 
                 doc.Save(System.IO.Path.Combine(basePath, "tarefas.xml"));
 
@@ -913,7 +917,7 @@ namespace Remembr.ViewModels
 
                         if (docIDChildTarefas != null)
                         {
-                            tempPeriodicidade.IDChildTarefas = docIDChildTarefas.Value.Split(",");
+                            tempPeriodicidade.IDChildTarefas = docIDChildTarefas.Value.Split(",").ToList();
                         }
 
                         GPeriodicidades.Add(tempPeriodicidade);
@@ -1039,6 +1043,517 @@ namespace Remembr.ViewModels
             {
                 MessageBox.Show("Erro ao carregar notificações:\n\n" + ex.Message + "\n" + ex.StackTrace);
                 return false;
+            }
+        }
+
+
+
+
+
+        private bool _isRunning;
+        private SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
+
+        private async void StartPeriodicCheck()
+        {
+            _isRunning = true;
+            while (_isRunning)
+            {
+                await Task.Delay(TimeSpan.FromMinutes(1));
+                await CheckAsync();
+                SaveTarefas();
+            }
+        }
+
+        private async Task CheckAsync()
+        {
+            await _semaphore.WaitAsync();
+            try
+            {
+                DateTime agora = DateTime.Now;
+
+                if (GTarefas == null || GNotificacoes == null)
+                {
+                    return;
+                }
+
+
+                for (int i = 0; i < GTarefas.Count; i++)
+                {
+                    Tarefa t = GTarefas[i];
+                    TimeSpan diff = t.DataInicio - agora;
+                    TimeSpan pdiff = agora - t.DataInicio;
+
+                    if (t.AlertaAntecipacao != null)
+                    {
+                        if (diff <= t.AlertaAntecipacao.Tempo && diff.TotalSeconds > 0 && t.Estado != 2 && t.Estado != -1)
+                        {
+                            
+                            if (GNotificacoes.Any(n => n.IDOriginal == t.ID && n.Tipo == 1))
+                            {
+                                continue;
+                            }
+
+                            Notificacao notA = new Notificacao()
+                            {
+                                Mensagem = "A hora prevista para a tarefa '" + t.Titulo + "' está quase a chegar.",
+                                Data = DateTime.Now,
+                                Tipo = 1,
+                                Lida = false,
+                                IDOriginal = t.ID
+                            };
+
+                            GNotificacoes.Add(notA);
+
+                            var WA = new WAlerta(notA);
+                            WA.Show();
+                            
+                        }
+                    }
+
+                    if (t.AlertaAtraso != null)
+                    {
+                        if (pdiff >= t.AlertaAtraso.Tempo && pdiff.TotalSeconds > 0 && t.Estado != 2 && t.Estado != -1)
+                        {
+                            
+                            if (GNotificacoes.Any(n => n.IDOriginal == t.ID && n.Tipo == 2))
+                            {
+                                continue;
+                            }
+
+                            Notificacao notE = new Notificacao()
+                            {
+                                Mensagem = "A hora prevista para a tarefa '" + t.Titulo + "' já passou.",
+                                Data = DateTime.Now,
+                                Tipo = 2,
+                                Lida = false,
+                                IDOriginal = t.ID
+                            };
+
+                            GNotificacoes.Add(notE);
+
+                            var WA = new WAlerta(notE);
+                            WA.Show();
+
+                        }
+                    }
+
+                    SaveNotifs();
+
+                }
+            }
+            finally
+            {
+                _semaphore.Release();
+            }
+        }
+
+        public void StopPeriodicCheck()
+        {
+            _isRunning = false;
+        }
+
+        public bool existeRepetida(string idOriginal, DateTime date)
+        {
+            if (GPeriodicidades == null || GTarefas == null)
+            {
+                return false;
+            }
+
+            var per = GPeriodicidades.FirstOrDefault(p => p.IDTarefaOriginal == idOriginal);
+            if (per != null && per.IDChildTarefas != null)
+            {
+                foreach (string rid in per.IDChildTarefas)
+                {
+                    if (GTarefas.Any(t => t.ID == rid && t.DataInicio == date))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public void MkPeriodicidades()
+        {
+            if (GTarefas == null)
+            {
+                return;
+            }
+
+            for (int i = 0; i < GTarefas.Count; i++)
+            {
+                Tarefa t = GTarefas[i];
+
+                if (t.idPeriodicidade != null && t.IsTarefaOriginal)
+                {
+
+                    if (GPeriodicidades == null)
+                    {
+                        return;
+                    }
+
+                    var per = GPeriodicidades.FirstOrDefault(p => p.IDTarefaOriginal == t.ID && p.ID == t.idPeriodicidade);
+
+                    if (per == null)
+                    {
+                        continue;
+                    }
+
+                    switch(per.Tipo) {
+
+                        case 1: // diária
+                            var interv = per.intervaloRepeticao;
+                            DateTime dat = t.DataInicio.AddDays(interv);
+                            while (dat <= per.DataLimite)
+                            {
+                                if (existeRepetida(t.ID, dat))
+                                {
+                                    dat = dat.AddDays(per.intervaloRepeticao);
+                                    continue;
+                                }
+
+                                Tarefa nt = new Tarefa()
+                                {
+                                    Titulo = t.Titulo,
+                                    CreationTime = t.CreationTime,
+                                    DataInicio = dat,
+                                    FullDia = t.FullDia,
+                                    valorPrio = t.valorPrio,
+                                    Estado = t.Estado,
+                                    Descricao = t.Descricao,
+                                    DataFim = t.DataFim,
+                                    idPeriodicidade = t.idPeriodicidade,
+                                    AlertaAntecipacao = t.AlertaAntecipacao,
+                                    AlertaAtraso = t.AlertaAtraso,
+                                    IsTarefaOriginal = false,
+                                };
+
+                                if (per.IDChildTarefas == null)
+                                {
+                                    return;
+                                }
+                                per.IDChildTarefas.Add(nt.ID);
+                                GTarefas.Add(nt);
+
+                                dat = dat.AddDays(interv);
+                            }
+                            break;
+                        case 2: // semanal
+                            var interv2 = per.intervaloRepeticao;
+                            int nSemana = 0;
+                            DateTime dat2 = t.DataInicio.AddDays(1);
+                            while (dat2 <= per.DataLimite)
+                            {
+                                if (existeRepetida(t.ID, dat2))
+                                {
+                                    dat2 = dat2.AddDays(1);
+                                    continue;
+                                }
+
+                                if (per.DiasSemana == null)
+                                    return;
+
+
+                                int dayOfWeek = (int)dat2.DayOfWeek;
+                                    dayOfWeek = (dayOfWeek == 0) ? 6 : dayOfWeek - 1;
+
+                                if (dayOfWeek == 0)
+                                {
+                                    nSemana++;
+                                }
+
+                                if (nSemana % interv2 != 0 || !per.DiasSemana[dayOfWeek])
+                                {
+                                    dat2 = dat2.AddDays(1);
+                                    continue;
+                                }
+
+                                Tarefa nt2 = new Tarefa()
+                                {
+                                    Titulo = t.Titulo,
+                                    CreationTime = t.CreationTime,
+                                    DataInicio = dat2,
+                                    FullDia = t.FullDia,
+                                    valorPrio = t.valorPrio,
+                                    Estado = t.Estado,
+                                    Descricao = t.Descricao,
+                                    DataFim = t.DataFim,
+                                    idPeriodicidade = t.idPeriodicidade,
+                                    AlertaAntecipacao = t.AlertaAntecipacao,
+                                    AlertaAtraso = t.AlertaAtraso,
+                                    IsTarefaOriginal = false,
+                                };
+
+                                if (per.IDChildTarefas == null)
+                                {
+                                    return;
+                                }
+                                per.IDChildTarefas.Add(nt2.ID);
+                                GTarefas.Add(nt2);
+
+                                dat2 = dat2.AddDays(1);
+                            }
+                            break;
+
+                        case 3: // mensal
+                            switch (per.tipoMensal)
+                            {
+                                case 1: // dia do mês
+                                    var interv3 = per.intervaloRepeticao;
+                                    DateTime dat3 = t.DataInicio.AddDays(1);
+                                    int nMes = 0;
+                                    while (dat3 <= per.DataLimite)
+                                    {
+
+                                        if (dat3.Day == 1)
+                                        {
+                                            nMes++;
+                                        }
+
+                                        if (dat3.Day != t.DataInicio.Day)
+                                        {
+                                            dat3 = dat3.AddDays(1);
+                                            continue;
+                                        }
+
+
+                                        if (existeRepetida(t.ID, dat3))
+                                        {
+                                            dat3 = dat3.AddDays(1);
+                                            continue;
+                                        }
+
+                                        if (nMes % interv3 != 0 )
+                                        {
+                                            dat3 = dat3.AddDays(1);
+                                            continue;
+                                        }
+
+
+                                        Tarefa nt3 = new Tarefa()
+                                        {
+                                            Titulo = t.Titulo,
+                                            CreationTime = t.CreationTime,
+                                            DataInicio = dat3,
+                                            FullDia = t.FullDia,
+                                            valorPrio = t.valorPrio,
+                                            Estado = t.Estado,
+                                            Descricao = t.Descricao,
+                                            DataFim = t.DataFim,
+                                            idPeriodicidade = t.idPeriodicidade,
+                                            AlertaAntecipacao = t.AlertaAntecipacao,
+                                            AlertaAtraso = t.AlertaAtraso,
+                                            IsTarefaOriginal = false,
+                                        };
+
+                                        if (per.IDChildTarefas == null)
+                                        {
+                                            return;
+                                        }
+                                        per.IDChildTarefas.Add(nt3.ID);
+                                        GTarefas.Add(nt3);
+
+                                        dat3 = dat3.AddDays(1);
+                                    }
+                                    break;
+
+                                case 2: // dia da semana
+                                    var interv4 = per.intervaloRepeticao;
+                                    DateTime dat4 = t.DataInicio.AddDays(1);
+                                    int nMes2 = 0;
+                                    int WOM = HVPeriodicidade.WOM(t.DataInicio);
+                                    while (dat4 <= per.DataLimite)
+                                    {
+
+                                        if (dat4.Day == 1)
+                                        {
+                                            nMes2++;
+                                        }
+
+
+                                        if (dat4.DayOfWeek != t.DataInicio.DayOfWeek)
+                                        {
+                                            dat4 = dat4.AddDays(1);
+                                            continue;
+                                        }
+
+                                        if (existeRepetida(t.ID, dat4))
+                                        {
+                                            dat4 = dat4.AddDays(1);
+                                            continue;
+                                        }
+
+                                        if (nMes2 % interv4 != 0)
+                                        {
+                                            dat4 = dat4.AddDays(1);
+                                            continue;
+                                        }
+
+                                        if (WOM != HVPeriodicidade.WOM(dat4))
+                                        {
+                                            dat4 = dat4.AddDays(1);
+                                            continue;
+                                        }
+
+                                        Tarefa nt4 = new Tarefa()
+                                        {
+                                            Titulo = t.Titulo,
+                                            CreationTime = t.CreationTime,
+                                            DataInicio = dat4,
+                                            FullDia = t.FullDia,
+                                            valorPrio = t.valorPrio,
+                                            Estado = t.Estado,
+                                            Descricao = t.Descricao,
+                                            DataFim = t.DataFim,
+                                            idPeriodicidade = t.idPeriodicidade,
+                                            AlertaAntecipacao = t.AlertaAntecipacao,
+                                            AlertaAtraso = t.AlertaAtraso,
+                                            IsTarefaOriginal = false,
+                                        };
+
+                                        if (per.IDChildTarefas == null)
+                                        {
+                                            return;
+                                        }
+                                        per.IDChildTarefas.Add(nt4.ID);
+                                        GTarefas.Add(nt4);
+
+                                        dat4 = dat4.AddDays(1);
+                                    }
+                                    break;
+                            }
+                            break;
+
+                        case 4:
+                            switch (per.tipoAnual)
+                            {
+                                case 1: // dia do mês
+                                    var interv5 = per.intervaloRepeticao;
+                                    DateTime dat5 = t.DataInicio.AddDays(1);
+                                    int nAno = 0;
+                                    while (dat5 <= per.DataLimite)
+                                    {
+
+                                        if (dat5.Day == 1 && dat5.Month == 1)
+                                        {
+                                            nAno++;
+                                        }
+
+                                        if (dat5.Day != t.DataInicio.Day || dat5.Month != t.DataInicio.Month)
+                                        {
+                                            dat5 = dat5.AddDays(1);
+                                            continue;
+                                        }
+
+                                        if (existeRepetida(t.ID, dat5))
+                                        {
+                                            dat5 = dat5.AddDays(1);
+                                            continue;
+                                        }
+
+                                        if (nAno % interv5 != 0)
+                                        {
+                                            dat5 = dat5.AddDays(1);
+                                            continue;
+                                        }
+
+                                        Tarefa nt5 = new Tarefa()
+                                        {
+                                            Titulo = t.Titulo,
+                                            CreationTime = t.CreationTime,
+                                            DataInicio = dat5,
+                                            FullDia = t.FullDia,
+                                            valorPrio = t.valorPrio,
+                                            Estado = t.Estado,
+                                            Descricao = t.Descricao,
+                                            DataFim = t.DataFim,
+                                            idPeriodicidade = t.idPeriodicidade,
+                                            AlertaAntecipacao = t.AlertaAntecipacao,
+                                            AlertaAtraso = t.AlertaAtraso,
+                                            IsTarefaOriginal = false,
+                                        };
+
+                                        if (per.IDChildTarefas == null)
+                                        {
+                                            return;
+                                        }
+                                        per.IDChildTarefas.Add(nt5.ID);
+                                        GTarefas.Add(nt5);
+
+                                        dat5 = dat5.AddDays(1);
+                                    }
+                                    break;
+
+                                case 2: // dia da semana
+                                    var interv6 = per.intervaloRepeticao;
+                                    DateTime dat6 = t.DataInicio.AddDays(1);
+                                    int nAno2 = 0;
+                                    int WOM = HVPeriodicidade.WOM(t.DataInicio);
+                                    while (dat6 <= per.DataLimite)
+                                    {
+
+                                        if (dat6.Day == 1 && dat6.Month == 1)
+                                        {
+                                            nAno2++;
+                                        }
+
+                                        if (dat6.DayOfWeek != t.DataInicio.DayOfWeek || dat6.Month != t.DataInicio.Month)
+                                        {
+                                            dat6 = dat6.AddDays(1);
+                                            continue;
+                                        }
+
+                                        if (existeRepetida(t.ID, dat6))
+                                        {
+                                            dat6 = dat6.AddDays(1);
+                                            continue;
+                                        }
+
+                                        if (nAno2 % interv6 != 0)
+                                        {
+                                            dat6 = dat6.AddDays(1);
+                                            continue;
+                                        }
+
+                                        if (WOM != HVPeriodicidade.WOM(dat6))
+                                        {
+                                            dat6 = dat6.AddDays(1);
+                                            continue;
+                                        }
+
+                                        Tarefa nt6 = new Tarefa()
+                                        {
+                                            Titulo = t.Titulo,
+                                            CreationTime = t.CreationTime,
+                                            DataInicio = dat6,
+                                            FullDia = t.FullDia,
+                                            valorPrio = t.valorPrio,
+                                            Estado = t.Estado,
+                                            Descricao = t.Descricao,
+                                            DataFim = t.DataFim,
+                                            idPeriodicidade = t.idPeriodicidade,
+                                            AlertaAntecipacao = t.AlertaAntecipacao,
+                                            AlertaAtraso = t.AlertaAtraso,
+                                            IsTarefaOriginal = false,
+                                        };
+
+                                        if (per.IDChildTarefas == null)
+                                        {
+                                            return;
+                                        }
+                                        per.IDChildTarefas.Add(nt6.ID);
+                                        GTarefas.Add(nt6);
+
+                                        dat6 = dat6.AddDays(1);
+                                    }
+                                    break;
+                            }
+                            break;
+
+                    }
+
+                }
+
             }
         }
 

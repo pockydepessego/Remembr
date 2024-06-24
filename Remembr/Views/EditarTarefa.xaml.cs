@@ -1,5 +1,6 @@
 ﻿using Remembr.Models;
 using Remembr.ViewModels;
+using Syncfusion.Windows.Tools.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Remembr.Views
         HVData? hVDataV;
         HVPeriodicidade? hvPerV;
         HVPrioridade? hvPriV;
-        Tarefa task;
+        Tarefa? task;
 
         public EditarTarefa()
         {
@@ -91,6 +92,7 @@ namespace Remembr.Views
         {
             if (hVDataV == null)
             {
+                if (task == null) return;
                 hVDataV = new HVData(task);
                 hVDataV.DataContext = new HVDataVM();
             }
@@ -102,6 +104,7 @@ namespace Remembr.Views
         {
             if (hvPriV == null)
             {
+                if (task == null) return;
                 hvPriV = new HVPrioridade(task);
                 hvPriV.DataContext = new HVPrioridadeVM();
             }
@@ -180,6 +183,8 @@ namespace Remembr.Views
                     Notificacoes.IsChecked = false;
                     return;
                 }
+
+                if (task == null) return;
 
                 hvLembV = new HVLembretes((int)priov, task);
                 hvLembV.DataContext = new HVLembretesVM();
@@ -528,6 +533,8 @@ namespace Remembr.Views
             }
 
 
+            if (task == null) return;
+
             tTarefa = new Models.Tarefa()
             {
                 ID = task.ID,
@@ -694,6 +701,7 @@ namespace Remembr.Views
                 }
 
 
+                if (task == null) return;
                 hvPerV = new HVPeriodicidade(hVDataV.calendario.SelectedDate.Value, task);
                 hvPerV.DataContext = new HVPeriodicidadeVM();
 

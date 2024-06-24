@@ -27,15 +27,13 @@ namespace Remembr.Models
         public int? tipoMensal { get; set; }
         /* 0: dia original, de y em y meses
          * 1: dia da semana x da zª semana do mês, todos os y em y meses
-         * 2: dia da semana x da última semana do mês, todos os y em y meses
          */
         public int? tipoAnual { get; set; }
         /* 0: dia original, de y em y anos
          * 1: dia da semana x da zª semana do mês original, todos os y em y anos
-         * 2: dia da semana x da última semana do mês original, todos os y em y anos
          */
 
-        public string[]? IDChildTarefas { get; set; }
+        public List<String>? IDChildTarefas { get; set; } = new List<string>();
 
         public void copy(Periodicidade p)
         {
