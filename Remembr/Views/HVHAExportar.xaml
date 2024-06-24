@@ -45,7 +45,6 @@
                             FontFamily="{StaticResource MentoneLig}"
                 FontSize="20"
                             Style="{StaticResource NTbutton}" Click="Save_Click"
-                            Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="NovaTarefa"
                     ></Button>
         </Grid>
     </Border>

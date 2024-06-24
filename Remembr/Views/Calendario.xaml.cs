@@ -52,6 +52,13 @@ namespace Remembr.Views
 
             foreach (var tarefa in MVM.GTarefas)
             {
+                if (tarefa.Estado == -1)
+                {
+                    continue;
+                }
+
+
+
                 var appointment = new ScheduleAppointment();
                 appointment.StartTime = (DateTime)tarefa.DataInicio;
                 appointment.IsAllDay = tarefa.FullDia;

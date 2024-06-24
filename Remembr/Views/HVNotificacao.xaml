@@ -13,22 +13,14 @@
             <Grid>
                 <Grid x:Name="apagada" Visibility="Hidden">
                     <TextBlock                         
-                           Text="Tarefa apagada."                               
+                           Text="Notificação apagada."                               
                            FontFamily="{StaticResource MentoneLig}"                              
                            FontSize="16"                       
                            Foreground="#FF6C6C6C"                       
                            HorizontalAlignment="center"                       
                            VerticalAlignment="Center" FontWeight="Bold"/>
                 </Grid>
-                <Grid x:Name="movida" Visibility="Hidden">
-                    <TextBlock                         
-                        Text="Tarefa movida."                               
-                        FontFamily="{StaticResource MentoneLig}"                              
-                        FontSize="16"                       
-                        Foreground="#FF6C6C6C"                       
-                        HorizontalAlignment="center"                       
-                        VerticalAlignment="Center" FontWeight="Bold"/>
-                </Grid>
+
                 <Grid x:Name="gr" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -80,13 +72,14 @@
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0"
+                            <StackPanel Grid.Column="1"
                                 Height="30"
                                 Width="30"
                                 Orientation="Horizontal">
                                 <Viewbox Height="{Binding Path=ActualHeight, ElementName=StackPanel1}">
                                     <CheckBox x:Name="marcarVisto" 
                                               Background="Transparent"
+                                              ToolTip="Marcar notificação como lida/não lida"
                                               Foreground="#FF3F3F3F"
                                               BorderBrush="#FF3F3F3F" 
                                               IsChecked="False"
@@ -97,12 +90,13 @@
 
                             <Button x:Name="ApagarTarefa" 
                             Margin="5,0,5,0"
+                            ToolTip="Apagar notificação"
                             Background="{x:Null}" 
                             BorderBrush="{x:Null}" 
                             Foreground="{x:Null}"
                             Grid.Column="2"
                             Template="{DynamicResource ButtonTemplate1}" Height="32" VerticalAlignment="Bottom" Click="ApagarTarefa_Click"  
-                                ToolTip="Apagar Tarefa">
+                                >
                                 <Button.Content>
                                     <svgc:SvgViewbox Source="/Resources/SVG/trash-solid(1).svg" Height="20"/>
                                 </Button.Content>
@@ -113,7 +107,7 @@
                             Background="{x:Null}" 
                             BorderBrush="{x:Null}" 
                             Foreground="{x:Null}"
-                            Grid.Column="1"
+                            Grid.Column="0"
                             Template="{DynamicResource ButtonTemplate1}" Click="EditarTarefa_Click"
                                 ToolTip="Editar Tarefa">
                                 <Button.Content>
@@ -147,7 +141,7 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock Text="Data: " 
+                                    <TextBlock Text="Data (notificação): " 
                                        Grid.Column="1"
                                        FontFamily="{StaticResource MentoneLig}"
                                        FontSize="16"
