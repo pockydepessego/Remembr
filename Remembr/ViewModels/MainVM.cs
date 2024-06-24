@@ -81,6 +81,10 @@ namespace Remembr.ViewModels
                 case "DefinicoesUtilizador":
                     CurrentViewModel = new DefinicoesUtilizadorVM();
                     break;
+
+                case "Avancado":
+                    CurrentViewModel = new AvancadoVM();
+                    break;
                 default:
                     MessageBox.Show("Erro: View não encontrada.");
                     return;

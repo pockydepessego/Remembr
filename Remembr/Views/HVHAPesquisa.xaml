@@ -83,7 +83,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.3*"/>
                 <RowDefinition Height="1.05*"/>
-                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.005*"/>
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="0.3 *"/>
             </Grid.RowDefinitions>
@@ -100,19 +100,19 @@
                 <Rectangle Stroke="#FF3F3F3F"
                            Fill="White"
                                        StrokeThickness="2"
-                                       Margin="0 5 5 5"
+                                       Margin="0 0 5 5"
                                        RadiusX="10"
                                        RadiusY="10"
                                        Grid.Column="1"/>
                 <TextBlock  x:Name="textNomedaTarefa"
-                                        Text="Nome da Tarefa" Style="{StaticResource TextoNT}" 
+                                        Text="Texto a pesquisar" Style="{StaticResource TextoNT}" 
                                         VerticalAlignment="Center" 
                                         Margin="13 0 0 0"
                                         FontFamily="{StaticResource MentoneLig}" 
                                         Grid.Row="1"
                                         MouseDown="textNomedaTarefa_MouseDown"/>
 
-                <TextBox x:Name="NomedaTarefa"
+                <TextBox x:Name="pesquisa" Grid.Column="1"
                                      Template="{DynamicResource TextBox1}"
                                      VerticalContentAlignment="Center"
                                      FontFamily="Mentone"
@@ -130,7 +130,7 @@
                            StrokeThickness="2"
                            RadiusX="10"
                            RadiusY="10"
-                           Margin="0 5"
+                           Margin="0 0 0 5"
                            Grid.Column="3"
                        Fill="White"/>
                 <Grid Grid.Column="3">
@@ -144,12 +144,12 @@
                         Grid.Row="0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
-                        Margin="5 10 5 2"
+                        Margin="5"
                         Background="White"
                         VerticalContentAlignment="Center"
                         BorderBrush="{x:Null}"
                         BorderThickness="0"
-                        SelectedDateChanged="DatePicker_SelectedDateChanged"
+                        SelectedDateChanged="datainicio_SelectedDateChanged"
                         >
                     </DatePicker>
 
@@ -157,12 +157,12 @@
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
-                        Margin="5 2 5 10"
+                        Margin="5 2 5 11"
                         Background="White"
                         VerticalContentAlignment="Center"
                         BorderBrush="{x:Null}"
                         BorderThickness="0"
-                        SelectedDateChanged="DatePicker_SelectedDateChanged"
+                        SelectedDateChanged="datainicio_SelectedDateChanged"
                         >
                     </DatePicker>
 
@@ -171,18 +171,26 @@
 
             </Grid>
 
-            <Rectangle Stroke="#FF3F3F3F"
+            <Grid Grid.Row="3" MouseDown="Grid_MouseDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="5.005*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Rectangle Grid.Column="1"
+                    Stroke="#FF3F3F3F"
                            Fill="White"
                                        StrokeThickness="2"
-                                       Margin="45 0"
                                        RadiusX="10"
                                        RadiusY="10"
                                        Grid.Row="3"/>
-            <ListBox Style="{DynamicResource ListBoxStyle1}"  
+                <ListBox Margin="10" Grid.Column="1" Style="{DynamicResource ListBoxStyle1}"  
                      ItemContainerStyle="{DynamicResource _ListBoxItemStyle}"
-                     Background="Transparent" x:Name="listinha" Margin="55 10"
-                     Grid.Row="3"
+                     Background="Transparent" x:Name="listinha"
+                     
                      />
+            </Grid>
 
         </Grid>  
                 

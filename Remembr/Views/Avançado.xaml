@@ -80,9 +80,9 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.16*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="1.3*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1.6*"/>
+                        <ColumnDefinition Width="1.4*"/>
                         <ColumnDefinition Width="0.16*"/>
                     </Grid.ColumnDefinitions>
                     <Rectangle Grid.Column="2"
@@ -97,7 +97,7 @@
                                Fill="#f16992"                               
                                RadiusX="10"
                                RadiusY="10"
-                               Margin="0 0 5 0"/>
+                               Margin="0 0 0 0"/>
 
                     <Rectangle Grid.Row="1"
                                Grid.Column="1"
@@ -250,7 +250,7 @@
                             Height="54" 
                             Width="172"
                             FontFamily="{StaticResource MentoneLig}"
-                            Style="{StaticResource button}" Click="Save_Click"
+                            Style="{StaticResource button}"
                             Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="NovaTarefa"
                     ></Button>
 
@@ -261,7 +261,8 @@
                             Height="45" 
                             Width="200"
                             FontFamily="{StaticResource MentoneLig}"
-                            Style="{StaticResource PageButton}" Click="TarefaPage_Click"/>
+                            Style="{StaticResource PageButton}" 
+                            Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="HomeTarefas"/>
 
                 <Image Grid.Row="3"
                            Source="/Resources/Images/tarefasicon.png"
@@ -277,7 +278,6 @@
                             Width="200"
                             FontFamily="{StaticResource MentoneLig}"
                             Style="{StaticResource PageButton}" 
-                        Click="CalendarPage_Click"                                                                     
                         Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="Calendario">
                 </Button>
 
@@ -295,7 +295,6 @@
                             Width="220"
                             FontFamily="{StaticResource MentoneLig}"
                             Style="{StaticResource PageButton}" 
-                        Click="AdvancedPage_Click"                                                                     
                         Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="Avancado">
 
 

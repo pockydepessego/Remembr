@@ -153,7 +153,6 @@
                             Width="200"
                             FontFamily="{StaticResource MentoneLig}"
                             Style="{StaticResource PageButton}" 
-                        Click="AdvancedPage_Click"                                                                     
                         Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="Avancado">
 
 

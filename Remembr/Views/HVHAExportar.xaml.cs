@@ -24,5 +24,15 @@ namespace Remembr.Views
         {
             InitializeComponent();
         }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Grid_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
