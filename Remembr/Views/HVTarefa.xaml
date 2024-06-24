@@ -86,7 +86,7 @@
                            Foreground="{x:Null}"
                            Grid.Column="0"
                            Template="{DynamicResource ButtonTemplate1}" Height="32" VerticalAlignment="Bottom" Click="PassarTarefa_Click"
-                               ToolTip="Começar Tarefa">
+                               ToolTip="Avançar Tarefa">
                                 <Button.Content>
                                     <svgc:SvgViewbox Source="/Resources/SVG/arrow-right-solid.svg" Width="20"/>
                                 </Button.Content>

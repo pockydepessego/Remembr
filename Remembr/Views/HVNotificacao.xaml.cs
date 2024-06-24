@@ -24,5 +24,20 @@ namespace Remembr.Views
         {
             InitializeComponent();
         }
+
+        private void LembreteAntecipacao_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditarTarefa_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ApagarTarefa_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

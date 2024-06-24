@@ -23,6 +23,12 @@ namespace Remembr.Views
         public HVHANotificacoes()
         {
             InitializeComponent();
+
+        }
+
+        private void Grid_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

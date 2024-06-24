@@ -35,7 +35,7 @@ namespace Remembr.Views
                 return;
             }
 
-            var listaOrdenada = MVM.GTarefas.Where(t => t.Estado == 1).OrderBy(t => t.DataInicio).ThenBy(t => t.CreationTime).ToList();
+            var listaOrdenada = MVM.GTarefas.Where(t => t.Estado == 1).OrderBy(t => t.DataInicio).ThenByDescending(t => t.valorPrio).ThenBy(t => t.CreationTime).ToList();
 
             foreach (var tarefa in listaOrdenada)
             {
@@ -66,7 +66,7 @@ namespace Remembr.Views
                 return;
             }
 
-            var listaOrdenada = MVM.GTarefas.Where(t => t.Estado == 1).OrderBy(t => t.DataInicio).ThenBy(t => t.CreationTime).ToList();
+            var listaOrdenada = MVM.GTarefas.Where(t => t.Estado == 1).OrderBy(t => t.DataInicio).ThenByDescending(t => t.valorPrio).ThenBy(t => t.CreationTime).ToList();
 
             foreach (var tarefa in listaOrdenada)
             {

@@ -42,6 +42,19 @@ namespace Remembr.Views
 
             nomeTarefa.Text = t.Titulo;
 
+            switch (t.Estado)
+            {
+                case 0:
+                    PassarTarefa.ToolTip = "Avançar Tarefa (Por Iniciar -> Em Execução)";
+                    break;
+                case 1:
+                    PassarTarefa.ToolTip = "Avançar Tarefa (Em Execução -> Terminada)";
+                    break;
+                case -1:
+                    ApagarTarefa.ToolTip = "Apagar Tarefa Permanentemente";
+                    break;
+            }
+
             if (t.FullDia)
             {
                 data.Text = t.DataInicio.ToString("dd/MM/yyyy");
