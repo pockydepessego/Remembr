@@ -22,6 +22,7 @@
     <None Remove="Resources\Images\pastatee.png" />
     <None Remove="Resources\Images\pastatpi.png" />
     <None Remove="Resources\Images\pastatt.png" />
+    <None Remove="Resources\Images\plus-solid.png" />
     <None Remove="Resources\Images\tarefasicon.png" />
     <None Remove="Resources\SVG\arrow-right-solid.svg" />
     <None Remove="Resources\SVG\pencil-solid.svg" />
@@ -51,6 +52,7 @@
     <Resource Include="Resources\Images\pastatee.png" />
     <Resource Include="Resources\Images\pastatpi.png" />
     <Resource Include="Resources\Images\pastatt.png" />
+    <Resource Include="Resources\Images\plus-solid.png" />
     <Resource Include="Resources\Images\tarefasicon.png" />
     <Resource Include="Resources\SVG\arrow-right-solid.svg" />
     <Resource Include="Resources\SVG\pencil-solid.svg" />

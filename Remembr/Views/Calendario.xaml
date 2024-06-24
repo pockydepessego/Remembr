@@ -81,6 +81,8 @@
                     <RowDefinition Height=".5*"/>
                     <RowDefinition Height=".2*"/>
                     <RowDefinition Height=".5*"/>
+                    <RowDefinition Height=".2*"/>
+                    <RowDefinition Height=".5*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
@@ -139,6 +141,26 @@
 
                 <Image Grid.Row="5"
                            Source="/Resources/Images/calendarioicon.png"
+                           HorizontalAlignment="Left"
+                           Margin="6,5,5,5"
+                           Width="25"/>
+
+                <Button Grid.Row="7"
+                            Content="Avançado" 
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Height="45" 
+                            Width="200"
+                            FontFamily="{StaticResource MentoneLig}"
+                            Style="{StaticResource PageButton}" 
+                        Click="AdvancedPage_Click"                                                                     
+                        Command="{Binding DataContext.ChangeViewCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="Avancado">
+
+
+                </Button>
+
+                <Image Grid.Row="7"
+                           Source="/Resources/Images/plus-solid.png"
                            HorizontalAlignment="Left"
                            Margin="6,5,5,5"
                            Width="25"/>

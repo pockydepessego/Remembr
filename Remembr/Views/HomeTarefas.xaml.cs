@@ -117,6 +117,11 @@ namespace Remembr.Views
                 hvHTPorIniciarV.DataContext = new HVHTPorIniciarVM();
             hcc.Content = hvHTPorIniciarV;
         }
+
+        private void AdvancedPage_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
