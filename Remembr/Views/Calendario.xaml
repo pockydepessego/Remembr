@@ -12,7 +12,7 @@
         
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:busyIndicator="clr-namespace:Syncfusion.Windows.Controls.Notification;assembly=Syncfusion.SfBusyIndicator.WPF">
- 
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -252,9 +252,15 @@
                     </syncfusion:SfScheduler.ToolTipTemplate>
                 </syncfusion:SfScheduler>
 
-                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Orientation="Horizontal" >
-                    <Button Content="DIA" Click="DayViewButton_Click" Margin="5"/>
-                    <Button Content="MÊS" Click="MonthViewButton_Click" Margin="5"/>
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal" Height="32" >
+                    <Button Content="Dia" 
+                            Click="DayViewButton_Click" 
+                            Margin="0 0 5 5" 
+                            Style="{StaticResource DMbutton}"/>
+                    <Button Content="Mês" 
+                            Click="MonthViewButton_Click" 
+                            Margin="5 0 0 5" 
+                            Style="{StaticResource DMbutton}"/>
                 </StackPanel>
             </Grid>
 
